@@ -13,7 +13,7 @@
 		77448CB2289020C50040A442 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77448CB0289020C50040A442 /* LaunchScreen.storyboard */; };
 		77448CBE28902F0D0040A442 /* StartMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CBD28902F0D0040A442 /* StartMenuView.swift */; };
 		77448CC0289047CF0040A442 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CBF289047CF0040A442 /* CustomButton.swift */; };
-		77448CC2289067610040A442 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CC1289067610040A442 /* GameModel.swift */; };
+		9F342FA428907A3E00943FD1 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F342FA328907A3E00943FD1 /* GameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		77448CB3289020C50040A442 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77448CBD28902F0D0040A442 /* StartMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuView.swift; sourceTree = "<group>"; };
 		77448CBF289047CF0040A442 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		77448CC1289067610040A442 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameModel.swift; path = ../../../GameModel.swift; sourceTree = "<group>"; };
+		9F342FA328907A3E00943FD1 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				77448CA5289020C20040A442 /* AppDelegate.swift */,
-				77448CB928902A310040A442 /* Model */,
+				9F342FA228907A1000943FD1 /* GameScreen */,
 				77448CBC28902A4D0040A442 /* StartMenu */,
 				77448CBA28902A3A0040A442 /* CustomViews */,
 				77448CB3289020C50040A442 /* Info.plist */,
@@ -67,14 +67,6 @@
 				77448CB0289020C50040A442 /* LaunchScreen.storyboard */,
 			);
 			path = Alias;
-			sourceTree = "<group>";
-		};
-		77448CB928902A310040A442 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				77448CC1289067610040A442 /* GameModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		77448CBA28902A3A0040A442 /* CustomViews */ = {
@@ -92,6 +84,14 @@
 				77448CA9289020C20040A442 /* StartMenuViewController.swift */,
 			);
 			path = StartMenu;
+			sourceTree = "<group>";
+		};
+		9F342FA228907A1000943FD1 /* GameScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9F342FA328907A3E00943FD1 /* GameViewController.swift */,
+			);
+			path = GameScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,7 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77448CC2289067610040A442 /* GameModel.swift in Sources */,
+				9F342FA428907A3E00943FD1 /* GameViewController.swift in Sources */,
 				77448CC0289047CF0040A442 /* CustomButton.swift in Sources */,
 				77448CBE28902F0D0040A442 /* StartMenuView.swift in Sources */,
 				77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */,
