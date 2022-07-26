@@ -14,6 +14,10 @@
 		77448CBE28902F0D0040A442 /* StartMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CBD28902F0D0040A442 /* StartMenuView.swift */; };
 		77448CC0289047CF0040A442 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CBF289047CF0040A442 /* CustomButton.swift */; };
 		9F342FA428907A3E00943FD1 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F342FA328907A3E00943FD1 /* GameViewController.swift */; };
+		9F342FA72890853900943FD1 /* PhosphateInline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F342FA62890853900943FD1 /* PhosphateInline.ttf */; };
+		9F342FA92890854000943FD1 /* PhosphateRR Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F342FA82890854000943FD1 /* PhosphateRR Solid.ttf */; };
+		9F342FAB2890854500943FD1 /* PhosphateSolid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F342FAA2890854500943FD1 /* PhosphateSolid.ttf */; };
+		9F342FAD28908A2800943FD1 /* Phosphate_Pro_Inline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F342FAC28908A2800943FD1 /* Phosphate_Pro_Inline.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		77448CBD28902F0D0040A442 /* StartMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuView.swift; sourceTree = "<group>"; };
 		77448CBF289047CF0040A442 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		9F342FA328907A3E00943FD1 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		9F342FA62890853900943FD1 /* PhosphateInline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PhosphateInline.ttf; sourceTree = "<group>"; };
+		9F342FA82890854000943FD1 /* PhosphateRR Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PhosphateRR Solid.ttf"; sourceTree = "<group>"; };
+		9F342FAA2890854500943FD1 /* PhosphateSolid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PhosphateSolid.ttf; sourceTree = "<group>"; };
+		9F342FAC28908A2800943FD1 /* Phosphate_Pro_Inline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Phosphate_Pro_Inline.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,7 @@
 		77448CA4289020C20040A442 /* Alias */ = {
 			isa = PBXGroup;
 			children = (
+				9F342FA52890850600943FD1 /* Fonts */,
 				77448CA5289020C20040A442 /* AppDelegate.swift */,
 				9F342FA228907A1000943FD1 /* GameScreen */,
 				77448CBC28902A4D0040A442 /* StartMenu */,
@@ -92,6 +101,17 @@
 				9F342FA328907A3E00943FD1 /* GameViewController.swift */,
 			);
 			path = GameScreen;
+			sourceTree = "<group>";
+		};
+		9F342FA52890850600943FD1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9F342FA62890853900943FD1 /* PhosphateInline.ttf */,
+				9F342FA82890854000943FD1 /* PhosphateRR Solid.ttf */,
+				9F342FAA2890854500943FD1 /* PhosphateSolid.ttf */,
+				9F342FAC28908A2800943FD1 /* Phosphate_Pro_Inline.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,8 +172,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F342FA92890854000943FD1 /* PhosphateRR Solid.ttf in Resources */,
 				77448CB2289020C50040A442 /* LaunchScreen.storyboard in Resources */,
+				9F342FAD28908A2800943FD1 /* Phosphate_Pro_Inline.ttf in Resources */,
+				9F342FA72890853900943FD1 /* PhosphateInline.ttf in Resources */,
 				77448CAF289020C50040A442 /* Assets.xcassets in Resources */,
+				9F342FAB2890854500943FD1 /* PhosphateSolid.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
