@@ -3,34 +3,70 @@ import UIKit
 
 class StartMenuView: UIView {
     
+    var rulesMenuButtonTap: (() -> Void)?
+    
     private lazy var aliasLabel: UILabel = {
         let label = UILabel()
         label.text = "ALIAS"
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 60, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
+        label.textColor = .white
+        label.font = UIFont(name: "Phosphate-Solid", size: 88)
         return label
     }()
     
-    private lazy var startGameButton: CustomButton = {
-        let btn = CustomButton(color: .red, title: "Новая игра", buttonHandler: {
-            [weak self] in
-            print("press button startGameButton")
-        })
-        btn.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var startImage: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "Goodies Awesome")
+        iv.contentMode = .scaleAspectFit
+        iv.translatesAutoresizingMaskIntoConstraints = false
         
+        return iv
+    }()
+    
+    private lazy var startGameButton: CustomButton = {
+        let btn = CustomButton(color: .white, title: "Новая игра", buttonHandler: {
+            [weak self] in
+            guard let self = self else { return }
+            print("tap start game button")
+        })
         return btn
     }()
     
     private lazy var rulesButton: CustomButton = {
-        let btn = CustomButton(color: .blue, title: "Правила", buttonHandler: {
+        let btn = CustomButton(color: .white, title: "Правила", buttonHandler: {
             [weak self] in
-            print("press button rulesButton")
+            guard let self = self else { return }
+            self.rulesMenuButtonTap?()
         })
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        
         return btn
+    }()
+    
+    private lazy var buttonStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews:
+                                [
+                                    self.startGameButton,
+                                    self.rulesButton
+                                ])
+        sv.axis = .vertical
+        sv.spacing = 16.0
+        sv.alignment = .center
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        
+        return sv
+    }()
+    
+    private lazy var contentStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews:
+                                [
+                                    self.aliasLabel,
+                                    self.startImage,
+                                    self.buttonStackView
+                                ])
+        sv.axis = .vertical
+        sv.alignment = .center
+        sv.spacing = 50.0
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        
+        return sv
     }()
     
     override init(frame: CGRect) {
@@ -45,22 +81,15 @@ class StartMenuView: UIView {
     
     private func setupUI() {
         
-        addSubview(self.aliasLabel)
-        addSubview(self.startGameButton)
-        addSubview(self.rulesButton)
+        backgroundColor = UIColor(named: "RoyalBlueColor")
+        addSubview(self.contentStackView)
         
         NSLayoutConstraint.activate([
-            
-            self.aliasLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            self.aliasLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            
-            self.startGameButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            self.rulesButton.topAnchor.constraint(equalTo: self.startGameButton.bottomAnchor, constant: 20.0),
-            
-            self.rulesButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: self.rulesButton.bottomAnchor, constant: 100.0),
-            self.rulesButton.widthAnchor.constraint(equalTo: self.startGameButton.widthAnchor),
-            self.rulesButton.heightAnchor.constraint(equalTo: self.startGameButton.heightAnchor)
+            self.contentStackView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            self.contentStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
+            self.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: self.contentStackView.bottomAnchor, constant: 20)
         ])
     }
 }
+
+
