@@ -18,6 +18,15 @@
 		77448CB2289020C50040A442 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77448CB0289020C50040A442 /* LaunchScreen.storyboard */; };
 		77448CBE28902F0D0040A442 /* StartMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CBD28902F0D0040A442 /* StartMenuView.swift */; };
 		77448CC0289047CF0040A442 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CBF289047CF0040A442 /* CustomButton.swift */; };
+
+
+		77448CCA289132E60040A442 /* Phosphate.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 77448CC8289132E60040A442 /* Phosphate.ttc */; };
+		77448CCB289132E60040A442 /* Piazzolla.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77448CC9289132E60040A442 /* Piazzolla.ttf */; };
+		77448CCE289149770040A442 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CCD289149770040A442 /* RulesView.swift */; };
+		77448CD02891499E0040A442 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CCF2891499E0040A442 /* RulesViewController.swift */; };
+		77448CD228914B520040A442 /* Piazzolla-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77448CD128914B510040A442 /* Piazzolla-Black.ttf */; };
+		77448CD82891AB940040A442 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CD72891AB930040A442 /* CustomView.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +43,15 @@
 		77448CB3289020C50040A442 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77448CBD28902F0D0040A442 /* StartMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuView.swift; sourceTree = "<group>"; };
 		77448CBF289047CF0040A442 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+
+
+		77448CC8289132E60040A442 /* Phosphate.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Phosphate.ttc; sourceTree = "<group>"; };
+		77448CC9289132E60040A442 /* Piazzolla.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Piazzolla.ttf; sourceTree = "<group>"; };
+		77448CCD289149770040A442 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		77448CCF2891499E0040A442 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
+		77448CD128914B510040A442 /* Piazzolla-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Piazzolla-Black.ttf"; sourceTree = "<group>"; };
+		77448CD72891AB930040A442 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,11 +102,17 @@
 		77448CA4289020C20040A442 /* Alias */ = {
 			isa = PBXGroup;
 			children = (
+				9F342FA52890850600943FD1 /* Fonts */,
 				77448CA5289020C20040A442 /* AppDelegate.swift */,
-				38D091CE28913A080060E355 /* DifficultyPage */,
+
+				9F342FA228907A1000943FD1 /* GameScreen */,
+
 				77448CBC28902A4D0040A442 /* StartMenu */,
+				77448CCC289149420040A442 /* Rules */,
 				77448CBA28902A3A0040A442 /* CustomViews */,
-				38D922BE289184A500551CCB /* Fonts */,
+
+				77448CC32891307C0040A442 /* Fonts */,
+
 				77448CB3289020C50040A442 /* Info.plist */,
 				77448CAE289020C50040A442 /* Assets.xcassets */,
 				38D922BC28917EEB00551CCB /* ColorSet.xcassets */,
@@ -97,9 +121,21 @@
 			path = Alias;
 			sourceTree = "<group>";
 		};
+
+
+		77448CB928902A310040A442 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+
+
 		77448CBA28902A3A0040A442 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				77448CD72891AB930040A442 /* CustomView.swift */,
 				77448CBF289047CF0040A442 /* CustomButton.swift */,
 			);
 			path = CustomViews;
@@ -112,6 +148,27 @@
 				77448CA9289020C20040A442 /* StartMenuViewController.swift */,
 			);
 			path = StartMenu;
+			sourceTree = "<group>";
+		};
+
+		77448CC32891307C0040A442 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				77448CC8289132E60040A442 /* Phosphate.ttc */,
+				77448CC9289132E60040A442 /* Piazzolla.ttf */,
+				77448CD128914B510040A442 /* Piazzolla-Black.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		77448CCC289149420040A442 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				77448CCD289149770040A442 /* RulesView.swift */,
+				77448CCF2891499E0040A442 /* RulesViewController.swift */,
+			);
+			path = Rules;
+
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,10 +229,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38D922BD28917EEB00551CCB /* ColorSet.xcassets in Resources */,
+
+				9F342FAF28908D0500943FD1 /* Phosphate.ttc in Resources */,
+				9F342FA92890854000943FD1 /* PhosphateRR Solid.ttf in Resources */,
+
 				77448CB2289020C50040A442 /* LaunchScreen.storyboard in Resources */,
+				77448CD228914B520040A442 /* Piazzolla-Black.ttf in Resources */,
 				77448CAF289020C50040A442 /* Assets.xcassets in Resources */,
-				38D922BA2891550200551CCB /* Phosphate.ttc in Resources */,
+
+				77448CCA289132E60040A442 /* Phosphate.ttc in Resources */,
+				77448CCB289132E60040A442 /* Piazzolla.ttf in Resources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,13 +250,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
+
+				77448CD02891499E0040A442 /* RulesViewController.swift in Sources */,
+
 				77448CC0289047CF0040A442 /* CustomButton.swift in Sources */,
+				77448CCE289149770040A442 /* RulesView.swift in Sources */,
+
 				77448CBE28902F0D0040A442 /* StartMenuView.swift in Sources */,
 				77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */,
 				77448CA6289020C20040A442 /* AppDelegate.swift in Sources */,
-				38D922C028918DBF00551CCB /* DifficultyChoiceModel.swift in Sources */,
-				38D091CD289139C70060E355 /* DifficultyPageView.swift in Sources */,
-				38D091CB289139AB0060E355 /* DifficultyPageViewController.swift in Sources */,
+
+				77448CD82891AB940040A442 /* CustomView.swift in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

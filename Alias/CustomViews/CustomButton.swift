@@ -6,7 +6,7 @@ class CustomButton: UIView {
     
     private var button = UIButton()
 
-    init(color: UIColor, title: String, buttonHandler: @escaping () -> Void) {
+    init(color: UIColor,title: String, buttonHandler: @escaping () -> Void) {
         self.button = UIButton.makeButton(color: color, title: title)
         self.buttonHandler = buttonHandler
         
@@ -44,12 +44,17 @@ private extension UIButton {
     static func makeButton(color: UIColor, title: String) -> UIButton {
         let btn = UIButton()
         btn.setTitle(title, for: .normal)
-        btn.titleLabel?.textColor = .white
+        btn.setTitleColor(.black, for: .normal)
         btn.backgroundColor = color
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 40.0)
+        btn.titleLabel?.font = UIFont(name: "Phosphate-Solid", size: 24)
         btn.titleLabel?.textAlignment = .center
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.layer.cornerRadius = 15
+        btn.layer.cornerRadius = 16
+        
+        NSLayoutConstraint.activate([
+            btn.widthAnchor.constraint(equalToConstant: 327.0),
+            btn.heightAnchor.constraint(equalToConstant: 66.0)
+        ])
         
         return btn
     }
