@@ -52,19 +52,19 @@ class GameScreenView: UIView {
     }()
     
     // Кнопка правильного ответа
-    private lazy var trueAnswerBtn: UIButton = {
-        makeButton(color: .green, image: "Ok", handler: {
-            [weak self] in
-            print("press button startGameButton")
-        })
+    private var rightButton = UIButton()
+    private lazy var rightAnswerBtn: UIButton = {
+        rightButton = makeButton(color: .green, image: "Ok")
+        rightButton.addTarget(self, action: #selector(rightAnswer), for: .touchUpInside)
+        return rightButton
     }()
     
     // Кнопка неправильного ответа
+    private var wrongButton = UIButton()
     private lazy var wrongAnswerBtn: UIButton = {
-        makeButton(color: .red, image: "WrongAnswer", handler: {
-            [weak self] in
-            print("press button startGameButton")
-        })
+        wrongButton = makeButton(color: .red, image: "WrongAnswer")
+        wrongButton.addTarget(self, action: #selector(wrongAnswer), for: .touchUpInside)
+        return wrongButton
     }()
     
     // Стэк для секунд
@@ -77,7 +77,7 @@ class GameScreenView: UIView {
     
     // Стэк для кнопок
     private lazy var buttonsStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [self.wrongAnswerBtn, self.trueAnswerBtn])
+        let stack = UIStackView(arrangedSubviews: [self.wrongAnswerBtn, self.rightAnswerBtn])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.distribution = .fillEqually
@@ -98,7 +98,6 @@ class GameScreenView: UIView {
     
     override init(frame: CGRect) {
         super .init(frame: frame)
-        
         self.setupUI()
     }
     
@@ -106,6 +105,13 @@ class GameScreenView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc private func rightAnswer(){
+        print("Right!")
+    }
+    
+    @objc private func wrongAnswer(){
+        print("Wrong!")
+    }
     
     private func setupUI() {
         
@@ -121,8 +127,8 @@ class GameScreenView: UIView {
             
             self.wrongAnswerBtn.widthAnchor.constraint(equalToConstant: 112),
             self.wrongAnswerBtn.heightAnchor.constraint(equalToConstant: 108),
-            self.trueAnswerBtn.widthAnchor.constraint(equalToConstant: 112),
-            self.trueAnswerBtn.heightAnchor.constraint(equalToConstant: 108)
+            self.rightAnswerBtn.widthAnchor.constraint(equalToConstant: 112),
+            self.rightAnswerBtn.heightAnchor.constraint(equalToConstant: 108)
             
         ])
     }
@@ -130,7 +136,7 @@ class GameScreenView: UIView {
 
 private extension GameScreenView {
     
-    func makeButton(color: UIColor, image: String, handler: ()->Void) -> UIButton {
+    func makeButton(color: UIColor, image: String) -> UIButton {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = color
@@ -139,5 +145,4 @@ private extension GameScreenView {
         btn.setImage(UIImage(named: image), for: .normal)
         return btn
     }
-    
 }
