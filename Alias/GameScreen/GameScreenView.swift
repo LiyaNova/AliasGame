@@ -1,34 +1,13 @@
 //
-//  GameViewController.swift
+//  GameScreenView.swift
 //  Alias
 //
-//  Created by Alex Ch. on 26.07.2022.
+//  Created by Alex Ch. on 27.07.2022.
 //
-
-import Foundation
-import SwiftUI
-
-struct SwiftUIController: UIViewControllerRepresentable {
-    typealias UIViewControllerType = GameViewController
-    
-    func makeUIViewController(context: Context) -> UIViewControllerType {
-        let vc = UIViewControllerType()
-        return vc
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-    }
-}
-
-struct SwiftUIController_Previews: PreviewProvider {
-    static var previews: some View {
-        SwiftUIController().edgesIgnoringSafeArea(.all)
-    }
-}
 
 import UIKit
 
-class GameViewController: UIViewController {
+class GameScreenView: UIView {
     
     // MARK: - UI elements
     
@@ -74,26 +53,18 @@ class GameViewController: UIViewController {
     
     // Кнопка правильного ответа
     private lazy var trueAnswerBtn: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .green
-        button.setImage(UIImage(named: "Ok"), for: .normal)
-        button.layer.cornerRadius = 15
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(trueAnswerTap), for: .touchUpInside)
-        return button
+        makeButton(color: .green, image: "Ok", handler: {
+            [weak self] in
+            print("press button startGameButton")
+        })
     }()
     
     // Кнопка неправильного ответа
     private lazy var wrongAnswerBtn: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .red
-        button.setImage(UIImage(named: "WrongAnswer"), for: .normal)
-        button.layer.cornerRadius = 15
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(wrongAnswerTap), for: .touchUpInside)
-        return button
+        makeButton(color: .red, image: "WrongAnswer", handler: {
+            [weak self] in
+            print("press button startGameButton")
+        })
     }()
     
     // Стэк для секунд
@@ -125,35 +96,28 @@ class GameViewController: UIViewController {
         return stack
     }()
     
-    // MARK: - Life cicle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
+    override init(frame: CGRect) {
+        super .init(frame: frame)
+        
+        self.setupUI()
     }
     
-    // MARK: - Private methods
-    
-    
-    @objc func wrongAnswerTap(){
-        print("Wrong answer")
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func trueAnswerTap(){
-        print("Right answer")
-    }
     
     private func setupUI() {
         
-        view.addSubview(contentStack)
+        addSubview(self.contentStack)
         
         NSLayoutConstraint.activate([
             
-            self.contentStack.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
-            self.contentStack.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
+            self.contentStack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            self.contentStack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             
-            self.gameWodrLabel.centerXAnchor.constraint(equalTo: gameImage.centerXAnchor),
-            self.gameWodrLabel.centerYAnchor.constraint(equalTo: gameImage.centerYAnchor),
+            self.gameWodrLabel.centerXAnchor.constraint(equalTo: self.gameImage.centerXAnchor),
+            self.gameWodrLabel.centerYAnchor.constraint(equalTo: self.gameImage.centerYAnchor),
             
             self.wrongAnswerBtn.widthAnchor.constraint(equalToConstant: 112),
             self.wrongAnswerBtn.heightAnchor.constraint(equalToConstant: 108),
@@ -162,4 +126,18 @@ class GameViewController: UIViewController {
             
         ])
     }
+}
+
+private extension GameScreenView {
+    
+    func makeButton(color: UIColor, image: String, handler: ()->Void) -> UIButton {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.backgroundColor = color
+        btn.layer.cornerRadius = 15
+        btn.clipsToBounds = true
+        btn.setImage(UIImage(named: image), for: .normal)
+        return btn
+    }
+    
 }
