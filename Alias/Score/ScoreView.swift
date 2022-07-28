@@ -11,7 +11,7 @@ class ScoreView: UIView {
     
     private var scoreDict = ["Команда 2": 10, "Команда 3": 8, "Команда 1": 7]
     private var numberOfRound = 2
-    
+    var gameButtonTap: (() -> Void)?
 
     private lazy var teamsLabel: UILabel = { // верхний лейбл
         let label = UILabel()
@@ -108,7 +108,7 @@ class ScoreView: UIView {
     }
     
     @objc private func startGame(){
-        print("Открыть экран игры")
+        self.gameButtonTap?()
     }
     
     private func setupUI() {
