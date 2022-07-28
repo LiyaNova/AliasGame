@@ -5,27 +5,6 @@
 //  Created by Alex Ch. on 28.07.2022.
 //
 
-import SwiftUI
-
-struct SwiftUIController: UIViewControllerRepresentable {
-    typealias UIViewControllerType = ScoreViewController
-    
-    
-    func makeUIViewController(context: Context) -> UIViewControllerType {
-        let vc = UIViewControllerType()
-        return vc
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-    }
-}
-
-struct SwiftUIController_Previews: PreviewProvider {
-    static var previews: some View {
-        SwiftUIController().edgesIgnoringSafeArea(.all)
-    }
-}
-
 import UIKit
 
 class ScoreView: UIView {
@@ -33,6 +12,7 @@ class ScoreView: UIView {
     private var scoreDict = ["Команда 2": 10, "Команда 3": 8, "Команда 1": 7]
     private var numberOfRound = 2
     
+
     private lazy var teamsLabel: UILabel = { // верхний лейбл
         let label = UILabel()
         label.text = "Рейтинг команд"
@@ -73,14 +53,14 @@ class ScoreView: UIView {
         label.text = "готовятся к игре:"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = UIFont(name: "Piazolla", size: 24)
+        label.font = UIFont(name: "Piazzolla", size: 24)
         label.textAlignment = .center
         return label
     }()
     
     private lazy var readyToGameTeamLabel: UILabel = { // лейбл - название команды к игре
         let label = UILabel()
-        label.text = "TEAM 1"
+        label.text = "КОМАНДА 1"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.font = UIFont(name: "Phosphate-Solid", size: 40)
@@ -113,6 +93,7 @@ class ScoreView: UIView {
         btn.titleLabel?.textColor = .white
         btn.layer.cornerRadius = 16
         btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(startGame), for: .touchUpInside)
         
         return btn
     }()
@@ -124,6 +105,10 @@ class ScoreView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func startGame(){
+        print("Открыть экран игры")
     }
     
     private func setupUI() {
@@ -165,7 +150,7 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as! ScoreCell
         
         let team = [String](scoreDict.keys)
-        let score = [Int](scoreDict.values)
+        let score = [Int](scoreDict.values).sorted(by: >)
         cell.teamLabel.text = team[indexPath.section]
         cell.scoreLabel.text = String(score[indexPath.section])
         

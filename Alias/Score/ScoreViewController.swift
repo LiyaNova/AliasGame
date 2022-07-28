@@ -11,6 +11,9 @@ import UIKit
 class ScoreViewController: UIViewController {
     
     private let scoreView = ScoreView()
+    private let networkManager = NetworkManager()
+    private let api = Api()
+    private var jokes: JokeModel?
     
     override func loadView() {
         self.view = self.scoreView
@@ -18,5 +21,15 @@ class ScoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkManager.delegate = self
+        networkManager.fetchData(url: api.baseURL)
+        
+    }
+}
+
+
+extension ScoreViewController: NetworkManagerDelegate {
+    func showData(results: JokeModel) {
+        jokes = results
     }
 }
