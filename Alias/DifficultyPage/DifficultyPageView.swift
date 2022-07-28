@@ -1,9 +1,3 @@
-//
-//  DifficultyPageView.swift
-//  Alias
-//
-//  Created by Юлия Филимонова on 27.07.2022.
-//
 
 import UIKit
 
@@ -27,7 +21,6 @@ final class DifficultyPageView: UIView {
         titleLabel.numberOfLines = 0
         titleLabel.textColor = .black
         titleLabel.font = UIFont(name: "Phosphate-Solid", size: 24)
-        titleLabel.textColor = .black
         return titleLabel
     }()
 
@@ -114,43 +107,47 @@ final class DifficultyPageView: UIView {
     }
 
     private func setViews() {
-        [titleLabel, backButton, choiceImageView, forwardButton,
-         levelLabel, descriptionLabel, bottomButton].forEach { self.addSubview($0) }
+        [self.titleLabel,
+         self.backButton,
+         self.choiceImageView,
+         self.forwardButton,
+         self.levelLabel,
+         self.descriptionImage,
+         self.bottomButton].forEach { self.addSubview($0) }
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            titleLabel.widthAnchor.constraint(equalToConstant: 150),
+            self.titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.titleLabel.widthAnchor.constraint(equalToConstant: 150),
 
-            backButton.centerYAnchor.constraint(equalTo: choiceImageView.centerYAnchor),
-            backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            backButton.trailingAnchor.constraint(equalTo: choiceImageView.leadingAnchor, constant: 8),
+            self.backButton.centerYAnchor.constraint(equalTo: self.choiceImageView.centerYAnchor),
+            self.backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            self.backButton.trailingAnchor.constraint(equalTo: self.choiceImageView.leadingAnchor, constant: 8),
 
-            choiceImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 59),
-            choiceImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            choiceImageView.widthAnchor.constraint(equalToConstant: 247),
-            choiceImageView.heightAnchor.constraint(equalToConstant: 257),
+            self.choiceImageView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 59),
+            self.choiceImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 64),
+            self.choiceImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -64),
+            self.choiceImageView.heightAnchor.constraint(equalToConstant: 257),
 
-            forwardButton.centerYAnchor.constraint(equalTo: choiceImageView.centerYAnchor),
-            forwardButton.leadingAnchor.constraint(equalTo: choiceImageView.trailingAnchor, constant: -8),
-            forwardButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
+            self.forwardButton.centerYAnchor.constraint(equalTo: self.choiceImageView.centerYAnchor),
+            self.forwardButton.leadingAnchor.constraint(equalTo: self.choiceImageView.trailingAnchor, constant: -8),
+            self.forwardButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
                                                     constant: -16),
 
-            levelLabel.topAnchor.constraint(equalTo: choiceImageView.bottomAnchor, constant: 16),
-            levelLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.levelLabel.topAnchor.constraint(equalTo: self.choiceImageView.bottomAnchor, constant: 16),
+            self.levelLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
             descriptionLabel.topAnchor.constraint(equalTo: levelLabel.bottomAnchor, constant: 34),
             descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
             descriptionLabel.heightAnchor.constraint(equalToConstant: 124),
 
-            bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
+            self.bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
                                                  constant: -11),
-            bottomButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            bottomButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            bottomButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
-            bottomButton.heightAnchor.constraint(equalToConstant: 66),
+            self.bottomButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.bottomButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
+            self.bottomButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
+            self.bottomButton.heightAnchor.constraint(equalToConstant: 66),
         ])
     }
-
 }
