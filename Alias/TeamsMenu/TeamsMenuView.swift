@@ -1,9 +1,3 @@
-//
-//  TeamsMenuView.swift
-//  Alias
-//
-//  Created by Tatyana Sidoryuk on 27.07.2022.
-//
 
 import UIKit
 
@@ -59,38 +53,6 @@ class TeamsMenuView: UIView {
 
         return btn
     }()
-    
-    @objc func didTapPlusButton(sender: UIButton)
-    {
-        if numberOfTeams != 10 {
-            numberOfTeams += 1
-            self.tableView.reloadData()
-            names.append("Команда \(numberOfTeams)")
-        }
-        if numberOfTeams > 2 {
-            minusButton.tintColor = .black
-        }
-        if numberOfTeams == 10 {
-            plusButton.tintColor = .gray
-        } else {
-            plusButton.tintColor = .black
-        }
-    }
-    
-    @objc func didTapMinusButton(sender: UIButton)
-    {
-        if numberOfTeams != 2 {
-            numberOfTeams -= 1
-            self.tableView.reloadData()
-            names.removeLast()
-        }
-        if numberOfTeams == 9 {
-            plusButton.tintColor = .black
-        }
-        if numberOfTeams == 2 {
-            minusButton.tintColor = .gray
-        }
-    }
     
     private lazy var nextButton: UIButton = {
         let btn = UIButton()
@@ -164,6 +126,38 @@ class TeamsMenuView: UIView {
             self.backButton.centerYAnchor.constraint(equalTo: self.teamsLabel.centerYAnchor)
             
         ])
+    }
+    
+    @objc func didTapPlusButton(sender: UIButton)
+    {
+        if numberOfTeams != 10 {
+            numberOfTeams += 1
+            self.tableView.reloadData()
+            names.append("Команда \(numberOfTeams)")
+        }
+        if numberOfTeams > 2 {
+            minusButton.tintColor = .black
+        }
+        if numberOfTeams == 10 {
+            plusButton.tintColor = .gray
+        } else {
+            plusButton.tintColor = .black
+        }
+    }
+    
+    @objc func didTapMinusButton(sender: UIButton)
+    {
+        if numberOfTeams != 2 {
+            numberOfTeams -= 1
+            self.tableView.reloadData()
+            names.removeLast()
+        }
+        if numberOfTeams == 9 {
+            plusButton.tintColor = .black
+        }
+        if numberOfTeams == 2 {
+            minusButton.tintColor = .gray
+        }
     }
 }
 

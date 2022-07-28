@@ -3,15 +3,6 @@ import UIKit
 
 class TeamCell: UITableViewCell {
     
-    override init (style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     public lazy var myView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -27,6 +18,15 @@ class TeamCell: UITableViewCell {
         label.textColor = .white
         return label
     } ()
+    
+    override init (style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private func setupView () {
         self.addSubview(contentView)

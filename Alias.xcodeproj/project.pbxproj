@@ -44,6 +44,10 @@
 		9FBD47B42892CDB400687891 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B32892CDB400687891 /* NetworkManager.swift */; };
 		9FBD47B62892CDD300687891 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B52892CDD300687891 /* API.swift */; };
 		9FBD47B92892CE0F00687891 /* JokeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B82892CE0F00687891 /* JokeModel.swift */; };
+		77448D042892A24F0040A442 /* Set Words.json in Resources */ = {isa = PBXBuildFile; fileRef = 77448D032892A24F0040A442 /* Set Words.json */; };
+		77448D062892A3190040A442 /* WordSetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448D052892A3190040A442 /* WordSetsModel.swift */; };
+		77448D0E2892C7170040A442 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448D0D2892C7170040A442 /* AppNavigationController.swift */; };
+		77448D102892DCF20040A442 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448D0F2892DCF10040A442 /* CustomViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +90,10 @@
 		9FBD47B32892CDB400687891 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9FBD47B52892CDD300687891 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9FBD47B82892CE0F00687891 /* JokeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeModel.swift; sourceTree = "<group>"; };
+		77448D032892A24F0040A442 /* Set Words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Set Words.json"; sourceTree = "<group>"; };
+		77448D052892A3190040A442 /* WordSetsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetsModel.swift; sourceTree = "<group>"; };
+		77448D0D2892C7170040A442 /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
+		77448D0F2892DCF10040A442 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				77448CA5289020C20040A442 /* AppDelegate.swift */,
+				77448D0C2892C69D0040A442 /* NavigationApp */,
+				77448D0228926E400040A442 /* Models */,
 				77448CBC28902A4D0040A442 /* StartMenu */,
 				77448CCC289149420040A442 /* Rules */,
 				77448CE6289255770040A442 /* TeamsMenu */,
@@ -254,6 +264,62 @@
 			children = (
 			);
 			path = Utils;
+		77448D0228926E400040A442 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				77448D0B2892C0A40040A442 /* MusicModel */,
+				77448D0A2892C0610040A442 /* GameModel */,
+				77448D092892C04B0040A442 /* TeamModel */,
+				77448D082892C03A0040A442 /* JokeModel */,
+				77448D072892C00A0040A442 /* WordSetsModel */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		77448D072892C00A0040A442 /* WordSetsModel */ = {
+			isa = PBXGroup;
+			children = (
+				77448D052892A3190040A442 /* WordSetsModel.swift */,
+				77448D032892A24F0040A442 /* Set Words.json */,
+			);
+			path = WordSetsModel;
+			sourceTree = "<group>";
+		};
+		77448D082892C03A0040A442 /* JokeModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = JokeModel;
+			sourceTree = "<group>";
+		};
+		77448D092892C04B0040A442 /* TeamModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TeamModel;
+			sourceTree = "<group>";
+		};
+		77448D0A2892C0610040A442 /* GameModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GameModel;
+			sourceTree = "<group>";
+		};
+		77448D0B2892C0A40040A442 /* MusicModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MusicModel;
+			sourceTree = "<group>";
+		};
+		77448D0C2892C69D0040A442 /* NavigationApp */ = {
+			isa = PBXGroup;
+			children = (
+				77448D0D2892C7170040A442 /* AppNavigationController.swift */,
+				77448D0F2892DCF10040A442 /* CustomViewController.swift */,
+			);
+			path = NavigationApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77448CFF289261760040A442 /* Wrong Answer.wav in Resources */,
+				77448D042892A24F0040A442 /* Set Words.json in Resources */,
 				77448CFD289261760040A442 /* Background Music.mp3 in Resources */,
 				77448CB2289020C50040A442 /* LaunchScreen.storyboard in Resources */,
 				77448CFA289261760040A442 /* Rules Music.mp3 in Resources */,
@@ -346,15 +413,18 @@
 				9FBD47AF28927B4700687891 /* ScoreView.swift in Sources */,
 				77448CEE289255770040A442 /* TeamCell.swift in Sources */,
 				77448CEC289255770040A442 /* TeamsMenuView.swift in Sources */,
+				77448D0E2892C7170040A442 /* AppNavigationController.swift in Sources */,
 				77448CC0289047CF0040A442 /* CustomButton.swift in Sources */,
 				77448CDD289229DC0040A442 /* GameScreenView.swift in Sources */,
 				9FBD47B128927C0000687891 /* ScoreCell.swift in Sources */,
 				77448CE2289229F90040A442 /* DifficultyChoiceModel.swift in Sources */,
 				77448CE4289229F90040A442 /* DifficultyPageViewController.swift in Sources */,
+				77448D102892DCF20040A442 /* CustomViewController.swift in Sources */,
 				77448CDC289229DC0040A442 /* GameScreenViewController.swift in Sources */,
 				77448CCE289149770040A442 /* RulesView.swift in Sources */,
 				9FBD47B92892CE0F00687891 /* JokeModel.swift in Sources */,
 				9FBD47B62892CDD300687891 /* API.swift in Sources */,
+				77448D062892A3190040A442 /* WordSetsModel.swift in Sources */,
 				77448CE3289229F90040A442 /* DifficultyPageView.swift in Sources */,
 				77448CBE28902F0D0040A442 /* StartMenuView.swift in Sources */,
 				77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */,
