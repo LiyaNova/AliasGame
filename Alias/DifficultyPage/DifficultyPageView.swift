@@ -8,8 +8,8 @@
 import UIKit
 
 protocol TapButtonDelegate: AnyObject {
-    func didBackChoice(image: UIImageView, description: UIImageView, level: UILabel)
-    func didForwardChoice(image: UIImageView, description: UIImageView, level: UILabel)
+    func didBackChoice()
+    func didForwardChoice()
     func didMakeChoice()
 }
 
@@ -31,7 +31,6 @@ final class DifficultyPageView: UIView {
         return titleLabel
     }()
 
-
     private lazy var backButton: UIButton = {
         let backButton = UIButton()
         backButton.translatesAutoresizingMaskIntoConstraints = false
@@ -44,13 +43,12 @@ final class DifficultyPageView: UIView {
     }()
 
     @objc private func didTapBackButton() {
-        delegate?.didBackChoice(image: choiceImageView, description: descriptionImage, level: levelLabel)
+        self.delegate?.didBackChoice()
     }
 
-    private lazy var choiceImageView: UIImageView = {
+    lazy var choiceImageView: UIImageView = {
         let choiceImageView = UIImageView()
         choiceImageView.translatesAutoresizingMaskIntoConstraints = false
-        choiceImageView.image = UIImage(named: "Goodies Blush")
         return choiceImageView
     }()
 
@@ -66,25 +64,27 @@ final class DifficultyPageView: UIView {
     }()
 
     @objc private func didTapForwardButton() {
-        delegate?.didForwardChoice(image: choiceImageView, description: descriptionImage, level: levelLabel)
+        self.delegate?.didForwardChoice()
     }
 
-    private var levelLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.backgroundColor = .white
-        titleLabel.text = "Начальный"
-        titleLabel.textAlignment = .center
-        titleLabel.textColor = UIColor(named: "PersianBlueColor")
-        titleLabel.font = UIFont(name: "Phosphate-Solid", size: 32)
-        return titleLabel
+    var levelLabel: UILabel = {
+        let levelLabel = UILabel()
+        levelLabel.translatesAutoresizingMaskIntoConstraints = false
+        levelLabel.backgroundColor = .white
+        levelLabel.textAlignment = .center
+        levelLabel.font = UIFont(name: "Phosphate-Solid", size: 32)
+        return levelLabel
     }()
 
-    private var descriptionImage: UIImageView = {
-        let descriptionImage = UIImageView()
-        descriptionImage.translatesAutoresizingMaskIntoConstraints = false
-        descriptionImage.image = UIImage(named: "Начальный")
-        return descriptionImage
+    var descriptionLabel: UILabel = {
+        let descriptionLabel = UILabel()
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.backgroundColor = .white
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.lineBreakMode = .byWordWrapping
+        descriptionLabel.textAlignment = .center
+        descriptionLabel.font = UIFont(name: "Piazzolla-Medium", size: 16)
+        return descriptionLabel
     }()
 
      private lazy var bottomButton: UIButton = {
@@ -99,10 +99,8 @@ final class DifficultyPageView: UIView {
         return bottomButton
     }()
 
-
     @objc private func didTapBottomButton() {
-        delegate?.didMakeChoice()
-
+        self.delegate?.didMakeChoice()
     }
 
     override init(frame: CGRect) {
@@ -115,10 +113,9 @@ final class DifficultyPageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-
     private func setViews() {
         [titleLabel, backButton, choiceImageView, forwardButton,
-         levelLabel, descriptionImage, bottomButton].forEach { self.addSubview($0) }
+         levelLabel, descriptionLabel, bottomButton].forEach { self.addSubview($0) }
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
@@ -130,8 +127,8 @@ final class DifficultyPageView: UIView {
             backButton.trailingAnchor.constraint(equalTo: choiceImageView.leadingAnchor, constant: 8),
 
             choiceImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 59),
-            choiceImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 64),
-            choiceImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -64),
+            choiceImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            choiceImageView.widthAnchor.constraint(equalToConstant: 247),
             choiceImageView.heightAnchor.constraint(equalToConstant: 257),
 
             forwardButton.centerYAnchor.constraint(equalTo: choiceImageView.centerYAnchor),
@@ -142,10 +139,10 @@ final class DifficultyPageView: UIView {
             levelLabel.topAnchor.constraint(equalTo: choiceImageView.bottomAnchor, constant: 16),
             levelLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
-            descriptionImage.topAnchor.constraint(equalTo: choiceImageView.bottomAnchor, constant: 77),
-            descriptionImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            descriptionImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
-
+            descriptionLabel.topAnchor.constraint(equalTo: levelLabel.bottomAnchor, constant: 34),
+            descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
+            descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 124),
 
             bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
                                                  constant: -11),
@@ -153,9 +150,7 @@ final class DifficultyPageView: UIView {
             bottomButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             bottomButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
             bottomButton.heightAnchor.constraint(equalToConstant: 66),
-
         ])
-
     }
 
 }

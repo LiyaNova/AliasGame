@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38EA911C2892ABF00001E9C4 /* DifficultyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */; };
 		77448CA6289020C20040A442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CA5289020C20040A442 /* AppDelegate.swift */; };
 		77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CA9289020C20040A442 /* StartMenuViewController.swift */; };
 		77448CAF289020C50040A442 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77448CAE289020C50040A442 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyPage.swift; sourceTree = "<group>"; };
 		77448CA2289020C20040A442 /* Alias.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alias.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77448CA5289020C20040A442 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77448CA9289020C20040A442 /* StartMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 		77448CDE289229F90040A442 /* DifficultyPage */ = {
 			isa = PBXGroup;
 			children = (
+				38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */,
 				77448CDF289229F90040A442 /* DifficultyChoiceModel.swift */,
 				77448CE0289229F90040A442 /* DifficultyPageView.swift */,
 				77448CE1289229F90040A442 /* DifficultyPageViewController.swift */,
@@ -357,6 +360,7 @@
 				77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */,
 				77448CA6289020C20040A442 /* AppDelegate.swift in Sources */,
 				77448CD82891AB940040A442 /* CustomView.swift in Sources */,
+				38EA911C2892ABF00001E9C4 /* DifficultyPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
