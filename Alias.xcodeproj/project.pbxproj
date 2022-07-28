@@ -24,10 +24,22 @@
 		77448CE2289229F90040A442 /* DifficultyChoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CDF289229F90040A442 /* DifficultyChoiceModel.swift */; };
 		77448CE3289229F90040A442 /* DifficultyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CE0289229F90040A442 /* DifficultyPageView.swift */; };
 		77448CE4289229F90040A442 /* DifficultyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CE1289229F90040A442 /* DifficultyPageViewController.swift */; };
+		77448CEB289255770040A442 /* TeamsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CE7289255770040A442 /* TeamsMenuViewController.swift */; };
+		77448CEC289255770040A442 /* TeamsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CE8289255770040A442 /* TeamsMenuView.swift */; };
+		77448CED289255770040A442 /* Caret left.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 77448CE9289255770040A442 /* Caret left.jpg */; };
+		77448CEE289255770040A442 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CEA289255770040A442 /* TeamCell.swift */; };
+		77448CF9289261760040A442 /* Right Answer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 77448CF0289261730040A442 /* Right Answer.wav */; };
+		77448CFA289261760040A442 /* Rules Music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 77448CF1289261740040A442 /* Rules Music.mp3 */; };
+		77448CFB289261760040A442 /* Last 5 sec.wav in Resources */ = {isa = PBXBuildFile; fileRef = 77448CF2289261750040A442 /* Last 5 sec.wav */; };
+		77448CFC289261760040A442 /* Rady-Stady-Go.wav in Resources */ = {isa = PBXBuildFile; fileRef = 77448CF3289261750040A442 /* Rady-Stady-Go.wav */; };
+		77448CFD289261760040A442 /* Background Music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 77448CF4289261750040A442 /* Background Music.mp3 */; };
+		77448CFE289261760040A442 /* Transition.wav in Resources */ = {isa = PBXBuildFile; fileRef = 77448CF5289261750040A442 /* Transition.wav */; };
+		77448CFF289261760040A442 /* Wrong Answer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 77448CF6289261750040A442 /* Wrong Answer.wav */; };
+		77448D00289261760040A442 /* Start Timer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 77448CF7289261750040A442 /* Start Timer.wav */; };
+		77448D01289261760040A442 /* Fanfare For The Champion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 77448CF8289261760040A442 /* Fanfare For The Champion.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		38D922BC28917EEB00551CCB /* ColorSet.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorSet.xcassets; sourceTree = "<group>"; };
 		77448CA2289020C20040A442 /* Alias.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alias.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77448CA5289020C20040A442 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77448CA9289020C20040A442 /* StartMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +59,19 @@
 		77448CDF289229F90040A442 /* DifficultyChoiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyChoiceModel.swift; sourceTree = "<group>"; };
 		77448CE0289229F90040A442 /* DifficultyPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyPageView.swift; sourceTree = "<group>"; };
 		77448CE1289229F90040A442 /* DifficultyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyPageViewController.swift; sourceTree = "<group>"; };
+		77448CE7289255770040A442 /* TeamsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsMenuViewController.swift; sourceTree = "<group>"; };
+		77448CE8289255770040A442 /* TeamsMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsMenuView.swift; sourceTree = "<group>"; };
+		77448CE9289255770040A442 /* Caret left.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Caret left.jpg"; sourceTree = "<group>"; };
+		77448CEA289255770040A442 /* TeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
+		77448CF0289261730040A442 /* Right Answer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Right Answer.wav"; sourceTree = "<group>"; };
+		77448CF1289261740040A442 /* Rules Music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Rules Music.mp3"; sourceTree = "<group>"; };
+		77448CF2289261750040A442 /* Last 5 sec.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Last 5 sec.wav"; sourceTree = "<group>"; };
+		77448CF3289261750040A442 /* Rady-Stady-Go.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Rady-Stady-Go.wav"; sourceTree = "<group>"; };
+		77448CF4289261750040A442 /* Background Music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Background Music.mp3"; sourceTree = "<group>"; };
+		77448CF5289261750040A442 /* Transition.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Transition.wav; sourceTree = "<group>"; };
+		77448CF6289261750040A442 /* Wrong Answer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Wrong Answer.wav"; sourceTree = "<group>"; };
+		77448CF7289261750040A442 /* Start Timer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Start Timer.wav"; sourceTree = "<group>"; };
+		77448CF8289261760040A442 /* Fanfare For The Champion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Fanfare For The Champion.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,13 +107,14 @@
 				77448CA5289020C20040A442 /* AppDelegate.swift */,
 				77448CBC28902A4D0040A442 /* StartMenu */,
 				77448CCC289149420040A442 /* Rules */,
+				77448CE6289255770040A442 /* TeamsMenu */,
 				77448CDE289229F90040A442 /* DifficultyPage */,
 				77448CD9289229DB0040A442 /* GameScreen */,
 				77448CBA28902A3A0040A442 /* CustomViews */,
 				77448CC32891307C0040A442 /* Fonts */,
+				77448CEF28925E270040A442 /* Music */,
 				77448CB3289020C50040A442 /* Info.plist */,
 				77448CAE289020C50040A442 /* Assets.xcassets */,
-				38D922BC28917EEB00551CCB /* ColorSet.xcassets */,
 				77448CB0289020C50040A442 /* LaunchScreen.storyboard */,
 			);
 			path = Alias;
@@ -150,6 +176,33 @@
 			path = DifficultyPage;
 			sourceTree = "<group>";
 		};
+		77448CE6289255770040A442 /* TeamsMenu */ = {
+			isa = PBXGroup;
+			children = (
+				77448CE7289255770040A442 /* TeamsMenuViewController.swift */,
+				77448CE8289255770040A442 /* TeamsMenuView.swift */,
+				77448CE9289255770040A442 /* Caret left.jpg */,
+				77448CEA289255770040A442 /* TeamCell.swift */,
+			);
+			path = TeamsMenu;
+			sourceTree = "<group>";
+		};
+		77448CEF28925E270040A442 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				77448CF4289261750040A442 /* Background Music.mp3 */,
+				77448CF8289261760040A442 /* Fanfare For The Champion.wav */,
+				77448CF2289261750040A442 /* Last 5 sec.wav */,
+				77448CF3289261750040A442 /* Rady-Stady-Go.wav */,
+				77448CF0289261730040A442 /* Right Answer.wav */,
+				77448CF1289261740040A442 /* Rules Music.mp3 */,
+				77448CF7289261750040A442 /* Start Timer.wav */,
+				77448CF5289261750040A442 /* Transition.wav */,
+				77448CF6289261750040A442 /* Wrong Answer.wav */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,11 +261,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77448CFF289261760040A442 /* Wrong Answer.wav in Resources */,
+				77448CFD289261760040A442 /* Background Music.mp3 in Resources */,
 				77448CB2289020C50040A442 /* LaunchScreen.storyboard in Resources */,
+				77448CFA289261760040A442 /* Rules Music.mp3 in Resources */,
+				77448CED289255770040A442 /* Caret left.jpg in Resources */,
+				77448D01289261760040A442 /* Fanfare For The Champion.wav in Resources */,
 				77448CD228914B520040A442 /* Piazzolla-Black.ttf in Resources */,
+				77448CFE289261760040A442 /* Transition.wav in Resources */,
+				77448CFC289261760040A442 /* Rady-Stady-Go.wav in Resources */,
 				77448CAF289020C50040A442 /* Assets.xcassets in Resources */,
+				77448CF9289261760040A442 /* Right Answer.wav in Resources */,
+				77448D00289261760040A442 /* Start Timer.wav in Resources */,
 				77448CCA289132E60040A442 /* Phosphate.ttc in Resources */,
 				77448CCB289132E60040A442 /* Piazzolla.ttf in Resources */,
+				77448CFB289261760040A442 /* Last 5 sec.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +286,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77448CEB289255770040A442 /* TeamsMenuViewController.swift in Sources */,
 				77448CD02891499E0040A442 /* RulesViewController.swift in Sources */,
+				77448CEE289255770040A442 /* TeamCell.swift in Sources */,
+				77448CEC289255770040A442 /* TeamsMenuView.swift in Sources */,
 				77448CC0289047CF0040A442 /* CustomButton.swift in Sources */,
 				77448CDD289229DC0040A442 /* GameScreenView.swift in Sources */,
 				77448CE2289229F90040A442 /* DifficultyChoiceModel.swift in Sources */,
