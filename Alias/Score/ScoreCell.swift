@@ -20,7 +20,7 @@ class ScoreCell: UITableViewCell {
     
     public lazy var myView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .green
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 16
         return view
@@ -34,14 +34,30 @@ class ScoreCell: UITableViewCell {
         return label
     } ()
     
+    public lazy var scoreLabel: UILabel = { // Счет
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Phosphate-Solid", size: 24)
+        label.backgroundColor = .white
+        label.textColor = .black
+        label.layer.masksToBounds = true
+        label.layer.cornerRadius = 15
+        label.textAlignment = .center
+        
+        return label
+    } ()
+    
     private func setupView () {
         self.addSubview(contentView)
         self.contentView.addSubview(self.myView)
         myView.addSubview(self.teamLabel)
+        myView.addSubview(self.scoreLabel)
         
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .orange
         
         NSLayoutConstraint.activate([
+            
+            
             self.contentView.topAnchor.constraint(equalTo: self.topAnchor),
             self.contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -53,7 +69,11 @@ class ScoreCell: UITableViewCell {
             self.myView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
             
             self.teamLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            self.teamLabel.centerYAnchor.constraint(equalTo: self.myView.centerYAnchor)
+            self.teamLabel.centerYAnchor.constraint(equalTo: self.myView.centerYAnchor),
+            
+            self.scoreLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -34),
+            self.scoreLabel.centerYAnchor.constraint(equalTo: self.myView.centerYAnchor),
+            self.scoreLabel.widthAnchor.constraint(equalToConstant: 35)
         ])
     }
 }

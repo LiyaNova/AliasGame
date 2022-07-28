@@ -8,10 +8,8 @@
 import UIKit
 
 class ScoreView: UIView {
-
-    var names = ["Команда 1", "Команда 2"]
     
-    var numberOfTeams = 2
+    var scoreDict = ["Команда 2": 10, "Команда 3": 8, "Команда 1": 7]
     
     private lazy var teamsLabel: UILabel = {
         let label = UILabel()
@@ -19,79 +17,26 @@ class ScoreView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.font = UIFont(name: "Phosphate-Solid", size: 24)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        label.backgroundColor = .gray
         return label
     }()
     
     lazy var scoreTableView: UITableView = {
         let tableView = UITableView(frame: self.bounds, style: .plain)
-         tableView.dataSource = self
-         tableView.backgroundColor = .white
-         tableView.translatesAutoresizingMaskIntoConstraints = false
-         tableView.register(ScoreCell.self, forCellReuseIdentifier: "ScoreCell")
-         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
-         tableView.delegate = self
-         tableView.separatorStyle = .none
-         return tableView
-     } ()
-/*
-    private lazy var minusButton: UIButton = {
-        let homeSymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40, weight: .black)
-        let btn = UIButton()
-        let image = UIImage(systemName: "minus.square.fill", withConfiguration: homeSymbolConfiguration)
-        btn.setImage(image, for: .normal)
-        btn.tintColor = .gray
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.addTarget(self, action: #selector(didTapMinusButton), for: .touchUpInside)
-        btn.isUserInteractionEnabled = true
-
-        return btn
-    }()
+        tableView.dataSource = self
+        tableView.backgroundColor = .white
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(ScoreCell.self, forCellReuseIdentifier: "ScoreCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .red
+        return tableView
+    } ()
     
-    private lazy var plusButton: UIButton = {
-        let homeSymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40, weight: .black)
-        let btn = UIButton()
-        let image = UIImage(systemName: "plus.square.fill", withConfiguration: homeSymbolConfiguration)
-        btn.setImage(image, for: .normal)
-        btn.tintColor = .black
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
-        btn.isUserInteractionEnabled = true
-
-        return btn
-    }()
-    
-    @objc func didTapPlusButton(sender: UIButton)
-    {
-        if numberOfTeams != 10 {
-            numberOfTeams += 1
-            self.tableView.reloadData()
-            names.append("Команда \(numberOfTeams)")
-        }
-        if numberOfTeams > 2 {
-            minusButton.tintColor = .black
-        }
-        if numberOfTeams == 10 {
-            plusButton.tintColor = .gray
-        } else {
-            plusButton.tintColor = .black
-        }
-    }
-    
-    @objc func didTapMinusButton(sender: UIButton)
-    {
-        if numberOfTeams != 2 {
-            numberOfTeams -= 1
-            self.tableView.reloadData()
-            names.removeLast()
-        }
-        if numberOfTeams == 9 {
-            plusButton.tintColor = .black
-        }
-        if numberOfTeams == 2 {
-            minusButton.tintColor = .gray
-        }
-    }
-*/
     private lazy var nextButton: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = .black
@@ -104,17 +49,6 @@ class ScoreView: UIView {
         return btn
     }()
     
-//    private lazy var backButton: UIButton = {
-//        let btn = UIButton()
-//        let homeSymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40)
-//        let image = UIImage(systemName: "chevron.left", withConfiguration: homeSymbolConfiguration)
-//        btn.setImage(image, for: .normal)
-//        btn.tintColor = .black
-//        btn.translatesAutoresizingMaskIntoConstraints = false
-//
-//        return btn
-//    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupUI()
@@ -125,44 +59,26 @@ class ScoreView: UIView {
     }
     
     private func setupUI() {
-        addSubview(self.nextButton)
-        addSubview(self.teamsLabel)
-//        addSubview(self.minusButton)
-//        addSubview(self.plusButton)
-        addSubview(self.scoreTableView)
-//        addSubview(self.backButton)
         
+        addSubview(self.teamsLabel)
+        addSubview(self.scoreTableView)
+        addSubview(self.nextButton)
         
         NSLayoutConstraint.activate([
             
-            self.nextButton.heightAnchor.constraint(equalToConstant: 66),
-            self.nextButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -11),
-            self.nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            self.nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
-            
             self.teamsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.teamsLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 35),
-            
-//            self.minusButton.trailingAnchor.constraint(equalTo: self.centerXAnchor),
-//            self.minusButton.heightAnchor.constraint(equalToConstant: 40),
-//            self.minusButton.widthAnchor.constraint(equalToConstant: 40),
-//            self.minusButton.topAnchor.constraint(equalTo: teamsLabel.bottomAnchor, constant: 16),
-//            
-//            self.plusButton.leadingAnchor.constraint(equalTo: self.centerXAnchor),
-//            self.plusButton.heightAnchor.constraint(equalToConstant: 40),
-//            self.plusButton.widthAnchor.constraint(equalToConstant: 40),
-//            self.plusButton.topAnchor.constraint(equalTo: teamsLabel.bottomAnchor, constant: 16),
+            self.teamsLabel.widthAnchor.constraint(equalToConstant: 150),
             
             self.scoreTableView.topAnchor.constraint(equalTo: self.teamsLabel.bottomAnchor, constant: 16),
             self.scoreTableView.bottomAnchor.constraint(equalTo: self.nextButton.topAnchor, constant: -16),
             self.scoreTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.scoreTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-//            self.backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-//            self.backButton.heightAnchor.constraint(equalToConstant: 40),
-//            self.backButton.widthAnchor.constraint(equalToConstant: 40),
-//            self.backButton.centerYAnchor.constraint(equalTo: self.teamsLabel.centerYAnchor)
-            
+            self.nextButton.heightAnchor.constraint(equalToConstant: 66),
+            self.nextButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -11),
+            self.nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
+            self.nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24)
         ])
     }
 }
@@ -172,8 +88,11 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as! ScoreCell
         
-        cell.teamLabel.text = names[indexPath.section]
-        cell.teamLabel.textColor = .white
+        let team = [String](scoreDict.keys)
+        let score = [Int](scoreDict.values)
+        cell.teamLabel.text = team[indexPath.section]
+        cell.scoreLabel.text = String(score[indexPath.section])
+        
         
         let rest = indexPath.section % 3
         
@@ -199,7 +118,7 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return numberOfTeams
+        return scoreDict.count
     }
     
 }
