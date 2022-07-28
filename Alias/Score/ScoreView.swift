@@ -5,13 +5,35 @@
 //  Created by Alex Ch. on 28.07.2022.
 //
 
+import SwiftUI
+
+struct SwiftUIController: UIViewControllerRepresentable {
+    typealias UIViewControllerType = ScoreViewController
+    
+    
+    func makeUIViewController(context: Context) -> UIViewControllerType {
+        let vc = UIViewControllerType()
+        return vc
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+    }
+}
+
+struct SwiftUIController_Previews: PreviewProvider {
+    static var previews: some View {
+        SwiftUIController().edgesIgnoringSafeArea(.all)
+    }
+}
+
 import UIKit
 
 class ScoreView: UIView {
     
-    var scoreDict = ["Команда 2": 10, "Команда 3": 8, "Команда 1": 7]
+    private var scoreDict = ["Команда 2": 10, "Команда 3": 8, "Команда 1": 7]
+    private var numberOfRound = 2
     
-    private lazy var teamsLabel: UILabel = {
+    private lazy var teamsLabel: UILabel = { // верхний лейбл
         let label = UILabel()
         label.text = "Рейтинг команд"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -20,24 +42,70 @@ class ScoreView: UIView {
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
-        label.backgroundColor = .gray
+        label.backgroundColor = .white
         return label
     }()
     
-    lazy var scoreTableView: UITableView = {
+    lazy var scoreTableView: UITableView = { // табличка
         let tableView = UITableView(frame: self.bounds, style: .plain)
         tableView.dataSource = self
-        tableView.backgroundColor = .white
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(ScoreCell.self, forCellReuseIdentifier: "ScoreCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .red
+        tableView.backgroundColor = .white
         return tableView
     } ()
     
-    private lazy var nextButton: UIButton = {
+    private lazy var roundLabel: UILabel = { // лейбл с номером раунда
+        let label = UILabel()
+        label.text = "РАУНД \(numberOfRound)"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.font = UIFont(name: "Phosphate-Solid", size: 32)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var readyToGameLabel: UILabel = { // лейбл - готовятся к игре
+        let label = UILabel()
+        label.text = "готовятся к игре:"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.font = UIFont(name: "Piazolla", size: 24)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var readyToGameTeamLabel: UILabel = { // лейбл - название команды к игре
+        let label = UILabel()
+        label.text = "TEAM 1"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.font = UIFont(name: "Phosphate-Solid", size: 40)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var contentStack: UIStackView = { // стэк с элементами ячейки
+        let stack = UIStackView(arrangedSubviews: [self.roundLabel, self.readyToGameLabel, self.readyToGameTeamLabel])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.alignment = .center
+        stack.spacing = 0
+        stack.distribution = .fillProportionally
+        return stack
+    }()
+    
+    public lazy var viewForLbls: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(contentStack)
+        return view
+    } ()
+    
+    private lazy var goToGameButton: UIButton = { // кнопка начала игры
         let btn = UIButton()
         btn.backgroundColor = .black
         btn.setTitle("ПОЕХАЛИ", for: .normal)
@@ -62,8 +130,9 @@ class ScoreView: UIView {
         
         addSubview(self.teamsLabel)
         addSubview(self.scoreTableView)
-        addSubview(self.nextButton)
-        
+        addSubview(viewForLbls)
+        addSubview(self.goToGameButton)
+
         NSLayoutConstraint.activate([
             
             self.teamsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -71,14 +140,21 @@ class ScoreView: UIView {
             self.teamsLabel.widthAnchor.constraint(equalToConstant: 150),
             
             self.scoreTableView.topAnchor.constraint(equalTo: self.teamsLabel.bottomAnchor, constant: 16),
-            self.scoreTableView.bottomAnchor.constraint(equalTo: self.nextButton.topAnchor, constant: -16),
+            self.scoreTableView.bottomAnchor.constraint(equalTo: self.viewForLbls.topAnchor, constant: -16),
             self.scoreTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.scoreTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-            self.nextButton.heightAnchor.constraint(equalToConstant: 66),
-            self.nextButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -11),
-            self.nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            self.nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24)
+            self.viewForLbls.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.viewForLbls.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.viewForLbls.bottomAnchor.constraint(equalTo: goToGameButton.topAnchor, constant: -36),
+            self.viewForLbls.heightAnchor.constraint(equalToConstant: 110),
+            
+            self.contentStack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            
+            self.goToGameButton.heightAnchor.constraint(equalToConstant: 66),
+            self.goToGameButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -11),
+            self.goToGameButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
+            self.goToGameButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24)
         ])
     }
 }

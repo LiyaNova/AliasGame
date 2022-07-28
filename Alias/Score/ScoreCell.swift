@@ -18,13 +18,20 @@ class ScoreCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     public lazy var myView: UIView = {
         let view = UIView()
-        view.backgroundColor = .green
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 16
         return view
     } ()
+    
+    public lazy var starImage: UIImageView = { // Звездочка
+        let image = UIImageView(image: UIImage(named: "star"))
+        image.contentMode = .scaleAspectFit
+        image.isHidden = false
+        return image
+    }()
     
     public lazy var teamLabel: UILabel = { // Названия команд
         let label = UILabel()
@@ -47,13 +54,22 @@ class ScoreCell: UITableViewCell {
         return label
     } ()
     
+    private lazy var contentStack: UIStackView = { // стэк с элементами ячейки
+        let stack = UIStackView(arrangedSubviews: [self.starImage, self.teamLabel, self.scoreLabel])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.spacing = 0
+        stack.distribution = .fillProportionally
+        return stack
+    }()
+    
     private func setupView () {
         self.addSubview(contentView)
         self.contentView.addSubview(self.myView)
-        myView.addSubview(self.teamLabel)
-        myView.addSubview(self.scoreLabel)
-        
-        contentView.backgroundColor = .orange
+        myView.addSubview(self.contentStack)
+ 
+        contentView.backgroundColor = .white
         
         NSLayoutConstraint.activate([
             
@@ -68,11 +84,10 @@ class ScoreCell: UITableViewCell {
             self.myView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
             self.myView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
             
-            self.teamLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            self.teamLabel.centerYAnchor.constraint(equalTo: self.myView.centerYAnchor),
-            
-            self.scoreLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -34),
-            self.scoreLabel.centerYAnchor.constraint(equalTo: self.myView.centerYAnchor),
+            self.contentStack.centerXAnchor.constraint(equalTo: self.myView.centerXAnchor),
+            self.contentStack.centerYAnchor.constraint(equalTo: self.myView.centerYAnchor),
+            self.contentStack.leadingAnchor.constraint(equalTo: self.myView.leadingAnchor, constant: 16),
+
             self.scoreLabel.widthAnchor.constraint(equalToConstant: 35)
         ])
     }
