@@ -16,7 +16,7 @@ class GameScreenView: UIView {
         let label = UILabel()
         label.text = "27"
         label.textColor = .black
-        label.font = UIFont(name: "PhosphateRR Solid", size: 72)
+        label.font = UIFont(name: "Phosphate-Solid", size: 72)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -27,7 +27,7 @@ class GameScreenView: UIView {
         let label = UILabel()
         label.text = "секунд"
         label.textColor = .black
-        label.font = UIFont(name: "Phosphate", size: 24)
+        label.font = UIFont(name: "Phosphate-Solid", size: 24)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -38,7 +38,7 @@ class GameScreenView: UIView {
         let label = UILabel()
         label.text = "ОТРАЖЕНИЕ"
         label.textColor = .black
-        label.font = UIFont(name: "Phosphate", size: 24)
+        label.font = UIFont(name: "Phosphate-Solid", size: 24)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
