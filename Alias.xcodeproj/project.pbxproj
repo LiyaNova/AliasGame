@@ -37,6 +37,7 @@
 		77448CFF289261760040A442 /* Wrong Answer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 77448CF6289261750040A442 /* Wrong Answer.wav */; };
 		77448D00289261760040A442 /* Start Timer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 77448CF7289261750040A442 /* Start Timer.wav */; };
 		77448D01289261760040A442 /* Fanfare For The Champion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 77448CF8289261760040A442 /* Fanfare For The Champion.wav */; };
+		9FBD47AD289270A200687891 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AC289270A200687891 /* Score.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		77448CF6289261750040A442 /* Wrong Answer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Wrong Answer.wav"; sourceTree = "<group>"; };
 		77448CF7289261750040A442 /* Start Timer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Start Timer.wav"; sourceTree = "<group>"; };
 		77448CF8289261760040A442 /* Fanfare For The Champion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Fanfare For The Champion.wav"; sourceTree = "<group>"; };
+		9FBD47AC289270A200687891 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				77448CE6289255770040A442 /* TeamsMenu */,
 				77448CDE289229F90040A442 /* DifficultyPage */,
 				77448CD9289229DB0040A442 /* GameScreen */,
+				9FBD47AA2892708700687891 /* Score */,
 				77448CBA28902A3A0040A442 /* CustomViews */,
 				77448CC32891307C0040A442 /* Fonts */,
 				77448CEF28925E270040A442 /* Music */,
@@ -203,6 +206,14 @@
 			path = Music;
 			sourceTree = "<group>";
 		};
+		9FBD47AA2892708700687891 /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				9FBD47AC289270A200687891 /* Score.swift */,
+			);
+			path = Score;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -288,6 +299,7 @@
 			files = (
 				77448CEB289255770040A442 /* TeamsMenuViewController.swift in Sources */,
 				77448CD02891499E0040A442 /* RulesViewController.swift in Sources */,
+				9FBD47AD289270A200687891 /* Score.swift in Sources */,
 				77448CEE289255770040A442 /* TeamCell.swift in Sources */,
 				77448CEC289255770040A442 /* TeamsMenuView.swift in Sources */,
 				77448CC0289047CF0040A442 /* CustomButton.swift in Sources */,

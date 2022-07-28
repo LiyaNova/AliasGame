@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        window?.rootViewController = GameScreenViewController()
+        window?.rootViewController = TeamsMenuViewController()
         window?.makeKeyAndVisible()
         
         return true
