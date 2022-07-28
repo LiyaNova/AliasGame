@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        window?.rootViewController = DifficultyPageViewController()
+        window?.rootViewController = GameScreenViewController()
         window?.makeKeyAndVisible()
         
         return true

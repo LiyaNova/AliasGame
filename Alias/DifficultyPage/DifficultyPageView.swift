@@ -50,7 +50,7 @@ final class DifficultyPageView: UIView {
     private lazy var choiceImageView: UIImageView = {
         let choiceImageView = UIImageView()
         choiceImageView.translatesAutoresizingMaskIntoConstraints = false
-        choiceImageView.image = UIImage(named: "GoodiesBlush")
+        choiceImageView.image = UIImage(named: "Goodies Blush")
         return choiceImageView
     }()
 
@@ -75,7 +75,7 @@ final class DifficultyPageView: UIView {
         titleLabel.backgroundColor = .white
         titleLabel.text = "Начальный"
         titleLabel.textAlignment = .center
-        titleLabel.textColor = UIColor(named: "colorOne")
+        titleLabel.textColor = UIColor(named: "PersianBlueColor")
         titleLabel.font = UIFont(name: "Phosphate-Solid", size: 32)
         return titleLabel
     }()

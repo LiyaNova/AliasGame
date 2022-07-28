@@ -54,7 +54,7 @@ class GameScreenView: UIView {
     // Кнопка правильного ответа
     private var rightButton = UIButton()
     private lazy var rightAnswerBtn: UIButton = {
-        rightButton = makeButton(color: .green, image: "Ok")
+        rightButton = makeButton(color: "TrefoilCrayolaColor", image: "Ok")
         rightButton.addTarget(self, action: #selector(rightAnswer), for: .touchUpInside)
         return rightButton
     }()
@@ -62,7 +62,7 @@ class GameScreenView: UIView {
     // Кнопка неправильного ответа
     private var wrongButton = UIButton()
     private lazy var wrongAnswerBtn: UIButton = {
-        wrongButton = makeButton(color: .red, image: "WrongAnswer")
+        wrongButton = makeButton(color: "SignalOrangeColor", image: "WrongAnswer")
         wrongButton.addTarget(self, action: #selector(wrongAnswer), for: .touchUpInside)
         return wrongButton
     }()
@@ -136,10 +136,10 @@ class GameScreenView: UIView {
 
 private extension GameScreenView {
     
-    func makeButton(color: UIColor, image: String) -> UIButton {
+    func makeButton(color: String, image: String) -> UIButton {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.backgroundColor = color
+        btn.backgroundColor = UIColor(named: "\(color)")
         btn.layer.cornerRadius = 15
         btn.clipsToBounds = true
         btn.setImage(UIImage(named: image), for: .normal)
