@@ -150,14 +150,13 @@ class ResultScreenView: UIView {
 extension ResultScreenView: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as! ScoreCell
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as? ScoreCell
+        if let cell = cell {
         let team = [String](scoreDict.keys)
         let score = [Int](scoreDict.values).sorted(by: >)
         cell.teamLabel.text = team[indexPath.section]
         cell.scoreLabel.text = String(score[indexPath.section])
-
-
+            
         let rest = indexPath.section % 2
 
         if rest == 0 {
@@ -166,6 +165,8 @@ extension ResultScreenView: UITableViewDataSource, UITableViewDelegate {
             cell.myView.backgroundColor = UIColor(named: "RoyalBlueColor")
         }
         return cell
+        }
+        return UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
