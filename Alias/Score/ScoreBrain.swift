@@ -1,5 +1,5 @@
 //
-//  Brain.swift
+//  ScoreBrain.swift
 //  Alias
 //
 //  Created by Alex Ch. on 29.07.2022.
@@ -7,14 +7,17 @@
 
 import UIKit
 
-struct Brain {
+struct ScoreBrain {
     
-    var scoreDict = ["Команда 2": 10, "Команда 3": 10, "Команда 1": 7]
+    var teamName = ["Команда 2", "Команда 3", "Команда 1"]
+    var teamScore = [11, 7, 20]
+    
     var numberOfRound = 2
     var gameButtonTap: (() -> Void)?
+
     
     var maximumScore: Int {
-        return scoreDict.values.max() ?? 0
+        return teamScore.max() ?? 0
     }
     
     func sectionColor(section: Int)-> UIColor {
@@ -30,13 +33,11 @@ struct Brain {
     }
     
     func team()-> [String] {
-        let team = [String](scoreDict.keys)
-        return team
+        return teamName
     }
     
     func score()-> [Int] {
-        let score = [Int](scoreDict.values).sorted(by: >)
-        return score
+        return teamScore.sorted(by: >)
     }
     
     func showStar(labelScore: String)-> Bool {

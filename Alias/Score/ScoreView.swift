@@ -12,7 +12,7 @@ class ScoreView: UIView {
     private var numberOfRound = 2
     var gameButtonTap: (() -> Void)?
     
-    private var brain = Brain()
+    private var brain = ScoreBrain()
 
     private lazy var teamsLabel: UILabel = { // верхний лейбл
         let label = UILabel()
@@ -151,7 +151,7 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as! ScoreCell
         
            // TO DO обработать колличество ячеек
-        let countOfSection = indexPath.section % brain.scoreDict.count
+        let countOfSection = indexPath.section % brain.teamName.count
         cell.myView.backgroundColor = brain.sectionColor(section: countOfSection)
         
         cell.teamLabel.text = brain.team()[indexPath.section]
@@ -174,7 +174,7 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return brain.scoreDict.count
+        return brain.teamName.count
     }
     
 }

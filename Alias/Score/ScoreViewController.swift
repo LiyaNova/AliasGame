@@ -21,6 +21,7 @@ class ScoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         networkManager.delegate = self
         networkManager.fetchData(url: api.baseURL)
         

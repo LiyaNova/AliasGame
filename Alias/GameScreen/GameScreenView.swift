@@ -9,6 +9,9 @@ import UIKit
 
 class GameScreenView: UIView {
     
+    var rightButtonTap: (() -> Void)?
+    var wrongButtonTap: (() -> Void)?
+    
     // MARK: - UI elements
     
     // Лейбл с секундами
@@ -107,11 +110,11 @@ class GameScreenView: UIView {
     }
     
     @objc private func rightAnswer(){
-        print("Right!")
+        self.rightButtonTap?()
     }
     
     @objc private func wrongAnswer(){
-        print("Wrong!")
+        self.wrongButtonTap?()
     }
     
     private func setupUI() {

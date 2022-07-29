@@ -10,6 +10,8 @@ import UIKit
 class GameScreenViewController: UIViewController {
     
     private let gameScreenView = GameScreenView()
+    private let alertManager = AlertManager()
+    
     
     // MARK: - Life cicle
     
@@ -17,18 +19,27 @@ class GameScreenViewController: UIViewController {
         super.viewDidLoad()
         
         self.view = self.gameScreenView
+        rightButtonTapped()
+        wrongButtonTapped()
+        
     }
     
-    // MARK: - Private methods
-    
-    
-    @objc func wrongAnswerTap(){
-        print("Wrong answer")
+    func rightButtonTapped(){
+        gameScreenView.rightButtonTap = {
+            [weak self] in
+            guard let self = self else { return }
+            let alert = self.alertManager.showAlert(text: "Верно!")
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
-    @objc func trueAnswerTap(){
-        print("Right answer")
+    func wrongButtonTapped(){
+        gameScreenView.wrongButtonTap = {
+            [weak self] in
+            guard let self = self else { return }
+            let alert = self.alertManager.showAlert(text: "Неверно!")
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
-
 }
