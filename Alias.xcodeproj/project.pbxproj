@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38C4461D2893F323009EED5E /* ResultScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C4461C2893F323009EED5E /* ResultScreenViewController.swift */; };
+		38C4461F2893F346009EED5E /* ResultScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C4461E2893F346009EED5E /* ResultScreenView.swift */; };
 		38EA911C2892ABF00001E9C4 /* DifficultyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */; };
 		77448CA6289020C20040A442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CA5289020C20040A442 /* AppDelegate.swift */; };
 		77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CA9289020C20040A442 /* StartMenuViewController.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38C4461C2893F323009EED5E /* ResultScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreenViewController.swift; sourceTree = "<group>"; };
+		38C4461E2893F346009EED5E /* ResultScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreenView.swift; sourceTree = "<group>"; };
 		38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyPage.swift; sourceTree = "<group>"; };
 		77448CA2289020C20040A442 /* Alias.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alias.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77448CA5289020C20040A442 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38C4461B2893F2F0009EED5E /* ResultScreen */ = {
+			isa = PBXGroup;
+			children = (
+				38C4461C2893F323009EED5E /* ResultScreenViewController.swift */,
+				38C4461E2893F346009EED5E /* ResultScreenView.swift */,
+			);
+			path = ResultScreen;
+			sourceTree = "<group>";
+		};
 		77448C99289020C20040A442 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +146,7 @@
 				77448CDE289229F90040A442 /* DifficultyPage */,
 				77448CD9289229DB0040A442 /* GameScreen */,
 				9FBD47AA2892708700687891 /* Score */,
+				38C4461B2893F2F0009EED5E /* ResultScreen */,
 				77448CBA28902A3A0040A442 /* CustomViews */,
 				9FBD47B72892CDE800687891 /* Model */,
 				9FBD47B22892CCCA00687891 /* Networking */,
@@ -385,6 +399,8 @@
 				77448CE3289229F90040A442 /* DifficultyPageView.swift in Sources */,
 				77448CBE28902F0D0040A442 /* StartMenuView.swift in Sources */,
 				77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */,
+				38C4461D2893F323009EED5E /* ResultScreenViewController.swift in Sources */,
+				38C4461F2893F346009EED5E /* ResultScreenView.swift in Sources */,
 				77448CA6289020C20040A442 /* AppDelegate.swift in Sources */,
 				77448CD82891AB940040A442 /* CustomView.swift in Sources */,
 				38EA911C2892ABF00001E9C4 /* DifficultyPage.swift in Sources */,
