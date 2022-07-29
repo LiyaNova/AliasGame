@@ -152,19 +152,19 @@ extension ResultScreenView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as? ScoreCell
         if let cell = cell {
-        let team = [String](scoreDict.keys)
-        let score = [Int](scoreDict.values).sorted(by: >)
-        cell.teamLabel.text = team[indexPath.section]
-        cell.scoreLabel.text = String(score[indexPath.section])
             
-        let rest = indexPath.section % 2
+            if let cell = cell {
+               // TO DO обработать колличество ячеек
+            let countOfSection = indexPath.section % brain.teamName.count
+            cell.myView.backgroundColor = brain.sectionColor(section: countOfSection)
+            
+            cell.teamLabel.text = brain.team()[indexPath.section]
+            cell.scoreLabel.text = String(brain.score()[indexPath.section])
+            
+            cell.starImage.isHidden = brain.showStar(labelScore: cell.scoreLabel.text ?? "")
 
-        if rest == 0 {
-            cell.myView.backgroundColor = UIColor(named: "OrangeColor")
-        } else if rest == 1 {
-            cell.myView.backgroundColor = UIColor(named: "RoyalBlueColor")
-        }
-        return cell
+            return cell
+
         }
         return UITableViewCell()
     }

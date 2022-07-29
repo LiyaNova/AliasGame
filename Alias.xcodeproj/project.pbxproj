@@ -43,6 +43,7 @@
 		77448D062892A3190040A442 /* WordSetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448D052892A3190040A442 /* WordSetsModel.swift */; };
 		77448D0E2892C7170040A442 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448D0D2892C7170040A442 /* AppNavigationController.swift */; };
 		77448D102892DCF20040A442 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448D0F2892DCF10040A442 /* CustomViewController.swift */; };
+		9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */; };
 		9FBD47AD289270A200687891 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AC289270A200687891 /* ScoreViewController.swift */; };
 		9FBD47AF28927B4700687891 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AE28927B4700687891 /* ScoreView.swift */; };
 		9FBD47B128927C0000687891 /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B028927C0000687891 /* ScoreCell.swift */; };
@@ -90,6 +91,7 @@
 		77448D052892A3190040A442 /* WordSetsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetsModel.swift; sourceTree = "<group>"; };
 		77448D0D2892C7170040A442 /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		77448D0F2892DCF10040A442 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainResultScreen.swift; sourceTree = "<group>"; };
 		9FBD47AC289270A200687891 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		9FBD47AE28927B4700687891 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9FBD47B028927C0000687891 /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		38C4461B2893F2F0009EED5E /* ResultScreen */ = {
 			isa = PBXGroup;
 			children = (
+				9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */,
 				38C4461C2893F323009EED5E /* ResultScreenViewController.swift */,
 				38C4461E2893F346009EED5E /* ResultScreenView.swift */,
 			);
@@ -386,6 +389,7 @@
 				77448CEC289255770040A442 /* TeamsMenuView.swift in Sources */,
 				77448D0E2892C7170040A442 /* AppNavigationController.swift in Sources */,
 				77448CC0289047CF0040A442 /* CustomButton.swift in Sources */,
+				9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */,
 				77448CDD289229DC0040A442 /* GameScreenView.swift in Sources */,
 				9FBD47B128927C0000687891 /* ScoreCell.swift in Sources */,
 				77448CE2289229F90040A442 /* DifficultyChoiceModel.swift in Sources */,
