@@ -99,6 +99,7 @@ class GameScreenView: UIView {
     override init(frame: CGRect) {
         super .init(frame: frame)
         self.setupUI()
+        self.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {

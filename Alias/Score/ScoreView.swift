@@ -12,6 +12,10 @@ class ScoreView: UIView {
     private var scoreDict = ["Команда 2": 10, "Команда 3": 8, "Команда 1": 7]
     private var numberOfRound = 2
     var gameButtonTap: (() -> Void)?
+    
+    func star(score: [String: Int]){
+        
+    }
 
     private lazy var teamsLabel: UILabel = { // верхний лейбл
         let label = UILabel()
