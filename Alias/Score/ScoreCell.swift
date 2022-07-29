@@ -29,7 +29,7 @@ class ScoreCell: UITableViewCell {
     public lazy var starImage: UIImageView = { // Звездочка
         let image = UIImageView(image: UIImage(named: "star"))
         image.contentMode = .scaleAspectFit
-        image.isHidden = false
+        image.isHidden = true
         return image
     }()
     
@@ -91,4 +91,6 @@ class ScoreCell: UITableViewCell {
             self.scoreLabel.widthAnchor.constraint(equalToConstant: 35)
         ])
     }
+    
+    
 }

@@ -13,8 +13,8 @@ class ScoreView: UIView {
     private var numberOfRound = 2
     var gameButtonTap: (() -> Void)?
     
-    func star(score: [String: Int]){
-        
+    var maximumScore: Int {
+        return scoreDict.values.max() ?? 0
     }
 
     private lazy var teamsLabel: UILabel = { // верхний лейбл
@@ -158,6 +158,9 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         cell.teamLabel.text = team[indexPath.section]
         cell.scoreLabel.text = String(score[indexPath.section])
         
+        if cell.scoreLabel.text == String(maximumScore) {
+            cell.starImage.isHidden = false
+        }
         
         let rest = indexPath.section % 3
         
@@ -180,9 +183,10 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         return 10
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return scoreDict.count
     }
     
