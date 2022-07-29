@@ -10,6 +10,7 @@ import UIKit
 class ResultScreenView: UIView {
 
     private var scoreDict = ["Команда 2": 8, "Команда 3": 7]
+    private var brain = BrainResultScreen()
 
     private let backgroundImage: UIImageView = {
         let backgroundImage = UIImageView()
@@ -152,8 +153,6 @@ extension ResultScreenView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as? ScoreCell
         if let cell = cell {
-            
-            if let cell = cell {
                // TO DO обработать колличество ячеек
             let countOfSection = indexPath.section % brain.teamName.count
             cell.myView.backgroundColor = brain.sectionColor(section: countOfSection)
