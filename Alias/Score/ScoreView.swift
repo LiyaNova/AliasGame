@@ -148,8 +148,9 @@ class ScoreView: UIView {
 extension ScoreView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as! ScoreCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as? ScoreCell
         
+        if let cell = cell {
            // TO DO обработать колличество ячеек
         let countOfSection = indexPath.section % brain.teamName.count
         cell.myView.backgroundColor = brain.sectionColor(section: countOfSection)
@@ -160,6 +161,8 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         cell.starImage.isHidden = brain.showStar(labelScore: cell.scoreLabel.text ?? "")
 
         return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
