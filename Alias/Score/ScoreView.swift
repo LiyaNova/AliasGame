@@ -8,16 +8,11 @@
 import UIKit
 
 class ScoreView: UIView {
-    
-    private var scoreDict = ["Команда 2": 10, "Команда 3": 8, "Команда 1": 7]
+
     private var numberOfRound = 2
     var gameButtonTap: (() -> Void)?
     
     private var brain = Brain()
-    
-    var maximumScore: Int {
-        return scoreDict.values.max() ?? 0
-    }
 
     private lazy var teamsLabel: UILabel = { // верхний лейбл
         let label = UILabel()
@@ -156,14 +151,14 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as! ScoreCell
         
            // TO DO обработать колличество ячеек
-        let rest = indexPath.section % scoreDict.count
-        cell.myView.backgroundColor = brain.sectionColor(section: rest)
-        cell.teamLabel.text = brain.team(name: scoreDict)[indexPath.section]
-        cell.scoreLabel.text = String(brain.score(name: scoreDict)[indexPath.section])
+        let countOfSection = indexPath.section % brain.scoreDict.count
+        cell.myView.backgroundColor = brain.sectionColor(section: countOfSection)
         
-        if cell.scoreLabel.text == String(maximumScore) {
-            cell.starImage.isHidden = false
-        }
+        cell.teamLabel.text = brain.team()[indexPath.section]
+        cell.scoreLabel.text = String(brain.score()[indexPath.section])
+        
+        cell.starImage.isHidden = brain.showStar(labelScore: cell.scoreLabel.text ?? "")
+
         return cell
     }
     
@@ -179,7 +174,7 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return scoreDict.count
+        return brain.scoreDict.count
     }
     
 }

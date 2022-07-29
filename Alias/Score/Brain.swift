@@ -9,7 +9,7 @@ import UIKit
 
 struct Brain {
     
-    var scoreDict = ["Команда 2": 10, "Команда 3": 8, "Команда 1": 7]
+    var scoreDict = ["Команда 2": 10, "Команда 3": 10, "Команда 1": 7]
     var numberOfRound = 2
     var gameButtonTap: (() -> Void)?
     
@@ -29,13 +29,17 @@ struct Brain {
         return color
     }
     
-    func team(name: [String: Int])-> [String] {
-        let team = [String](name.keys)
+    func team()-> [String] {
+        let team = [String](scoreDict.keys)
         return team
     }
     
-    func score(name: [String: Int])-> [Int] {
+    func score()-> [Int] {
         let score = [Int](scoreDict.values).sorted(by: >)
         return score
+    }
+    
+    func showStar(labelScore: String)-> Bool {
+      return  String(maximumScore) == labelScore ? false : true
     }
 }
