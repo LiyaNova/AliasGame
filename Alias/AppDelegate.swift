@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .white
 
         window?.rootViewController = AppNavigationController(rootViewController: StartMenuViewController())
+        
         window?.makeKeyAndVisible()
         
         return true

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2ADBB0D22894191C00EF0F8F /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADBB0D12894191C00EF0F8F /* TeamModel.swift */; };
+		2ADBB0D428943BCD00EF0F8F /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADBB0D328943BCD00EF0F8F /* GameModel.swift */; };
 		38EA911C2892ABF00001E9C4 /* DifficultyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */; };
 		77448CA6289020C20040A442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CA5289020C20040A442 /* AppDelegate.swift */; };
 		77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CA9289020C20040A442 /* StartMenuViewController.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2ADBB0D12894191C00EF0F8F /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
+		2ADBB0D328943BCD00EF0F8F /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyPage.swift; sourceTree = "<group>"; };
 		77448CA2289020C20040A442 /* Alias.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alias.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77448CA5289020C20040A442 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				9FBD47B82892CE0F00687891 /* JokeModel.swift */,
+				2ADBB0D12894191C00EF0F8F /* TeamModel.swift */,
+				2ADBB0D328943BCD00EF0F8F /* GameModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -381,7 +387,9 @@
 				77448CCE289149770040A442 /* RulesView.swift in Sources */,
 				9FBD47B92892CE0F00687891 /* JokeModel.swift in Sources */,
 				9FBD47B62892CDD300687891 /* API.swift in Sources */,
+				2ADBB0D22894191C00EF0F8F /* TeamModel.swift in Sources */,
 				77448D062892A3190040A442 /* WordSetsModel.swift in Sources */,
+				2ADBB0D428943BCD00EF0F8F /* GameModel.swift in Sources */,
 				77448CE3289229F90040A442 /* DifficultyPageView.swift in Sources */,
 				77448CBE28902F0D0040A442 /* StartMenuView.swift in Sources */,
 				77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */,

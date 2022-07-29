@@ -112,7 +112,7 @@ final class DifficultyPageView: UIView {
          self.choiceImageView,
          self.forwardButton,
          self.levelLabel,
-         self.descriptionImage,
+         self.descriptionLabel,
          self.bottomButton].forEach { self.addSubview($0) }
 
         NSLayoutConstraint.activate([
