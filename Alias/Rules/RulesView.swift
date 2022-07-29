@@ -105,9 +105,17 @@ class RulesView: UIView {
         sv.axis = .vertical
         sv.spacing = 24.0
         sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.alignment = .center
+        sv.alignment = .fill
         
         return sv
+    }()
+    
+    private lazy var whiteBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
     }()
     
     
@@ -136,8 +144,9 @@ class RulesView: UIView {
      
         backgroundColor = UIColor(named: "RoyalBlueColor")
         addSubview(self.textStackView)
-        addSubview(self.textRulesStackView)
-        addSubview(self.backButton)
+        addSubview(self.whiteBackground)
+        self.whiteBackground.addSubview(self.textRulesStackView)
+        self.whiteBackground.addSubview(self.backButton)
         
         NSLayoutConstraint.activate([
             self.textStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 35),
@@ -147,7 +156,13 @@ class RulesView: UIView {
             self.aliasImageView.widthAnchor.constraint(equalToConstant: 147),
             self.aliasImageView.heightAnchor.constraint(equalToConstant: 64),
             
-            self.textRulesStackView.topAnchor.constraint(equalTo: self.textStackView.bottomAnchor, constant: 32.0),
+            self.textStackView.bottomAnchor.constraint(equalTo: self.whiteBackground.topAnchor, constant: -27.0),
+            self.whiteBackground.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            self.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: self.whiteBackground.trailingAnchor),
+            self.bottomAnchor.constraint(equalTo: self.whiteBackground.bottomAnchor),
+            
+            
+            self.textRulesStackView.topAnchor.constraint(equalTo: self.whiteBackground.topAnchor, constant: 32.0),
             self.textRulesStackView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             self.textRulesStackView.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, constant: -32.0),
             
