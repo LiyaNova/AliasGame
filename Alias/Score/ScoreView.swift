@@ -8,10 +8,11 @@
 import UIKit
 
 class ScoreView: UIView {
-    
-    private var scoreDict = ["Команда 2": 10, "Команда 3": 8, "Команда 1": 7]
+
     private var numberOfRound = 2
+    var gameButtonTap: (() -> Void)?
     
+    private var brain = ScoreBrain()
 
     private lazy var teamsLabel: UILabel = { // верхний лейбл
         let label = UILabel()
@@ -108,7 +109,7 @@ class ScoreView: UIView {
     }
     
     @objc private func startGame(){
-        print("Открыть экран игры")
+        self.gameButtonTap?()
     }
     
     private func setupUI() {
@@ -149,22 +150,15 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as! ScoreCell
         
-        let team = [String](scoreDict.keys)
-        let score = [Int](scoreDict.values).sorted(by: >)
-        cell.teamLabel.text = team[indexPath.section]
-        cell.scoreLabel.text = String(score[indexPath.section])
+           // TO DO обработать колличество ячеек
+        let countOfSection = indexPath.section % brain.teamName.count
+        cell.myView.backgroundColor = brain.sectionColor(section: countOfSection)
         
+        cell.teamLabel.text = brain.team()[indexPath.section]
+        cell.scoreLabel.text = String(brain.score()[indexPath.section])
         
-        let rest = indexPath.section % 3
-        
-        if rest == 0 {
-            cell.myView.backgroundColor = UIColor(named: "RoyalBlueColor")
-        } else if rest == 1 {
-            cell.myView.backgroundColor = UIColor(named: "DarkPurpleColor")
-        } else if rest == 2 {
-            cell.myView.backgroundColor = UIColor(named: "OrangeColor")
-        }
-        
+        cell.starImage.isHidden = brain.showStar(labelScore: cell.scoreLabel.text ?? "")
+
         return cell
     }
     
@@ -179,7 +173,8 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return scoreDict.count
+        
+        return brain.teamName.count
     }
     
 }
