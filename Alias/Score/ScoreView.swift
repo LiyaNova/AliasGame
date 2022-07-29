@@ -13,6 +13,8 @@ class ScoreView: UIView {
     private var numberOfRound = 2
     var gameButtonTap: (() -> Void)?
     
+    private var brain = Brain()
+    
     var maximumScore: Int {
         return scoreDict.values.max() ?? 0
     }
@@ -153,25 +155,15 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as! ScoreCell
         
-        let team = [String](scoreDict.keys)
-        let score = [Int](scoreDict.values).sorted(by: >)
-        cell.teamLabel.text = team[indexPath.section]
-        cell.scoreLabel.text = String(score[indexPath.section])
+           // TO DO обработать колличество ячеек
+        let rest = indexPath.section % scoreDict.count
+        cell.myView.backgroundColor = brain.sectionColor(section: rest)
+        cell.teamLabel.text = brain.team(name: scoreDict)[indexPath.section]
+        cell.scoreLabel.text = String(brain.score(name: scoreDict)[indexPath.section])
         
         if cell.scoreLabel.text == String(maximumScore) {
             cell.starImage.isHidden = false
         }
-        
-        let rest = indexPath.section % 3
-        
-        if rest == 0 {
-            cell.myView.backgroundColor = UIColor(named: "RoyalBlueColor")
-        } else if rest == 1 {
-            cell.myView.backgroundColor = UIColor(named: "DarkPurpleColor")
-        } else if rest == 2 {
-            cell.myView.backgroundColor = UIColor(named: "OrangeColor")
-        }
-        
         return cell
     }
     
@@ -183,7 +175,7 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         return 10
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         
