@@ -3,6 +3,8 @@ import UIKit
 
 class TeamsMenuView: UIView {
 
+    private let musicManager = MusicModel()
+    
     var names = ["Команда 1", "Команда 2"]
     
     var numberOfTeams = 2
@@ -62,7 +64,7 @@ class TeamsMenuView: UIView {
         btn.titleLabel?.textColor = .white
         btn.layer.cornerRadius = 16
         btn.translatesAutoresizingMaskIntoConstraints = false
-        
+        btn.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
         return btn
     }()
     
@@ -143,6 +145,8 @@ class TeamsMenuView: UIView {
         } else {
             plusButton.tintColor = .black
         }
+        
+        self.musicManager.playSound(soundName: "Transition")
     }
     
     @objc func didTapMinusButton(sender: UIButton)
@@ -158,6 +162,13 @@ class TeamsMenuView: UIView {
         if numberOfTeams == 2 {
             minusButton.tintColor = .gray
         }
+        
+        self.musicManager.playSound(soundName: "Transition")
+    }
+    
+    @objc func didTapNextButton(sender: UIButton)
+    {
+        self.musicManager.playSound(soundName: "Transition")
     }
 }
 

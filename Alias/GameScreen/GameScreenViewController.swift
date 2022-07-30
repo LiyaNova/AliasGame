@@ -11,6 +11,7 @@ class GameScreenViewController: UIViewController {
     
     private let gameScreenView = GameScreenView()
     private let alertManager = AlertManager()
+    private let musicManager = MusicModel()
     
     
     // MARK: - Life cicle
@@ -30,6 +31,7 @@ class GameScreenViewController: UIViewController {
             guard let self = self else { return }
             let alert = self.alertManager.showAlert(text: "Верно!")
             self.present(alert, animated: true, completion: nil)
+            self.musicManager.playSound(soundName: "Right Answer")
         }
     }
     
@@ -39,6 +41,7 @@ class GameScreenViewController: UIViewController {
             guard let self = self else { return }
             let alert = self.alertManager.showAlert(text: "Неверно!")
             self.present(alert, animated: true, completion: nil)
+            self.musicManager.playSound(soundName: "Wrong Answer")
         }
     }
     
