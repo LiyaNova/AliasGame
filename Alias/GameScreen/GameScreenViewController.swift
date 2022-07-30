@@ -38,6 +38,15 @@ class GameScreenViewController: UIViewController {
         rightButtonTapped()
         wrongButtonTapped()
         
+        
+        gameScreenView.openScore = {
+            [weak self] in
+            guard let self = self else { return }
+            let vc = ScoreViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        }
+        
     }
     
     func rightButtonTapped(){
