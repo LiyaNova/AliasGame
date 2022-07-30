@@ -7,7 +7,7 @@ struct DifficultyChoiceModel {
     private var choice = 0
 
     mutating func loadJson() -> DifficultyPage? {
-        if let url = Bundle.main.url(forResource: "GameData", withExtension: "json") {
+        if let url = Bundle.main.url(forResource: "SetWords", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
