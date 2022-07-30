@@ -80,6 +80,17 @@ final class DifficultyPageView: UIView {
         return descriptionLabel
     }()
 
+    var exampleLabel: UILabel = {
+        let exampleLabel = UILabel()
+        exampleLabel.translatesAutoresizingMaskIntoConstraints = false
+        exampleLabel.backgroundColor = .white
+        exampleLabel.numberOfLines = 0
+        exampleLabel.lineBreakMode = .byWordWrapping
+        exampleLabel.textAlignment = .center
+        exampleLabel.font = UIFont(name: "Piazzolla-Medium", size: 16)
+        return exampleLabel
+    }()
+
      private lazy var bottomButton: UIButton = {
         let bottomButton = UIButton()
         bottomButton.translatesAutoresizingMaskIntoConstraints = false
@@ -113,6 +124,7 @@ final class DifficultyPageView: UIView {
          self.forwardButton,
          self.levelLabel,
          self.descriptionLabel,
+         self.exampleLabel,
          self.bottomButton].forEach { self.addSubview($0) }
 
         NSLayoutConstraint.activate([
@@ -124,7 +136,7 @@ final class DifficultyPageView: UIView {
             self.backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.backButton.trailingAnchor.constraint(equalTo: self.choiceImageView.leadingAnchor, constant: 8),
 
-            choiceImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 59),
+            choiceImageView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 59),
             choiceImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             choiceImageView.widthAnchor.constraint(equalToConstant: 247),
             choiceImageView.heightAnchor.constraint(equalToConstant: 257),
@@ -137,10 +149,16 @@ final class DifficultyPageView: UIView {
             self.levelLabel.topAnchor.constraint(equalTo: self.choiceImageView.bottomAnchor, constant: 16),
             self.levelLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
-            self.descriptionLabel.topAnchor.constraint(equalTo: levelLabel.bottomAnchor, constant: 34),
+            self.descriptionLabel.topAnchor.constraint(equalTo: self.levelLabel.bottomAnchor, constant: 34),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             self.descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
-            self.descriptionLabel.heightAnchor.constraint(equalToConstant: 124),
+            self.descriptionLabel.heightAnchor.constraint(equalToConstant: 60),
+
+            self.exampleLabel.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor,
+                                                   constant: 5),
+            self.exampleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
+            self.exampleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
+            self.exampleLabel.heightAnchor.constraint(equalToConstant: 60),
 
             self.bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
                                                  constant: -11),
@@ -149,4 +167,5 @@ final class DifficultyPageView: UIView {
             self.bottomButton.heightAnchor.constraint(equalToConstant: 66)
         ])
     }
+    
 }

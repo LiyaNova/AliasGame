@@ -17,9 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
 
-        window?.rootViewController = ResultScreenViewController()
-        
-        //AppNavigationController(rootViewController: StartMenuViewController())
+        window?.rootViewController = AppNavigationController(rootViewController: DifficultyPageViewController())
         
         window?.makeKeyAndVisible()
         

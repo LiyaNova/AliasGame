@@ -12,4 +12,6 @@ struct DifficultyPage {
     let level: String
     let color: String
     let description: String
+    let example: String
+    let words: [String]
 }

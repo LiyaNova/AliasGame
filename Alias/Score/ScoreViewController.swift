@@ -28,7 +28,8 @@ class ScoreViewController: UIViewController {
         scoreView.gameButtonTap = {
             [weak self] in
             guard let self = self else { return }
-            let vc = GameScreenViewController()
+            //Прописала nil в созданный инициализатор, чтобы не ругался
+            let vc = GameScreenViewController(words: nil)
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
         }

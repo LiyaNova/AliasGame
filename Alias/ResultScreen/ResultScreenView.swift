@@ -19,7 +19,7 @@ class ResultScreenView: UIView {
         return backgroundImage
     }()
 
-    public var teamLabel: UILabel = {
+     var teamLabel: UILabel = {
         let teamLabel = UILabel()
         teamLabel.translatesAutoresizingMaskIntoConstraints = false
         teamLabel.text = "КОМАНДА 1"
@@ -39,7 +39,7 @@ class ResultScreenView: UIView {
         return winLabel
     }()
 
-    public var circleLabel: UILabel = {
+     var circleLabel: UILabel = {
         let circleLabel = UILabel()
         circleLabel.translatesAutoresizingMaskIntoConstraints = false
         circleLabel.text = "10"
@@ -84,7 +84,7 @@ class ResultScreenView: UIView {
    }()
 
     @objc private func didTapBottomButton() {
-        print("Делегат или замыкание для контроллера?А потом новая игра)")
+        print("Делегат для контроллера?А потом новая игра)")
     }
 
     override init(frame: CGRect) {

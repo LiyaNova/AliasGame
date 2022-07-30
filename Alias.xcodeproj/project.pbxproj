@@ -11,6 +11,7 @@
 		38C4461D2893F323009EED5E /* ResultScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C4461C2893F323009EED5E /* ResultScreenViewController.swift */; };
 		38C4461F2893F346009EED5E /* ResultScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C4461E2893F346009EED5E /* ResultScreenView.swift */; };
 		38EA911C2892ABF00001E9C4 /* DifficultyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */; };
+		38EBA2B928954532005CD24F /* SetWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 38EBA2B828954532005CD24F /* SetWords.json */; };
 		77448CA6289020C20040A442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CA5289020C20040A442 /* AppDelegate.swift */; };
 		77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CA9289020C20040A442 /* StartMenuViewController.swift */; };
 		77448CAF289020C50040A442 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77448CAE289020C50040A442 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		38C4461C2893F323009EED5E /* ResultScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreenViewController.swift; sourceTree = "<group>"; };
 		38C4461E2893F346009EED5E /* ResultScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreenView.swift; sourceTree = "<group>"; };
 		38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyPage.swift; sourceTree = "<group>"; };
+		38EBA2B828954532005CD24F /* SetWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = SetWords.json; path = "../../../../../Downloads/Alias-main/Alias/Models/WordSetsModel/SetWords.json"; sourceTree = "<group>"; };
 		77448CA2289020C20040A442 /* Alias.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alias.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77448CA5289020C20040A442 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77448CA9289020C20040A442 /* StartMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenuViewController.swift; sourceTree = "<group>"; };
@@ -223,8 +225,6 @@
 		77448CDE289229F90040A442 /* DifficultyPage */ = {
 			isa = PBXGroup;
 			children = (
-				38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */,
-				77448CDF289229F90040A442 /* DifficultyChoiceModel.swift */,
 				77448CE0289229F90040A442 /* DifficultyPageView.swift */,
 				77448CE1289229F90040A442 /* DifficultyPageViewController.swift */,
 			);
@@ -264,6 +264,8 @@
 			children = (
 				77CF5EAD289537ED001C9A2F /* GameModel.swift */,
 				77CF5EAE289537ED001C9A2F /* TeamModel.swift */,
+				38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */,
+				77448CDF289229F90040A442 /* DifficultyChoiceModel.swift */,
 				77448D072892C00A0040A442 /* WordSetsModel */,
 				9FBD47B82892CE0F00687891 /* JokeModel.swift */,
 			);
@@ -274,6 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				77448D052892A3190040A442 /* WordSetsModel.swift */,
+				38EBA2B828954532005CD24F /* SetWords.json */,
+
 			);
 			path = WordSetsModel;
 			sourceTree = "<group>";
@@ -380,6 +384,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
+				38EBA2B928954532005CD24F /* SetWords.json in Resources */,
 				77448CFF289261760040A442 /* Wrong Answer.wav in Resources */,
 				77448CFD289261760040A442 /* Background Music.mp3 in Resources */,
 				77448CFA289261760040A442 /* Rules Music.mp3 in Resources */,
