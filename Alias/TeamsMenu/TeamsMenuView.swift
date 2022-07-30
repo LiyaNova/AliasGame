@@ -137,11 +137,13 @@ class TeamsMenuView: UIView {
     
     @objc func didTapPlusButton(sender: UIButton) {
         self.addNewTeam?()
+        self.changePlusMinusButtonColor()
         self.tableView.reloadData()
     }
     
     @objc func didTapMinusButton(sender: UIButton) {
         self.deleteTeam?()
+        self.changePlusMinusButtonColor()
         self.tableView.reloadData()
     }
     
@@ -150,23 +152,14 @@ class TeamsMenuView: UIView {
     }
     
     private func changePlusMinusButtonColor() {
-        //                    if myTeams.count > 2 {
-        //                        self.tintColor = .black
-        //                    }
-        //                    if numberOfTeams == 10 {
-        //                        plusButton.tintColor = .gray
-        //                    } else {
-        //                        plusButton.tintColor = .black
-        //                    }
-        
-        
-        //        if numberOfTeams == 9 {
-        //            plusButton.tintColor = .black
-        //        }
-        //        if numberOfTeams == 2 {
-        //            minusButton.tintColor = .gray
-        //        }
-        
+        if teams.count == 2 {
+            minusButton.tintColor = .gray
+        } else if teams.count == 10 {
+            plusButton.tintColor = .gray
+        } else {
+            plusButton.tintColor = .black
+            minusButton.tintColor = .black
+        }
     }
 }
 
