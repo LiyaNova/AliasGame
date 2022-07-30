@@ -22,9 +22,9 @@ class DifficultyPageViewController: UIViewController {
         super.viewDidLoad()
         self.updateUI()
 
-        //Настроен навигейшн на страницу, для удобства, потом можно убрать
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .done, target: nil, action: nil)
-        self.navigationItem.leftBarButtonItem?.tintColor = .black
+        //Настроен навигейшн на страницу, для удобства, можно убрать
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .done, target: nil, action: nil)
+//        self.navigationItem.leftBarButtonItem?.tintColor = .black
     }
 
     private func updateUI() {
