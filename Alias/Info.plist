@@ -5,11 +5,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Phosphate.ttc</string>
-
 		<string>Piazzolla.ttf</string>
 		<string>Piazzolla-Black.ttf</string>
-
-
 	</array>
 </dict>
 </plist>

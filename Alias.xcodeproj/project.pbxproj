@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		38C4461D2893F323009EED5E /* ResultScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C4461C2893F323009EED5E /* ResultScreenViewController.swift */; };
 		38C4461F2893F346009EED5E /* ResultScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C4461E2893F346009EED5E /* ResultScreenView.swift */; };
-		2ADBB0D22894191C00EF0F8F /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADBB0D12894191C00EF0F8F /* TeamModel.swift */; };
-		2ADBB0D428943BCD00EF0F8F /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADBB0D328943BCD00EF0F8F /* GameModel.swift */; };
 		38EA911C2892ABF00001E9C4 /* DifficultyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */; };
 		77448CA6289020C20040A442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CA5289020C20040A442 /* AppDelegate.swift */; };
 		77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448CA9289020C20040A442 /* StartMenuViewController.swift */; };
@@ -44,9 +42,12 @@
 		77448D062892A3190040A442 /* WordSetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448D052892A3190040A442 /* WordSetsModel.swift */; };
 		77448D0E2892C7170040A442 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448D0D2892C7170040A442 /* AppNavigationController.swift */; };
 		77448D102892DCF20040A442 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77448D0F2892DCF10040A442 /* CustomViewController.swift */; };
-		9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */; };
 		77CF5EA828945C05001C9A2F /* SetWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 77CF5EA728945C05001C9A2F /* SetWords.json */; };
+		77CF5EAF289537ED001C9A2F /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EAD289537ED001C9A2F /* GameModel.swift */; };
+		77CF5EB0289537ED001C9A2F /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EAE289537ED001C9A2F /* TeamModel.swift */; };
+		77CF5EB228953944001C9A2F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77CF5EB128953944001C9A2F /* Launch Screen.storyboard */; };
 		9F13E32A28940E970067D43A /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13E32928940E970067D43A /* AlertManager.swift */; };
+		9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */; };
 		9FBD47AD289270A200687891 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AC289270A200687891 /* ScoreViewController.swift */; };
 		9FBD47AF28927B4700687891 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AE28927B4700687891 /* ScoreView.swift */; };
 		9FBD47B128927C0000687891 /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B028927C0000687891 /* ScoreCell.swift */; };
@@ -59,8 +60,6 @@
 /* Begin PBXFileReference section */
 		38C4461C2893F323009EED5E /* ResultScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreenViewController.swift; sourceTree = "<group>"; };
 		38C4461E2893F346009EED5E /* ResultScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreenView.swift; sourceTree = "<group>"; };
-		2ADBB0D12894191C00EF0F8F /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
-		2ADBB0D328943BCD00EF0F8F /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		38EA911B2892ABF00001E9C4 /* DifficultyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyPage.swift; sourceTree = "<group>"; };
 		77448CA2289020C20040A442 /* Alias.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alias.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77448CA5289020C20040A442 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,9 +95,12 @@
 		77448D052892A3190040A442 /* WordSetsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetsModel.swift; sourceTree = "<group>"; };
 		77448D0D2892C7170040A442 /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
 		77448D0F2892DCF10040A442 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
-		9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainResultScreen.swift; sourceTree = "<group>"; };
 		77CF5EA728945C05001C9A2F /* SetWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = SetWords.json; path = ../../../../SetWords.json; sourceTree = "<group>"; };
+		77CF5EAD289537ED001C9A2F /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		77CF5EAE289537ED001C9A2F /* TeamModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
+		77CF5EB128953944001C9A2F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		9F13E32928940E970067D43A /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainResultScreen.swift; sourceTree = "<group>"; };
 		9FBD47AC289270A200687891 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		9FBD47AE28927B4700687891 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9FBD47B028927C0000687891 /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				77448CB3289020C50040A442 /* Info.plist */,
 				77448CAE289020C50040A442 /* Assets.xcassets */,
 				77448CA3289020C20040A442 /* Products */,
+				77CF5EB128953944001C9A2F /* Launch Screen.storyboard */,
 			);
 			path = Alias;
 			sourceTree = "<group>";
@@ -258,6 +261,8 @@
 		77448D0228926E400040A442 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				77CF5EAD289537ED001C9A2F /* GameModel.swift */,
+				77CF5EAE289537ED001C9A2F /* TeamModel.swift */,
 				77448D072892C00A0040A442 /* WordSetsModel */,
 				9FBD47B82892CE0F00687891 /* JokeModel.swift */,
 			);
@@ -285,8 +290,6 @@
 		77CF5EA628945B16001C9A2F /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				2ADBB0D12894191C00EF0F8F /* TeamModel.swift */,
-				2ADBB0D328943BCD00EF0F8F /* GameModel.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				77448CFE289261760040A442 /* Transition.wav in Resources */,
 				77448CFC289261760040A442 /* Rady-Stady-Go.wav in Resources */,
 				77448CAF289020C50040A442 /* Assets.xcassets in Resources */,
+				77CF5EB228953944001C9A2F /* Launch Screen.storyboard in Resources */,
 				77448CF9289261760040A442 /* Right Answer.wav in Resources */,
 				77448D00289261760040A442 /* Start Timer.wav in Resources */,
 				77448CCA289132E60040A442 /* Phosphate.ttc in Resources */,
@@ -404,9 +408,11 @@
 			files = (
 				9FBD47B42892CDB400687891 /* NetworkManager.swift in Sources */,
 				77448CEB289255770040A442 /* TeamsMenuViewController.swift in Sources */,
+				77CF5EB0289537ED001C9A2F /* TeamModel.swift in Sources */,
 				77448CD02891499E0040A442 /* RulesViewController.swift in Sources */,
 				9FBD47AD289270A200687891 /* ScoreViewController.swift in Sources */,
 				9FBD47BC2893DE3D00687891 /* ScoreBrain.swift in Sources */,
+				77CF5EAF289537ED001C9A2F /* GameModel.swift in Sources */,
 				9FBD47AF28927B4700687891 /* ScoreView.swift in Sources */,
 				77448CEE289255770040A442 /* TeamCell.swift in Sources */,
 				77448CEC289255770040A442 /* TeamsMenuView.swift in Sources */,
@@ -423,9 +429,7 @@
 				77448CCE289149770040A442 /* RulesView.swift in Sources */,
 				9FBD47B92892CE0F00687891 /* JokeModel.swift in Sources */,
 				9FBD47B62892CDD300687891 /* API.swift in Sources */,
-				2ADBB0D22894191C00EF0F8F /* TeamModel.swift in Sources */,
 				77448D062892A3190040A442 /* WordSetsModel.swift in Sources */,
-				2ADBB0D428943BCD00EF0F8F /* GameModel.swift in Sources */,
 				77448CE3289229F90040A442 /* DifficultyPageView.swift in Sources */,
 				77448CBE28902F0D0040A442 /* StartMenuView.swift in Sources */,
 				77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */,
@@ -565,7 +569,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Alias/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -594,7 +598,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Alias/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
