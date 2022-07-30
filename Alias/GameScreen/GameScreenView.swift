@@ -9,6 +9,9 @@ import UIKit
 
 class GameScreenView: UIView {
     
+    var rightButtonTap: (() -> Void)?
+    var wrongButtonTap: (() -> Void)?
+    
     // MARK: - UI elements
     
     // Лейбл с секундами
@@ -54,7 +57,7 @@ class GameScreenView: UIView {
     // Кнопка правильного ответа
     private var rightButton = UIButton()
     private lazy var rightAnswerBtn: UIButton = {
-        rightButton = makeButton(color: "TrefoilCrayolaColor", image: "Ok")
+        rightButton = makeButton(color: "TrefoilCrayolaColor", image: "checkmark")
         rightButton.addTarget(self, action: #selector(rightAnswer), for: .touchUpInside)
         return rightButton
     }()
@@ -62,7 +65,7 @@ class GameScreenView: UIView {
     // Кнопка неправильного ответа
     private var wrongButton = UIButton()
     private lazy var wrongAnswerBtn: UIButton = {
-        wrongButton = makeButton(color: "SignalOrangeColor", image: "WrongAnswer")
+        wrongButton = makeButton(color: "SignalOrangeColor", image: "multiply")
         wrongButton.addTarget(self, action: #selector(wrongAnswer), for: .touchUpInside)
         return wrongButton
     }()
@@ -99,6 +102,7 @@ class GameScreenView: UIView {
     override init(frame: CGRect) {
         super .init(frame: frame)
         self.setupUI()
+        self.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -106,11 +110,11 @@ class GameScreenView: UIView {
     }
     
     @objc private func rightAnswer(){
-        print("Right!")
+        self.rightButtonTap?()
     }
     
     @objc private func wrongAnswer(){
-        print("Wrong!")
+        self.wrongButtonTap?()
     }
     
     private func setupUI() {
@@ -142,7 +146,7 @@ private extension GameScreenView {
         btn.backgroundColor = UIColor(named: "\(color)")
         btn.layer.cornerRadius = 15
         btn.clipsToBounds = true
-        btn.setImage(UIImage(named: image), for: .normal)
+        btn.setImage(UIImage(systemName: image), for: .normal)
         return btn
     }
 }

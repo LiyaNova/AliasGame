@@ -21,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //AppNavigationController(rootViewController: StartMenuViewController())
         
-        
-        
         window?.makeKeyAndVisible()
         
         return true

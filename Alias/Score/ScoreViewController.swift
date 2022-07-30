@@ -21,8 +21,17 @@ class ScoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         networkManager.delegate = self
         networkManager.fetchData(url: api.baseURL)
+        
+        scoreView.gameButtonTap = {
+            [weak self] in
+            guard let self = self else { return }
+            let vc = GameScreenViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        }
         
     }
 }
