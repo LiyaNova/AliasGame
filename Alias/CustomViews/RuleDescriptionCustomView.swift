@@ -1,7 +1,7 @@
 
 import UIKit
 
-class CustomView: UIView {
+class RuleDescriptionCustomView: UIView {
     
     private var image = UIImageView()
     private var label = UILabel()

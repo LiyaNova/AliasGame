@@ -5,6 +5,7 @@ class AppNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigationBar()
     }
     
     func setupNavigationBar() {

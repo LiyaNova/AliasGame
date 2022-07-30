@@ -4,6 +4,7 @@ import UIKit
 class StartMenuView: UIView {
     
     var rulesMenuButtonTap: (() -> Void)?
+    var newGameButtonTap: (() -> Void)?
     
     private lazy var aliasLabel: UILabel = {
         let label = UILabel()
@@ -26,7 +27,7 @@ class StartMenuView: UIView {
         let btn = CustomButton(color: .white, title: "Новая игра", buttonHandler: {
             [weak self] in
             guard let self = self else { return }
-            print("tap start game button")
+            self.newGameButtonTap?()
         })
         return btn
     }()

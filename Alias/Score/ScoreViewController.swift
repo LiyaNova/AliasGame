@@ -8,7 +8,7 @@
 import UIKit
 
 
-class ScoreViewController: UIViewController {
+class ScoreViewController: CustomViewController {
     
     private let scoreView = ScoreView()
     private let networkManager = NetworkManager()
@@ -35,6 +35,11 @@ class ScoreViewController: UIViewController {
         }
         
     }
+    
+    override func backButtonTap() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+
 }
 
 

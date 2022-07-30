@@ -25,6 +25,14 @@ class StartMenuViewController: UIViewController {
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
         }
+        
+        startMenuView.newGameButtonTap = {
+            [weak self] in
+            guard let self = self else { return }
+            let vc = TeamsMenuViewController(minNumberOfTeams:2, maxNumberOfTeams: 10)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
 }
 

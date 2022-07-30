@@ -2,12 +2,13 @@
 import UIKit
 
 class TeamsMenuView: UIView {
-
-    private let musicManager = MusicModel()
     
-    var names = ["Команда 1", "Команда 2"]
+    let minNumberOfTeams: Int
+    let maxNumberOfTeams: Int
     
-    var numberOfTeams = 2
+    var teams = [Team]()
+    var addNewTeam :(() -> Void)?
+    var deleteTeam :(() -> Void)?
     
     private lazy var teamsLabel: UILabel = {
         let label = UILabel()
@@ -79,8 +80,11 @@ class TeamsMenuView: UIView {
         return btn
     }()
     
-    override init(frame: CGRect) {
+    init(minNumberOfTeams: Int, maxNumberOfTeams: Int, frame: CGRect) {
+        self.minNumberOfTeams = minNumberOfTeams
+        self.maxNumberOfTeams = maxNumberOfTeams
         super.init(frame: frame)
+        
         self.setupUI()
     }
     
@@ -89,6 +93,7 @@ class TeamsMenuView: UIView {
     }
     
     private func setupUI() {
+        self.backgroundColor = .white
         addSubview(self.nextButton)
         addSubview(self.teamsLabel)
         addSubview(self.minusButton)
@@ -130,45 +135,38 @@ class TeamsMenuView: UIView {
         ])
     }
     
-    @objc func didTapPlusButton(sender: UIButton)
-    {
-        if numberOfTeams != 10 {
-            numberOfTeams += 1
-            self.tableView.reloadData()
-            names.append("Команда \(numberOfTeams)")
-        }
-        if numberOfTeams > 2 {
-            minusButton.tintColor = .black
-        }
-        if numberOfTeams == 10 {
-            plusButton.tintColor = .gray
-        } else {
-            plusButton.tintColor = .black
-        }
-        
-        self.musicManager.playSound(soundName: "Transition")
+    @objc func didTapPlusButton(sender: UIButton) {
+        self.addNewTeam?()
+        self.tableView.reloadData()
     }
     
-    @objc func didTapMinusButton(sender: UIButton)
-    {
-        if numberOfTeams != 2 {
-            numberOfTeams -= 1
-            self.tableView.reloadData()
-            names.removeLast()
-        }
-        if numberOfTeams == 9 {
-            plusButton.tintColor = .black
-        }
-        if numberOfTeams == 2 {
-            minusButton.tintColor = .gray
-        }
-        
-        self.musicManager.playSound(soundName: "Transition")
+    @objc func didTapMinusButton(sender: UIButton) {
+        self.deleteTeam?()
+        self.tableView.reloadData()
     }
     
-    @objc func didTapNextButton(sender: UIButton)
-    {
-        self.musicManager.playSound(soundName: "Transition")
+    @objc func didTapNextButton() {
+        print("tapButton")
+    }
+    
+    private func changePlusMinusButtonColor() {
+        //                    if myTeams.count > 2 {
+        //                        self.tintColor = .black
+        //                    }
+        //                    if numberOfTeams == 10 {
+        //                        plusButton.tintColor = .gray
+        //                    } else {
+        //                        plusButton.tintColor = .black
+        //                    }
+        
+        
+        //        if numberOfTeams == 9 {
+        //            plusButton.tintColor = .black
+        //        }
+        //        if numberOfTeams == 2 {
+        //            minusButton.tintColor = .gray
+        //        }
+        
     }
 }
 
@@ -177,7 +175,8 @@ extension TeamsMenuView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamCell
         
-        cell.teamLabel.text = names[indexPath.section]
+        let team = self.teams[indexPath.section]
+        cell.teamLabel.text = team.name
         cell.teamLabel.textColor = .white
         
         let rest = indexPath.section % 3
@@ -204,7 +203,6 @@ extension TeamsMenuView: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return numberOfTeams
+        return self.teams.count
     }
-    
 }

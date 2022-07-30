@@ -90,11 +90,11 @@ class RulesView: UIView {
         return sv
     }()
     
-    private lazy var textRules: [CustomView] = {
-        var views = [CustomView]()
+    private lazy var textRules: [RuleDescriptionCustomView] = {
+        var views = [RuleDescriptionCustomView]()
         
         for (imageTitle, title) in zip(imageNamesArray, labelTextArray) {
-            let view = CustomView(imageTitle: imageTitle, title: title)
+            let view = RuleDescriptionCustomView(imageTitle: imageTitle, title: title)
             views.append(view)
         }
         return views
