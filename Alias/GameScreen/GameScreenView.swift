@@ -37,9 +37,9 @@ class GameScreenView: UIView {
     }()
     
     // Лейбл с игровым словом
-    private lazy var gameWodrLabel: UILabel = {
+     lazy var gameWodrLabel: UILabel = {
         let label = UILabel()
-        label.text = "ОТРАЖЕНИЕ"
+     //   label.text = "ОТРАЖЕНИЕ"
         label.textColor = .black
         label.font = UIFont(name: "Phosphate-Solid", size: 24)
         label.textAlignment = .center

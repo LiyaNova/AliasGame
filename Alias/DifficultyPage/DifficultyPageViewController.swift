@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DifficultyPageViewController: UIViewController {
+final class DifficultyPageViewController: UIViewController {
 
     private let difficultyPageViuw = DifficultyPageView()
     private var difficultyChoiceModel = DifficultyChoiceModel()
@@ -15,33 +15,30 @@ class DifficultyPageViewController: UIViewController {
     override func loadView() {
         self.view = self.difficultyPageViuw
         difficultyPageViuw.delegate = self
-
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateUI()
-
-        //Настроен навигейшн на страницу, для удобства, можно убрать
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .done, target: nil, action: nil)
-//        self.navigationItem.leftBarButtonItem?.tintColor = .black
     }
 
     private func updateUI() {
-        let image = difficultyChoiceModel.getImage()
-        let color = difficultyChoiceModel.getColor()
-
-        difficultyPageViuw.choiceImageView.image = UIImage(named: image)
-        difficultyPageViuw.levelLabel.textColor = UIColor(named: color)
-        difficultyPageViuw.levelLabel.text = difficultyChoiceModel.getLevelText()
-        difficultyPageViuw.descriptionLabel.text = difficultyChoiceModel.getDescription()
+        let update = difficultyChoiceModel.loadJson()
+        let image = update?.image
+        let color = update?.color
+        difficultyPageViuw.choiceImageView.image = UIImage(named: image!)
+        difficultyPageViuw.levelLabel.textColor = UIColor(named: color!)
+        difficultyPageViuw.levelLabel.text = update?.level
+        difficultyPageViuw.descriptionLabel.text = update?.description
+        difficultyPageViuw.exampleLabel.text = update?.example
     }
 
 }
 
-// MARK: -
-extension DifficultyPageViewController: TapButtonDelegate {
+// MARK: - TapButtonDelegate
 
+extension DifficultyPageViewController: TapButtonDelegate {
+    
     func didForwardChoice() {
         difficultyChoiceModel.makeForwardChoice()
         self.updateUI()
@@ -53,8 +50,11 @@ extension DifficultyPageViewController: TapButtonDelegate {
     }
 
     func didMakeChoice() {
-        // Для пуша следующего экрана
         print("Сменить экран")
+        // Пуш следующего экрана с передачей слов в соотвествии с уровнем через инициализатор
+        let words = difficultyChoiceModel.getWords()
+        let gs = GameScreenViewController(words: words)
+        navigationController?.pushViewController(gs, animated: true)
     }
 
 }

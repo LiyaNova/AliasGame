@@ -1,14 +1,15 @@
 import Foundation
 
-struct WordSetsModel {
-    let title: String
-    let description: String
-    let example: String
-    let words: [String] = []
-    
+struct WordSetsModels: Codable {
+    let level: [WordSetsModel]
 }
 
-struct WordSetsModels {
-    let wordSetsModels: [WordSetsModel] = []
-    
+struct WordSetsModel: Codable {
+    let title: String
+    let image: String
+    let color: String
+    let description: String
+    let example: String
+    let words: [String]
 }
+
