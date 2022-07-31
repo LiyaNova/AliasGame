@@ -5,9 +5,6 @@ import UIKit
 class ScoreViewController: CustomViewController {
     
     private let scoreView = ScoreView()
-    private let networkManager = NetworkManager()
-    private let api = Api()
-    private var jokes: JokeModel?
     
     override func loadView() {
         self.view = self.scoreView
@@ -15,9 +12,6 @@ class ScoreViewController: CustomViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        networkManager.delegate = self
-        networkManager.fetchData(url: api.baseURL)
         
         scoreView.gameButtonTap = {
             [weak self] in
@@ -28,15 +22,9 @@ class ScoreViewController: CustomViewController {
             self.present(vc, animated: true)
         }
     }
-    
+}
+
+
 //    override func backButtonTap() {
 //        self.navigationController?.popToRootViewController(animated: true)
 //    }
-
-}
-
-extension ScoreViewController: NetworkManagerDelegate {
-    func showData(results: JokeModel) {
-        jokes = results
-    }
-}

@@ -11,7 +11,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
 
-        window?.rootViewController = AppNavigationController(rootViewController: StartMenuViewController())
+        window?.rootViewController = ScoreViewController()
+        
+        //AppNavigationController(rootViewController: StartMenuViewController())
         
         window?.makeKeyAndVisible()
         

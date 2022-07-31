@@ -4,14 +4,15 @@ import UIKit
 struct ScoreBrain {
     
     var teamName = ["Команда 2", "Команда 3", "Команда 1"]
-    var teamScore = [11, 7, 20]
+    var teamScore = [1, 0, 4]
     
     var numberOfRound = 2
     var gameButtonTap: (() -> Void)?
 
     
     var maximumScore: Int {
-        return teamScore.max() ?? 0
+        return teamScore.max() ?? -1
+        
     }
     
     func sectionColor(section: Int)-> UIColor {
@@ -35,6 +36,12 @@ struct ScoreBrain {
     }
     
     func showStar(labelScore: String)-> Bool {
-      return  String(maximumScore) == labelScore ? false : true
+        var parametr = true
+        if labelScore == String(0) {
+            return parametr
+        } else if String(maximumScore) == labelScore {
+            parametr = false
+        }
+        return parametr
     }
 }

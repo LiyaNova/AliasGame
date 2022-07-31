@@ -22,7 +22,6 @@ final class Api {
             do {
                 let json = try JSONDecoder().decode(JokeModel.self, from: data)
                 completion(.success(json))
-                print(json)
             } catch let error {
                 print("Ошибка парсинга: \(error)")
             }

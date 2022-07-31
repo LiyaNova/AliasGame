@@ -105,6 +105,7 @@ class ScoreView: UIView {
     
     @objc private func startGame(){
         self.gameButtonTap?()
+        ScoreViewController().dismiss(animated: false)
     }
     
     private func setupUI() {

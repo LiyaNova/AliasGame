@@ -8,7 +8,7 @@ protocol PresentAlertDelegate: AnyObject {
 class ResultScreenView: UIView {
 
     weak var delegate: PresentAlertDelegate?
-
+    var tapImageBtn: (()->())?
     private var scoreDict = ["Команда 2": 8, "Команда 3": 7]
     private var brain = BrainResultScreen()
 
@@ -63,7 +63,10 @@ class ResultScreenView: UIView {
     }()
 
     @objc private func tapCupImage() {
-        delegate?.presentAlert()
+        
+        self.tapImageBtn?()
+        ResultScreenViewController().dismiss(animated: false)
+       // delegate?.presentAlert()
     }
 
     private lazy var winStackView: UIStackView = {
