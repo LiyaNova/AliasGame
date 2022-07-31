@@ -47,19 +47,22 @@ class GameScreenViewController: UIViewController {
         gameScreenView.rightButtonTap = {
             [weak self] in
             guard let self = self else { return }
-            let alert = self.alertManager.showAlert(text: "Верно!")
-            self.present(alert, animated: true, completion: nil)
+            self.alertManager.showCustomAlert(with: "ВЫЙТИ В ГЛАВНОЕ МЕНЮ?", message: "При выходе в главное меню текущая игра будет сброшена, а баллы не сохранятся.", on: self)
             self.musicManager.playSound(soundName: "Right Answer")
         }
     }
     
+    @objc func dismissAlert(){
+        self.alertManager.dismissAlert()
+    }
+    
     func wrongButtonTapped(){
         gameScreenView.wrongButtonTap = {
-            [weak self] in
-            guard let self = self else { return }
-            let alert = self.alertManager.showAlert(text: "Неверно!")
-            self.present(alert, animated: true, completion: nil)
-            self.musicManager.playSound(soundName: "Wrong Answer")
+//            [weak self] in
+//            guard let self = self else { return }
+//            let alert = self.alertManager.showAlert(text: "Неверно!")
+//            self.present(alert, animated: true, completion: nil)
+//            self.musicManager.playSound(soundName: "Wrong Answer")
         }
     }
     
