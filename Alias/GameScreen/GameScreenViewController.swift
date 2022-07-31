@@ -10,9 +10,9 @@ import UIKit
 class GameScreenViewController: UIViewController {
 
   // Переменная и ее инициализатор для передачи данных о словах в соотвествии с выбранным уровнем
-    var words: [String]?
+    var words: [String] = ["авиация"]
 
-     init(words: [String]?) {
+     init(words: [String]) {
         self.words = words
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,7 +32,7 @@ class GameScreenViewController: UIViewController {
         super.viewDidLoad()
         
         //Для примера вывела на экран слово по выбранному уровню, у лейбла во GameScreenView текстполе закомментила
-        gameScreenView.gameWodrLabel.text = words![0]
+        gameScreenView.gameWodrLabel.text = words[0]
         
         self.view = self.gameScreenView
         rightButtonTapped()
