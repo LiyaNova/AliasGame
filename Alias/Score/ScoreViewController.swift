@@ -29,7 +29,7 @@ class ScoreViewController: CustomViewController {
             [weak self] in
             guard let self = self else { return }
             //Прописала nil в созданный инициализатор, чтобы не ругался
-            let vc = GameScreenViewController(words: nil)
+            let vc = GameScreenViewController(words: ["word"])
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
         }
