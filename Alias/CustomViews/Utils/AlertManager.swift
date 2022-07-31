@@ -16,6 +16,8 @@ final class AlertManager {
         static let backgroundAlphaTo: CGFloat = 0.6
     }
     
+    // MARK: - UI elements
+    
     private let backgroundView: UIView = {
         let backgroundView = UIView()
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,9 +81,11 @@ final class AlertManager {
         return label
     }()
     
+    
+    //MARK: - Methods
     func showCustomAlert(with title: String,
-                   message: String,
-                   on viewController: UIViewController){
+                         message: String,
+                         on viewController: UIViewController){
         
         guard let targetView = viewController.view else { return }
         
@@ -113,17 +117,26 @@ final class AlertManager {
         
     }
     
+    private func deleteAlpha(){
+        self.alertView.removeFromSuperview()
+        self.backgroundView.removeFromSuperview()
+    }
+    
+    private func createView(){
+        
+        guard let targetView = myTargetView else {return}
+        self.alertView.frame = CGRect(x: 40,
+                                      y: targetView.frame.size.height,
+                                      width: targetView.frame.size.width - 80,
+                                      height: 300)
+    }
+    
     // Закрыть алерт без выхода из приложения
     @objc func dismissAlert(){
         
-        guard let targetView = myTargetView else {return}
-        
         UIView.animate(withDuration: 0.25,
                        animations: {
-            self.alertView.frame = CGRect(x: 40,
-                                          y: targetView.frame.size.height,
-                                          width: targetView.frame.size.width - 80,
-                                          height: 300)
+            self.createView()
         }, completion: { done in
             if done {
                 UIView.animate(withDuration: 0.25, animations: {
@@ -131,24 +144,20 @@ final class AlertManager {
                 }, completion: {
                     done in
                     if done {
-                        self.alertView.removeFromSuperview()
-                        self.backgroundView.removeFromSuperview()
+                        self.deleteAlpha()
                     }
                 })
             }
         })
     }
     
-    @objc func dismissAlertAndCloseApp(){
-        
-        guard let targetView = myTargetView else {return}
+    
+    //Закрыть алерт и закрыть приложение
+    @objc private func dismissAlertAndCloseApp(){
         
         UIView.animate(withDuration: 0.25,
                        animations: {
-            self.alertView.frame = CGRect(x: 40,
-                                          y: targetView.frame.size.height,
-                                          width: targetView.frame.size.width - 80,
-                                          height: 300)
+            self.createView()
         }, completion: { done in
             if done {
                 UIView.animate(withDuration: 0.25, animations: {
@@ -156,8 +165,7 @@ final class AlertManager {
                 }, completion: {
                     done in
                     if done {
-                        self.alertView.removeFromSuperview()
-                        self.backgroundView.removeFromSuperview()
+                        self.deleteAlpha()
                         exit(0)
                     }
                 })
@@ -165,6 +173,15 @@ final class AlertManager {
         })
     }
     
+    // Стандартный алерт
+    func showStandartAlert(text: String) -> UIAlertController {
+        let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) in }
+        alert.addAction(action)
+        return alert
+    }
+    
+    // MARK: - Setup constraints
     private func setupUI() {
         
         alertView.addSubview(self.stayButton)
@@ -195,12 +212,4 @@ final class AlertManager {
         ])
     }
     
-    /*
-     func showAlert(text: String) -> UIAlertController {
-     let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
-     let action = UIAlertAction(title: "OK", style: .default) { (action) in }
-     alert.addAction(action)
-     return alert
-     }
-     */
 }
