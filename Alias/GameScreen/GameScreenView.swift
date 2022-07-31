@@ -7,7 +7,7 @@ class GameScreenView: UIView {
     var wrongButtonTap: (() -> Void)?
     var openScore: (() -> Void)?
     private var timer = Timer()
-    private var seconds = 6
+    private var seconds = 60
     
     // MARK: - UI elements
     

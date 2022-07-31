@@ -166,7 +166,6 @@
 				77448CD9289229DB0040A442 /* GameScreen */,
 				38C4461B2893F2F0009EED5E /* ResultScreen */,
 				77448CBA28902A3A0040A442 /* CustomViews */,
-				9FBD47B22892CCCA00687891 /* Networking */,
 				77CF5EBB289557DB001C9A2F /* Resourses */,
 				77448CB3289020C50040A442 /* Info.plist */,
 				9F13E32828940E640067D43A /* Utils */,
@@ -299,6 +298,7 @@
 		77CF5EB928955719001C9A2F /* JokeModel */ = {
 			isa = PBXGroup;
 			children = (
+				9FBD47B22892CCCA00687891 /* Networking */,
 				9FBD47B82892CE0F00687891 /* JokeModel.swift */,
 			);
 			path = JokeModel;
