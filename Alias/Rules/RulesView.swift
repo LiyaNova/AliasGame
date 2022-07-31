@@ -2,8 +2,8 @@
 import UIKit
 
 class RulesView: UIView {
-    
     var backStartMenuButtonTap: (() -> Void)?
+    
     private let imageNamesArray: [String] = ["Goodies Ok",
                                              "Goodies Nope",
                                              "Goodies Please",
@@ -40,7 +40,7 @@ class RulesView: UIView {
         NSLayoutConstraint.activate([
             view.widthAnchor.constraint(equalToConstant: 40)
         ])
-        
+    
         return view
     }()
     
@@ -67,7 +67,7 @@ class RulesView: UIView {
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.text = "УВЛЕКАТЕЛЬНАЯ КОМАНДНАЯ ИГРА ДЛЯ ВЕСЁЛОЙ КОМПАНИИ"
+        label.text = "УВЛЕКАТЕЛЬНАЯ КОМАНДНАЯ\nИГРА ДЛЯ ВЕСЁЛОЙ КОМПАНИИ"
         label.textColor = .white
         label.font = UIFont(name: "Piazzolla-Black", size: 16.0)
         label.numberOfLines = 0
@@ -77,10 +77,9 @@ class RulesView: UIView {
         return label
     }()
     
-    private lazy var textStackView: UIStackView = {
+    private lazy var topStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews:
                                 [
-                                    self.customNavigationBarStack,
                                     self.aliasImageView,
                                     self.textLabel
                                 ])
@@ -101,40 +100,51 @@ class RulesView: UIView {
         return views
     }()
     
-    private lazy var textRulesStackView: UIStackView = {
+    private lazy var bottomStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: self.textRules)
         sv.axis = .vertical
         sv.spacing = 24.0
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.alignment = .fill
         
+//        let bgView = UIView()
+//        bgView.backgroundColor = .white
+//        sv.pinBackground(bgView)
+        
         return sv
     }()
     
-    private lazy var whiteBackground: UIView = {
+    private lazy var bottomContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(self.textRulesStackView)
-        
+        view.backgroundColor = .white
         return view
     }()
     
-    private lazy var containerStackView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [self.textStackView,
-                                                self.whiteBackground
-                                               ])
-        sv.axis = .vertical
+    private lazy var containerScrollView: UIScrollView = {
+        let sv = UIScrollView()
         sv.translatesAutoresizingMaskIntoConstraints = false
-        
+        sv.showsVerticalScrollIndicator = false
         return sv
     }()
     
+    private lazy var containerView: UIView = {
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(self.contentStackView)
+        
+        return container
+    }()
     
-    private lazy var myScroleView: UIScrollView = {
-        let sv = UIScrollView()
-        
-        
+    private lazy var contentStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [
+            self.topStackView,
+            self.bottomContainerView
+        ])
+        sv.axis = .vertical
+        sv.spacing = 24.0
+        sv.alignment = .fill
+        sv.translatesAutoresizingMaskIntoConstraints = false
         
         return sv
     }()
@@ -150,34 +160,33 @@ class RulesView: UIView {
     }
     
     private func setupUI() {
-     
-        backgroundColor = UIColor(named: "RoyalBlueColor")
-        addSubview(self.containerStackView)
+        self.backgroundColor = UIColor(named: "RoyalBlueColor")
+        
+        self.addSubview(self.customNavigationBarStack)
+        self.addSubview(self.containerScrollView)
+        
+        self.containerScrollView.addSubview(self.containerView)
+        self.containerView.pin(to: self.containerScrollView)
+        
+        self.bottomContainerView.addSubview(self.bottomStackView)
+        self.bottomStackView.pin(to: self.bottomContainerView, edges: .init(top: 30, left: 0, bottom: 16, right: 0))
         
         NSLayoutConstraint.activate([
+            self.customNavigationBarStack.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            self.customNavigationBarStack.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            self.customNavigationBarStack.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
             
-            self.containerStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            self.containerStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
-            self.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: self.containerStackView.trailingAnchor),
-            self.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: self.containerStackView.bottomAnchor),
+            self.containerScrollView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            self.containerScrollView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
+            self.containerScrollView.topAnchor.constraint(equalTo: self.customNavigationBarStack.bottomAnchor, constant: 30),
+            self.containerScrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
             
-            self.textStackView.topAnchor.constraint(equalTo: self.containerStackView.safeAreaLayoutGuide.topAnchor, constant: 35),
-            self.textStackView.widthAnchor.constraint(equalTo: self.containerStackView.safeAreaLayoutGuide.widthAnchor, constant: -48.0),
-            self.textStackView.centerXAnchor.constraint(equalTo: self.containerStackView.safeAreaLayoutGuide.centerXAnchor),
-            self.textLabel.centerXAnchor.constraint(equalTo: self.containerStackView.centerXAnchor),
+            self.containerScrollView.widthAnchor.constraint(equalTo: self.contentStackView.widthAnchor),
             
-            self.aliasImageView.widthAnchor.constraint(equalToConstant: 147),
             self.aliasImageView.heightAnchor.constraint(equalToConstant: 64),
-            
-            self.textStackView.bottomAnchor.constraint(equalTo: self.containerStackView.topAnchor, constant: -27.0),
-            self.whiteBackground.leadingAnchor.constraint(equalTo: self.containerStackView.safeAreaLayoutGuide.leadingAnchor),
-            self.containerStackView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: self.whiteBackground.trailingAnchor),
-            self.containerStackView.bottomAnchor.constraint(equalTo: self.whiteBackground.bottomAnchor),
-            
-            self.textRulesStackView.topAnchor.constraint(equalTo: self.whiteBackground.topAnchor, constant: 32.0),
-            self.textRulesStackView.centerXAnchor.constraint(equalTo: self.whiteBackground.centerXAnchor),
-            self.textRulesStackView.widthAnchor.constraint(equalTo: self.whiteBackground.widthAnchor, constant: -32.0),
         ])
+        
+        self.contentStackView.pin(to: self.containerView)
     }
     
     @objc private func tapBackButton() {

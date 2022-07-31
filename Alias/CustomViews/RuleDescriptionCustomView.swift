@@ -25,14 +25,12 @@ class RuleDescriptionCustomView: UIView {
         addSubview(label)
         
         NSLayoutConstraint.activate([
-            
-            self.image.topAnchor.constraint(equalTo: self.topAnchor),
-            self.image.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.bottomAnchor.constraint(equalTo: self.image.bottomAnchor),
+            self.image.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            self.image.centerYAnchor.constraint(equalTo: self.label.centerYAnchor),
             
             self.label.topAnchor.constraint(equalTo: self.topAnchor),
             self.label.leadingAnchor.constraint(equalTo: self.image.trailingAnchor, constant: 16.0),
-            self.trailingAnchor.constraint(equalTo: self.label.trailingAnchor),
+            self.trailingAnchor.constraint(equalTo: self.label.trailingAnchor, constant: 16),
             self.bottomAnchor.constraint(equalTo: self.label.bottomAnchor)
         ])
     }

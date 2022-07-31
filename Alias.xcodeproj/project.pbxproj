@@ -48,6 +48,7 @@
 		77CF5EBF2895A493001C9A2F /* Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EBD2895A493001C9A2F /* Teams.swift */; };
 		77CF5EC12895A4F9001C9A2F /* SetWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 77CF5EC02895A4F9001C9A2F /* SetWords.json */; };
 		77CF5EC32895BEFC001C9A2F /* MyCustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC22895BEFC001C9A2F /* MyCustomBackButton.swift */; };
+		77CF5EC5289691F9001C9A2F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */; };
 		9F13E32A28940E970067D43A /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13E32928940E970067D43A /* AlertManager.swift */; };
 		9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */; };
 		9FBD47AD289270A200687891 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AC289270A200687891 /* ScoreViewController.swift */; };
@@ -103,6 +104,7 @@
 		77CF5EBD2895A493001C9A2F /* Teams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teams.swift; sourceTree = "<group>"; };
 		77CF5EC02895A4F9001C9A2F /* SetWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SetWords.json; sourceTree = "<group>"; };
 		77CF5EC22895BEFC001C9A2F /* MyCustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomBackButton.swift; sourceTree = "<group>"; };
+		77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		9F13E32928940E970067D43A /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainResultScreen.swift; sourceTree = "<group>"; };
 		9FBD47AC289270A200687891 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 		77CF5EBB289557DB001C9A2F /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */,
 				77CF5EB128953944001C9A2F /* Launch Screen.storyboard */,
 				77448CAE289020C50040A442 /* Assets.xcassets */,
 				77448CEF28925E270040A442 /* Music */,
@@ -438,6 +441,7 @@
 				77CF5EB62895569D001C9A2F /* CustomNavigationBar.swift in Sources */,
 				9FBD47B42892CDB400687891 /* NetworkManager.swift in Sources */,
 				77448CEB289255770040A442 /* TeamsMenuViewController.swift in Sources */,
+				77CF5EC5289691F9001C9A2F /* UIView+Constraints.swift in Sources */,
 				77448CD02891499E0040A442 /* RulesViewController.swift in Sources */,
 				9FBD47AD289270A200687891 /* ScoreViewController.swift in Sources */,
 				9FBD47BC2893DE3D00687891 /* ScoreBrain.swift in Sources */,
