@@ -120,9 +120,9 @@ class TeamsMenuView: UIView {
     }
 
     private func changePlusMinusButtonColor() {
-        if teams.count == 2 {
+        if teams.count == minNumberOfTeams {
             minusButton.tintColor = .gray
-        } else if teams.count == 10 {
+        } else if teams.count == maxNumberOfTeams {
             plusButton.tintColor = .gray
         } else {
             plusButton.tintColor = .black
@@ -158,7 +158,7 @@ extension TeamsMenuView: UITableViewDataSource, UITableViewDelegate {
     }
     
     internal func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 10 // это расстояние, а не кол-во команд
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1

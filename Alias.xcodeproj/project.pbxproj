@@ -125,6 +125,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A6AEE12289674F60072412D /* MusicModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A8EB12B28957E8C00BB6D04 /* MusicModel.swift */,
+			);
+			path = MusicModel;
+			sourceTree = "<group>";
+		};
 		38C4461B2893F2F0009EED5E /* ResultScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,7 +262,6 @@
 				77448CF7289261750040A442 /* Start Timer.wav */,
 				77448CF5289261750040A442 /* Transition.wav */,
 				77448CF6289261750040A442 /* Wrong Answer.wav */,
-				2A8EB12B28957E8C00BB6D04 /* MusicModel.swift */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -262,6 +269,7 @@
 		77448D0228926E400040A442 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2A6AEE12289674F60072412D /* MusicModel */,
 				77CF5EBA28955734001C9A2F /* TeamModel */,
 				77448D072892C00A0040A442 /* WordSetsModel */,
 				77CF5EB928955719001C9A2F /* JokeModel */,

@@ -8,6 +8,15 @@ class TeamsMenuViewController: CustomViewController {
     override var nameViewControler: String { "КОМАНДЫ" }
     let minNumberOfTeams: Int
     let maxNumberOfTeams: Int
+    var setOfUsedNames: Set<String> = []
+    private let musicManager = MusicModel()
+    
+    func updateSetOfNames() {
+        setOfUsedNames = []
+        for i in 0..<self.teamsMenuView.teams.count {
+            setOfUsedNames.insert(self.teamsMenuView.teams[i].name)
+        }
+    }
     
     private lazy var teamsMenuView = TeamsMenuView(minNumberOfTeams: self.minNumberOfTeams, maxNumberOfTeams: self.maxNumberOfTeams, frame: .zero)
     
@@ -41,14 +50,27 @@ class TeamsMenuViewController: CustomViewController {
         ])
         
         let firstTwoTeams = Teams().makeTeams(count: minNumberOfTeams)
+ 
         self.teamsMenuView.teams = firstTwoTeams
+        self.updateSetOfNames()
         
         teamsMenuView.addNewTeam = {
+            
             [weak self] in
             guard let self = self else { return }
             
-            if self.teamsMenuView.teams.count != self.maxNumberOfTeams {
-                self.teamsMenuView.teams.append(Teams().makeNewTeam())
+            var added = true
+            self.musicManager.playSound(soundName: "Transition")
+            
+                if self.teamsMenuView.teams.count != self.maxNumberOfTeams {
+                    while (added) {
+                        let newTeam = Teams().makeNewTeam()
+                        if !self.setOfUsedNames.contains(newTeam.name) {
+                            self.teamsMenuView.teams.append(newTeam)
+                            self.updateSetOfNames()
+                            added.toggle()
+                        }
+                    }
             }
         }
         teamsMenuView.deleteTeam = {
@@ -57,7 +79,9 @@ class TeamsMenuViewController: CustomViewController {
             
             if self.teamsMenuView.teams.count != self.minNumberOfTeams {
                 self.teamsMenuView.teams.removeLast()
+                self.updateSetOfNames()
             }
+            self.musicManager.playSound(soundName: "Transition")
         }
         
         teamsMenuView.nextVC = {
@@ -66,6 +90,8 @@ class TeamsMenuViewController: CustomViewController {
             
             let vc = DifficultyPageViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+            self.musicManager.playSound(soundName: "Transition")
+            
         }
     }
 }
