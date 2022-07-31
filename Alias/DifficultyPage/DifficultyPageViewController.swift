@@ -6,6 +6,7 @@ final class DifficultyPageViewController: CustomViewController {
     override var nameViewControler: String { "УРОВЕНЬ \nСЛОЖНОСТИ" }
     private lazy var difficultyPageViuw = DifficultyPageView()
     private var difficultyChoiceModel = DifficultyChoiceModel()
+    private let musicManager = MusicModel()
 
 //    override func loadView() {
 //        self.view = self.difficultyPageViuw
@@ -46,11 +47,13 @@ extension DifficultyPageViewController: TapButtonDelegate {
     
     func didForwardChoice() {
         difficultyChoiceModel.makeForwardChoice()
+        self.musicManager.playSound(soundName: "Transition")
         self.updateUI()
     }
 
     func didBackChoice() {
         difficultyChoiceModel.makeBackChoice()
+        self.musicManager.playSound(soundName: "Transition")
         self.updateUI()
     }
 

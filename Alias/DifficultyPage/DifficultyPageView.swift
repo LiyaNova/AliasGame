@@ -47,6 +47,20 @@ final class DifficultyPageView: UIView {
         self.delegate?.didForwardChoice()
     }
 
+    private lazy var imageStackView: UIStackView = {
+        let imageStackView = UIStackView(arrangedSubviews:
+                                [
+                                    self.backButton,
+                                    self.choiceImageView,
+                                    self.forwardButton
+                                ])
+        imageStackView.axis = .horizontal
+        imageStackView.spacing = 8.0
+        imageStackView.alignment = .center
+        imageStackView.translatesAutoresizingMaskIntoConstraints = false
+        return imageStackView
+    }()
+
     var levelLabel: UILabel = {
         let levelLabel = UILabel()
         levelLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +78,7 @@ final class DifficultyPageView: UIView {
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
         descriptionLabel.textAlignment = .center
-        descriptionLabel.font = UIFont(name: "Piazzolla", size: 16)
+        descriptionLabel.font = UIFont(name: "Piazzolla", size: 20)
         return descriptionLabel
     }()
 
@@ -76,8 +90,22 @@ final class DifficultyPageView: UIView {
         exampleLabel.numberOfLines = 0
         exampleLabel.lineBreakMode = .byWordWrapping
         exampleLabel.textAlignment = .center
-        exampleLabel.font = UIFont(name: "Piazzolla", size: 16)
+        exampleLabel.font = UIFont(name: "Piazzolla", size: 20)
         return exampleLabel
+    }()
+
+    private lazy var labelStackView: UIStackView = {
+        let labelStackView = UIStackView(arrangedSubviews:
+                                [
+                                    self.levelLabel,
+                                    self.descriptionLabel,
+                                    self.exampleLabel
+                                ])
+        labelStackView.axis = .vertical
+        labelStackView.spacing = 5.0
+        labelStackView.alignment = .center
+        labelStackView.translatesAutoresizingMaskIntoConstraints = false
+        return labelStackView
     }()
 
      private lazy var bottomButton: UIButton = {
@@ -107,14 +135,9 @@ final class DifficultyPageView: UIView {
     }
 
     private func setViews() {[
-        
 //        self.titleLabel,
-        self.backButton,
-        self.choiceImageView,
-        self.forwardButton,
-        self.levelLabel,
-        self.descriptionLabel,
-        self.exampleLabel,
+        self.imageStackView,
+        self.labelStackView,
         self.bottomButton
     ].forEach { self.addSubview($0) }
 
@@ -123,33 +146,13 @@ final class DifficultyPageView: UIView {
 //            self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 //            self.titleLabel.widthAnchor.constraint(equalToConstant: 150),
 
-            self.backButton.centerYAnchor.constraint(equalTo: self.choiceImageView.centerYAnchor),
-            self.backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            self.backButton.trailingAnchor.constraint(equalTo: self.choiceImageView.leadingAnchor, constant: 8),
+            imageStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 40),
+            imageStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
-            choiceImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 59),
-            choiceImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            choiceImageView.widthAnchor.constraint(equalToConstant: 247),
-            choiceImageView.heightAnchor.constraint(equalToConstant: 257),
+            labelStackView.topAnchor.constraint(equalTo: imageStackView.bottomAnchor, constant: 15),
+            labelStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
+            labelStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
 
-            self.forwardButton.centerYAnchor.constraint(equalTo: self.choiceImageView.centerYAnchor),
-            self.forwardButton.leadingAnchor.constraint(equalTo: self.choiceImageView.trailingAnchor, constant: -8),
-            self.forwardButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
-                                                    constant: -16),
-
-            self.levelLabel.topAnchor.constraint(equalTo: self.choiceImageView.bottomAnchor, constant: 16),
-            self.levelLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-
-            self.descriptionLabel.topAnchor.constraint(equalTo: self.levelLabel.bottomAnchor, constant: 34),
-            self.descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            self.descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
-            self.descriptionLabel.heightAnchor.constraint(equalToConstant: 60),
-
-            self.exampleLabel.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor,
-                                                   constant: 5),
-            self.exampleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            self.exampleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
-            self.exampleLabel.heightAnchor.constraint(equalToConstant: 60),
 
             self.bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
                                                  constant: -11),
