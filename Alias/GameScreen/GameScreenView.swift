@@ -5,13 +5,16 @@ class GameScreenView: UIView {
     
     var rightButtonTap: (() -> Void)?
     var wrongButtonTap: (() -> Void)?
+    var openScore: (() -> Void)?
+    private var timer = Timer()
+    private var seconds = 6
     
     // MARK: - UI elements
     
     // Лейбл с секундами
     private lazy var secondsLabel: UILabel = {
         let label = UILabel()
-        label.text = "27"
+        label.text = "\(seconds)"
         label.textColor = .black
         label.font = UIFont(name: "Phosphate-Solid", size: 72)
         label.textAlignment = .center
@@ -97,6 +100,7 @@ class GameScreenView: UIView {
         super .init(frame: frame)
         self.setupUI()
         self.backgroundColor = .white
+        self.gameTimer()
     }
     
     required init?(coder: NSCoder) {
@@ -109,6 +113,23 @@ class GameScreenView: UIView {
     
     @objc private func wrongAnswer(){
         self.wrongButtonTap?()
+    }
+    
+    private func gameTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(startTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func startTimer(){
+        
+        if seconds > 0 {
+            seconds -= 1
+            secondsLabel.text = String(seconds)
+        }
+        if seconds == 0 {
+            self.openScore?()
+            timer.invalidate()
+        }
+        
     }
     
     private func setupUI() {
