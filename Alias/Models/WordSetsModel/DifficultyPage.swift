@@ -1,9 +1,3 @@
-//
-//  DifficultyPage.swift
-//  Alias
-//
-//  Created by Юлия Филимонова on 28.07.2022.
-//
 
 import Foundation
 

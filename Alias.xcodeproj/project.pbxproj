@@ -47,6 +47,7 @@
 		77CF5EBE2895A493001C9A2F /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EBC2895A493001C9A2F /* Team.swift */; };
 		77CF5EBF2895A493001C9A2F /* Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EBD2895A493001C9A2F /* Teams.swift */; };
 		77CF5EC12895A4F9001C9A2F /* SetWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 77CF5EC02895A4F9001C9A2F /* SetWords.json */; };
+		77CF5EC32895BEFC001C9A2F /* MyCustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC22895BEFC001C9A2F /* MyCustomBackButton.swift */; };
 		9F13E32A28940E970067D43A /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13E32928940E970067D43A /* AlertManager.swift */; };
 		9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */; };
 		9FBD47AD289270A200687891 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AC289270A200687891 /* ScoreViewController.swift */; };
@@ -101,6 +102,7 @@
 		77CF5EBC2895A493001C9A2F /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		77CF5EBD2895A493001C9A2F /* Teams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teams.swift; sourceTree = "<group>"; };
 		77CF5EC02895A4F9001C9A2F /* SetWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SetWords.json; sourceTree = "<group>"; };
+		77CF5EC22895BEFC001C9A2F /* MyCustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomBackButton.swift; sourceTree = "<group>"; };
 		9F13E32928940E970067D43A /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainResultScreen.swift; sourceTree = "<group>"; };
 		9FBD47AC289270A200687891 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
@@ -160,8 +162,8 @@
 				77448CCC289149420040A442 /* Rules */,
 				77448CE6289255770040A442 /* TeamsMenu */,
 				77448CDE289229F90040A442 /* DifficultyPage */,
-				77448CD9289229DB0040A442 /* GameScreen */,
 				9FBD47AA2892708700687891 /* Score */,
+				77448CD9289229DB0040A442 /* GameScreen */,
 				38C4461B2893F2F0009EED5E /* ResultScreen */,
 				77448CBA28902A3A0040A442 /* CustomViews */,
 				9FBD47B22892CCCA00687891 /* Networking */,
@@ -179,6 +181,7 @@
 				77448CD72891AB930040A442 /* RuleDescriptionCustomView.swift */,
 				77448CBF289047CF0040A442 /* CustomButton.swift */,
 				77CF5EB52895569D001C9A2F /* CustomNavigationBar.swift */,
+				77CF5EC22895BEFC001C9A2F /* MyCustomBackButton.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -259,9 +262,9 @@
 		77448D0228926E400040A442 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				77CF5EBA28955734001C9A2F /* TeamModel */,
 				77448D072892C00A0040A442 /* WordSetsModel */,
 				77CF5EB928955719001C9A2F /* JokeModel */,
-				77CF5EBA28955734001C9A2F /* TeamModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				77448CDD289229DC0040A442 /* GameScreenView.swift in Sources */,
 				9FBD47B128927C0000687891 /* ScoreCell.swift in Sources */,
 				77448CE2289229F90040A442 /* DifficultyChoiceModel.swift in Sources */,
+				77CF5EC32895BEFC001C9A2F /* MyCustomBackButton.swift in Sources */,
 				77448CE4289229F90040A442 /* DifficultyPageViewController.swift in Sources */,
 				77448D102892DCF20040A442 /* CustomViewController.swift in Sources */,
 				77448CDC289229DC0040A442 /* GameScreenViewController.swift in Sources */,

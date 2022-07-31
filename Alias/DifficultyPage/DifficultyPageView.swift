@@ -8,21 +8,8 @@ protocol TapButtonDelegate: AnyObject {
 }
 
 final class DifficultyPageView: UIView {
-
+    
     weak var delegate: TapButtonDelegate?
-
-    private var titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.backgroundColor = .white
-        titleLabel.text = "Уровень сложности"
-        titleLabel.textAlignment = .center
-        titleLabel.lineBreakMode = .byWordWrapping
-        titleLabel.numberOfLines = 0
-        titleLabel.textColor = .black
-        titleLabel.font = UIFont(name: "Phosphate-Solid", size: 24)
-        return titleLabel
-    }()
 
     private lazy var backButton: UIButton = {
         let backButton = UIButton()
@@ -73,10 +60,11 @@ final class DifficultyPageView: UIView {
         let descriptionLabel = UILabel()
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.backgroundColor = .white
+        descriptionLabel.textColor = .black
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
         descriptionLabel.textAlignment = .center
-        descriptionLabel.font = UIFont(name: "Piazzolla-Medium", size: 16)
+        descriptionLabel.font = UIFont(name: "Piazzolla", size: 16)
         return descriptionLabel
     }()
 
@@ -84,10 +72,11 @@ final class DifficultyPageView: UIView {
         let exampleLabel = UILabel()
         exampleLabel.translatesAutoresizingMaskIntoConstraints = false
         exampleLabel.backgroundColor = .white
+        exampleLabel.textColor = .black
         exampleLabel.numberOfLines = 0
         exampleLabel.lineBreakMode = .byWordWrapping
         exampleLabel.textAlignment = .center
-        exampleLabel.font = UIFont(name: "Piazzolla-Medium", size: 16)
+        exampleLabel.font = UIFont(name: "Piazzolla", size: 16)
         return exampleLabel
     }()
 
@@ -117,26 +106,28 @@ final class DifficultyPageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setViews() {
-        [self.titleLabel,
-         self.backButton,
-         self.choiceImageView,
-         self.forwardButton,
-         self.levelLabel,
-         self.descriptionLabel,
-         self.exampleLabel,
-         self.bottomButton].forEach { self.addSubview($0) }
+    private func setViews() {[
+        
+//        self.titleLabel,
+        self.backButton,
+        self.choiceImageView,
+        self.forwardButton,
+        self.levelLabel,
+        self.descriptionLabel,
+        self.exampleLabel,
+        self.bottomButton
+    ].forEach { self.addSubview($0) }
 
         NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.titleLabel.widthAnchor.constraint(equalToConstant: 150),
+//            self.titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+//            self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            self.titleLabel.widthAnchor.constraint(equalToConstant: 150),
 
             self.backButton.centerYAnchor.constraint(equalTo: self.choiceImageView.centerYAnchor),
             self.backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.backButton.trailingAnchor.constraint(equalTo: self.choiceImageView.leadingAnchor, constant: 8),
 
-            choiceImageView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 59),
+            choiceImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 59),
             choiceImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             choiceImageView.widthAnchor.constraint(equalToConstant: 247),
             choiceImageView.heightAnchor.constraint(equalToConstant: 257),

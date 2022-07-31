@@ -1,9 +1,3 @@
-//
-//  ScoreViewController.swift
-//  Alias
-//
-//  Created by Alex Ch. on 28.07.2022.
-//
 
 import UIKit
 
@@ -33,15 +27,13 @@ class ScoreViewController: CustomViewController {
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
         }
-        
     }
     
-    override func backButtonTap() {
-        self.navigationController?.popToRootViewController(animated: true)
-    }
+//    override func backButtonTap() {
+//        self.navigationController?.popToRootViewController(animated: true)
+//    }
 
 }
-
 
 extension ScoreViewController: NetworkManagerDelegate {
     func showData(results: JokeModel) {

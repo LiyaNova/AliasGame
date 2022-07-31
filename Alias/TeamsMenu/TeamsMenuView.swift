@@ -9,15 +9,7 @@ class TeamsMenuView: UIView {
     var teams = [Team]()
     var addNewTeam :(() -> Void)?
     var deleteTeam :(() -> Void)?
-    
-    private lazy var teamsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Команды"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
-        label.font = UIFont(name: "Phosphate-Solid", size: 24)
-        return label
-    }()
+    var nextVC :(() -> Void)?
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: self.bounds, style: .plain)
@@ -69,17 +61,6 @@ class TeamsMenuView: UIView {
         return btn
     }()
     
-    private lazy var backButton: UIButton = {
-        let btn = UIButton()
-        let homeSymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40)
-        let image = UIImage(systemName: "chevron.left", withConfiguration: homeSymbolConfiguration)
-        btn.setImage(image, for: .normal)
-        btn.tintColor = .black
-        btn.translatesAutoresizingMaskIntoConstraints = false
-
-        return btn
-    }()
-    
     init(minNumberOfTeams: Int, maxNumberOfTeams: Int, frame: CGRect) {
         self.minNumberOfTeams = minNumberOfTeams
         self.maxNumberOfTeams = maxNumberOfTeams
@@ -93,14 +74,10 @@ class TeamsMenuView: UIView {
     }
     
     private func setupUI() {
-        self.backgroundColor = .white
         addSubview(self.nextButton)
-        addSubview(self.teamsLabel)
         addSubview(self.minusButton)
         addSubview(self.plusButton)
         addSubview(self.tableView)
-        addSubview(self.backButton)
-        
         
         NSLayoutConstraint.activate([
             
@@ -108,30 +85,21 @@ class TeamsMenuView: UIView {
             self.nextButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -11),
             self.nextButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             self.nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
-            
-            self.teamsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.teamsLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 35),
-            
+
             self.minusButton.trailingAnchor.constraint(equalTo: self.centerXAnchor),
             self.minusButton.heightAnchor.constraint(equalToConstant: 40),
             self.minusButton.widthAnchor.constraint(equalToConstant: 40),
-            self.minusButton.topAnchor.constraint(equalTo: teamsLabel.bottomAnchor, constant: 16),
+            self.minusButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             
             self.plusButton.leadingAnchor.constraint(equalTo: self.centerXAnchor),
             self.plusButton.heightAnchor.constraint(equalToConstant: 40),
             self.plusButton.widthAnchor.constraint(equalToConstant: 40),
-            self.plusButton.topAnchor.constraint(equalTo: teamsLabel.bottomAnchor, constant: 16),
+            self.plusButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             
             self.tableView.topAnchor.constraint(equalTo: self.plusButton.bottomAnchor, constant: 16),
             self.tableView.bottomAnchor.constraint(equalTo: self.nextButton.topAnchor, constant: -16),
             self.tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            
-            self.backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            self.backButton.heightAnchor.constraint(equalToConstant: 40),
-            self.backButton.widthAnchor.constraint(equalToConstant: 40),
-            self.backButton.centerYAnchor.constraint(equalTo: self.teamsLabel.centerYAnchor)
-            
+            self.tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
     }
     
@@ -148,9 +116,9 @@ class TeamsMenuView: UIView {
     }
     
     @objc func didTapNextButton() {
-        print("tapButton")
+        self.nextVC?()
     }
-    
+
     private func changePlusMinusButtonColor() {
         if teams.count == 2 {
             minusButton.tintColor = .gray
