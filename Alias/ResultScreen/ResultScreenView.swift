@@ -53,6 +53,21 @@ class ResultScreenView: UIView {
         return cupImage
     }()
 
+    private lazy var winStackView: UIStackView = {
+        let winStackView = UIStackView(arrangedSubviews:
+                                [
+                                    self.teamLabel,
+                                    self.winLabel,
+                                    self.circleLabel,
+                                    self.cupImage
+                                ])
+        winStackView.axis = .vertical
+        winStackView.spacing = 5.0
+        winStackView.alignment = .center
+        winStackView.translatesAutoresizingMaskIntoConstraints = false
+        return winStackView
+    }()
+
     private lazy var resultTableView: UITableView = {
         let resultTableView = UITableView(frame: self.bounds, style: .plain)
         resultTableView.dataSource = self
@@ -93,10 +108,7 @@ class ResultScreenView: UIView {
 
     private func setViews() {
         [self.backgroundImage,
-         self.teamLabel,
-         self.winLabel,
-         self.circleLabel,
-         self.cupImage,
+         self.winStackView,
          self.resultTableView,
          self.bottomButton].forEach { self.addSubview($0)}
 
@@ -105,36 +117,28 @@ class ResultScreenView: UIView {
             self.backgroundImage.topAnchor.constraint(equalTo: self.topAnchor),
             self.backgroundImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.backgroundImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.backgroundImage.heightAnchor.constraint(equalToConstant: 470),
 
-            self.teamLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 33),
-            self.teamLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.teamLabel.heightAnchor.constraint(equalToConstant: 30),
+            self.winStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.winStackView.bottomAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor,
+                                                                                     constant: -5),
+            self.winStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor,
+                                                                                     constant: 30),
 
-            self.winLabel.topAnchor.constraint(equalTo: self.teamLabel.bottomAnchor, constant: 10),
-            self.winLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.winLabel.heightAnchor.constraint(equalToConstant: 30),
-
-            self.circleLabel.topAnchor.constraint(equalTo: self.winLabel.bottomAnchor, constant: 15),
-            self.circleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.circleLabel.heightAnchor.constraint(equalToConstant: 80),
             self.circleLabel.widthAnchor.constraint(equalToConstant: 80),
 
-            self.cupImage.topAnchor.constraint(equalTo: self.circleLabel.bottomAnchor, constant: 10),
-            self.cupImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.cupImage.bottomAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor, constant: -5),
-
-            self.resultTableView.topAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor, constant: 16),
             self.resultTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.resultTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.resultTableView.bottomAnchor.constraint(equalTo: self.bottomButton.topAnchor, constant: -16),
+            self.resultTableView.topAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor,
+                                                                                     constant: 2),
+            self.resultTableView.bottomAnchor.constraint(equalTo: self.bottomButton.topAnchor,
+                                                                                    constant: -10),
 
-            self.bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
-                                                 constant: -11),
             self.bottomButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             self.bottomButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
-            self.bottomButton.heightAnchor.constraint(equalToConstant: 66)
-
+            self.bottomButton.heightAnchor.constraint(equalToConstant: 66),
+            self.bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
+                                                                                         constant: -11)
         ])
     }
 
