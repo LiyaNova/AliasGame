@@ -28,6 +28,8 @@ class TeamsMenuViewController: CustomViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        teamsMenuView.delegate = self //подписка на делегата
         
         self.teamsMenuView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -68,4 +70,16 @@ class TeamsMenuViewController: CustomViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+}
+
+//MARK: - PresentAlertDelegate
+//Пуш алерта
+extension TeamsMenuViewController: PresentAlertDelegate {
+    func presentAlert() {
+            let alert = AlertManager().showAlert(text: "Леша, привет! Ты большой молодец!)")
+            present(alert, animated: true)
+    }
+    
+
+    
 }

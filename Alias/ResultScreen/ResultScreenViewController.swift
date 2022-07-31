@@ -7,6 +7,7 @@ class ResultScreenViewController: UIViewController {
 
     override func loadView() {
         self.view = self.resultScreenView
+        resultScreenView.delegate = self
     }
 
     override func viewDidLoad() {
@@ -14,4 +15,13 @@ class ResultScreenViewController: UIViewController {
     
     }
        
+}
+
+//MARK: - PresentAlertDelegate
+//Пуш алерта при нажатии на кубок
+extension ResultScreenViewController: PresentAlertDelegate {
+    func presentAlert() {
+        let alert = AlertManager().showAlert(text: "Леша, привет! Ты большой молодец!)")
+        present(alert, animated: true)
+    }
 }
