@@ -78,7 +78,7 @@ final class DifficultyPageView: UIView {
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
         descriptionLabel.textAlignment = .center
-        descriptionLabel.font = UIFont(name: "Piazzolla", size: 16)
+        descriptionLabel.font = UIFont(name: "Piazzolla", size: 20)
         return descriptionLabel
     }()
 
@@ -90,7 +90,7 @@ final class DifficultyPageView: UIView {
         exampleLabel.numberOfLines = 0
         exampleLabel.lineBreakMode = .byWordWrapping
         exampleLabel.textAlignment = .center
-        exampleLabel.font = UIFont(name: "Piazzolla", size: 16)
+        exampleLabel.font = UIFont(name: "Piazzolla", size: 20)
         return exampleLabel
     }()
 

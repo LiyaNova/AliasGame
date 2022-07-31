@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
 
-        window?.rootViewController = TeamsMenuViewController(minNumberOfTeams: 2, maxNumberOfTeams: 10)
+        window?.rootViewController = DifficultyPageViewController()
         
         //ppNavigationController(rootViewController: TeamsMenuViewController(minNumberOfTeams: 2, maxNumberOfTeams: 10))
         
