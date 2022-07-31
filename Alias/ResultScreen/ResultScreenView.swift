@@ -1,7 +1,13 @@
 
 import UIKit
+//Протокол для пуша алертов
+protocol PresentAlertDelegate: AnyObject {
+    func presentAlert()
+}
 
 class ResultScreenView: UIView {
+
+    weak var delegate: PresentAlertDelegate?
 
     private var scoreDict = ["Команда 2": 8, "Команда 3": 7]
     private var brain = BrainResultScreen()
@@ -46,12 +52,19 @@ class ResultScreenView: UIView {
         return circleLabel
     }()
 
-    private let cupImage: UIImageView = {
+    lazy private var cupImage: UIImageView = {
         let cupImage = UIImageView()
         cupImage.translatesAutoresizingMaskIntoConstraints = false
         cupImage.image = UIImage(named: "Goodies Appreciation")
+        cupImage.isUserInteractionEnabled = true
+        let tapCup = UITapGestureRecognizer(target: self, action: #selector(tapCupImage))
+        cupImage.addGestureRecognizer(tapCup)
         return cupImage
     }()
+
+    @objc private func tapCupImage() {
+        delegate?.presentAlert()
+    }
 
     private lazy var winStackView: UIStackView = {
         let winStackView = UIStackView(arrangedSubviews:
