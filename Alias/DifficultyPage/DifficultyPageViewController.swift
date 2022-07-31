@@ -1,24 +1,30 @@
-//
-//  DifficultyPageViewController.swift
-//  Alias
-//
-//  Created by Юлия Филимонова on 27.07.2022.
-//
 
 import UIKit
 
-final class DifficultyPageViewController: UIViewController {
+final class DifficultyPageViewController: CustomViewController {
 
-    private let difficultyPageViuw = DifficultyPageView()
+    override var nameViewControler: String { "УРОВЕНЬ \nСЛОЖНОСТИ" }
+    private lazy var difficultyPageViuw = DifficultyPageView()
     private var difficultyChoiceModel = DifficultyChoiceModel()
 
-    override func loadView() {
-        self.view = self.difficultyPageViuw
-        difficultyPageViuw.delegate = self
-    }
+//    override func loadView() {
+//        self.view = self.difficultyPageViuw
+//        difficultyPageViuw.delegate = self
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        self.difficultyPageViuw.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.difficultyPageViuw)
+        
+        NSLayoutConstraint.activate([
+            self.difficultyPageViuw.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            self.difficultyPageViuw.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            self.difficultyPageViuw.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            self.difficultyPageViuw.topAnchor.constraint(equalTo: self.customNavigationBarView.bottomAnchor)
+        ])
+        difficultyPageViuw.delegate = self
         self.updateUI()
     }
 
@@ -32,7 +38,6 @@ final class DifficultyPageViewController: UIViewController {
         difficultyPageViuw.descriptionLabel.text = update?.description
         difficultyPageViuw.exampleLabel.text = update?.example
     }
-
 }
 
 // MARK: - TapButtonDelegate
@@ -50,11 +55,10 @@ extension DifficultyPageViewController: TapButtonDelegate {
     }
 
     func didMakeChoice() {
-        print("Сменить экран")
         // Пуш следующего экрана с передачей слов в соотвествии с уровнем через инициализатор
-        let words = difficultyChoiceModel.getWords()
-        let gs = GameScreenViewController(words: words)
-        navigationController?.pushViewController(gs, animated: true)
+//        let words = difficultyChoiceModel.getWords()
+        let vc = ScoreViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

@@ -1,9 +1,3 @@
-//
-//  GameScreenView.swift
-//  Alias
-//
-//  Created by Alex Ch. on 27.07.2022.
-//
 
 import UIKit
 
