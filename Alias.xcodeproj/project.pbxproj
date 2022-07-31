@@ -50,6 +50,8 @@
 		77CF5EC32895BEFC001C9A2F /* MyCustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC22895BEFC001C9A2F /* MyCustomBackButton.swift */; };
 		77CF5EC5289691F9001C9A2F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */; };
 		9F13E32A28940E970067D43A /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13E32928940E970067D43A /* AlertManager.swift */; };
+		9F7F697F2896BFD7007AA3DA /* JokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */; };
+		9F7F69812896C002007AA3DA /* JokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F69802896C002007AA3DA /* JokeView.swift */; };
 		9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */; };
 		9FBD47AD289270A200687891 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AC289270A200687891 /* ScoreViewController.swift */; };
 		9FBD47AF28927B4700687891 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AE28927B4700687891 /* ScoreView.swift */; };
@@ -106,6 +108,8 @@
 		77CF5EC22895BEFC001C9A2F /* MyCustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomBackButton.swift; sourceTree = "<group>"; };
 		77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		9F13E32928940E970067D43A /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewController.swift; sourceTree = "<group>"; };
+		9F7F69802896C002007AA3DA /* JokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeView.swift; sourceTree = "<group>"; };
 		9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainResultScreen.swift; sourceTree = "<group>"; };
 		9FBD47AC289270A200687891 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		9FBD47AE28927B4700687891 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 				9FBD47AA2892708700687891 /* Score */,
 				77448CD9289229DB0040A442 /* GameScreen */,
 				38C4461B2893F2F0009EED5E /* ResultScreen */,
+				9F7F697D2896BFA2007AA3DA /* JokeView */,
 				77448CBA28902A3A0040A442 /* CustomViews */,
 				77CF5EBB289557DB001C9A2F /* Resourses */,
 				77448CB3289020C50040A442 /* Info.plist */,
@@ -336,6 +341,15 @@
 			path = CustomViews/Utils;
 			sourceTree = "<group>";
 		};
+		9F7F697D2896BFA2007AA3DA /* JokeView */ = {
+			isa = PBXGroup;
+			children = (
+				9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */,
+				9F7F69802896C002007AA3DA /* JokeView.swift */,
+			);
+			path = JokeView;
+			sourceTree = "<group>";
+		};
 		9FBD47AA2892708700687891 /* Score */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +455,7 @@
 				77CF5EB62895569D001C9A2F /* CustomNavigationBar.swift in Sources */,
 				9FBD47B42892CDB400687891 /* NetworkManager.swift in Sources */,
 				77448CEB289255770040A442 /* TeamsMenuViewController.swift in Sources */,
+				9F7F69812896C002007AA3DA /* JokeView.swift in Sources */,
 				77CF5EC5289691F9001C9A2F /* UIView+Constraints.swift in Sources */,
 				77448CD02891499E0040A442 /* RulesViewController.swift in Sources */,
 				9FBD47AD289270A200687891 /* ScoreViewController.swift in Sources */,
@@ -456,6 +471,7 @@
 				2A8EB12C28957E8C00BB6D04 /* MusicModel.swift in Sources */,
 				77448CDD289229DC0040A442 /* GameScreenView.swift in Sources */,
 				9FBD47B128927C0000687891 /* ScoreCell.swift in Sources */,
+				9F7F697F2896BFD7007AA3DA /* JokeViewController.swift in Sources */,
 				77448CE2289229F90040A442 /* DifficultyChoiceModel.swift in Sources */,
 				77CF5EC32895BEFC001C9A2F /* MyCustomBackButton.swift in Sources */,
 				77448CE4289229F90040A442 /* DifficultyPageViewController.swift in Sources */,
@@ -601,7 +617,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X3L28X5FYM;
+				DEVELOPMENT_TEAM = X8KHXL86W5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Alias/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -615,7 +631,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Hello-World.Alias";
+				PRODUCT_BUNDLE_IDENTIFIER = com.achusovitin.Alias;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -630,7 +646,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X3L28X5FYM;
+				DEVELOPMENT_TEAM = X8KHXL86W5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Alias/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -644,7 +660,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Hello-World.Alias";
+				PRODUCT_BUNDLE_IDENTIFIER = com.achusovitin.Alias;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
