@@ -10,7 +10,17 @@ class TeamsMenuViewController: CustomViewController {
     let minNumberOfTeams: Int
     let maxNumberOfTeams: Int
     
-    private lazy var teamsMenuView = TeamsMenuView(minNumberOfTeams: self.minNumberOfTeams, maxNumberOfTeams: self.maxNumberOfTeams, frame: .zero)
+    private lazy var teamsMenuView = TeamsMenuView(
+        minNumberOfTeams: self.minNumberOfTeams,
+        maxNumberOfTeams: self.maxNumberOfTeams,
+        teams: self.teams
+    )
+    
+    var teams: [Team] = [] {
+        didSet {
+            self.teamsMenuView.teams = self.teams
+        }
+    }
     
 //    override func loadView() {
 //        self.teamsMenuView.customNavBar = self.customNavigationBarView
@@ -31,9 +41,7 @@ class TeamsMenuViewController: CustomViewController {
         super.viewDidLoad()
 
         teamsMenuView.delegate = self //подписка на делегата
-        
         self.teamsMenuView.translatesAutoresizingMaskIntoConstraints = false
-        
         self.view.addSubview(self.teamsMenuView)
         
         NSLayoutConstraint.activate([
@@ -45,13 +53,14 @@ class TeamsMenuViewController: CustomViewController {
         
         let firstTwoTeams = Teams().makeTeams(count: minNumberOfTeams)
         self.teamsMenuView.teams = firstTwoTeams
+        self.teams = firstTwoTeams
         
         teamsMenuView.addNewTeam = {
             [weak self] in
             guard let self = self else { return }
             
             if self.teamsMenuView.teams.count != self.maxNumberOfTeams {
-                self.teamsMenuView.teams.append(Teams().makeNewTeam())
+                self.teams.append(Teams().makeNewTeam())
             }
         }
         teamsMenuView.deleteTeam = {
@@ -59,7 +68,7 @@ class TeamsMenuViewController: CustomViewController {
             guard let self = self else { return }
             
             if self.teamsMenuView.teams.count != self.minNumberOfTeams {
-                self.teamsMenuView.teams.removeLast()
+                self.teams.removeLast()
             }
         }
         
@@ -69,6 +78,7 @@ class TeamsMenuViewController: CustomViewController {
             
             let vc = DifficultyPageViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+            print(self.teams)
         }
     }
 }
@@ -82,7 +92,7 @@ extension TeamsMenuViewController: PresentAlertDelegate {
         //showAlert(text: "Леша, привет! Ты большой молодец!)")
            // present(alert, animated: true)
     }
-    
+
     @objc func dismissAlert(){
         alertManager.dismissAlert()
     }

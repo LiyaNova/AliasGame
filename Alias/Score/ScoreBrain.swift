@@ -15,17 +15,7 @@ struct ScoreBrain {
         
     }
     
-    func sectionColor(section: Int)-> UIColor {
-        var color: UIColor = .gray
-        if section == 0 {
-            color = UIColor(named: "RoyalBlueColor") ?? .gray
-        } else if section == 1 {
-            color = UIColor(named: "DarkPurpleColor") ?? .gray
-        } else if section == 2 {
-            color =  UIColor(named: "OrangeColor") ?? .gray
-        }
-        return color
-    }
+
     
     func team()-> [String] {
         return teamName

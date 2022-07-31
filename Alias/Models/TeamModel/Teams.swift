@@ -1,9 +1,3 @@
-//
-//  GameModel.swift
-//  Alias
-//
-//  Created by Tatyana Sidoryuk on 29.07.2022.
-//
 
 import Foundation
 
@@ -18,11 +12,11 @@ class Teams {
             randomTeamNames = randomTeamNames.filter({ $0 != shuffledNames[i] })
         }
         
-        return shuffledNames[..<count].map { Team(name: $0) }
+        return shuffledNames[..<count].map { Team(name: $0, scores: 0) }
     }
     
     func makeNewTeam() -> Team {
-        var team = Team(name: "")
+        let team = Team(name: "", scores: 0)
         let thisElement = randomTeamNames.randomElement() ?? "Команда мечты"
         team.name = thisElement
         randomTeamNames = randomTeamNames.filter({ $0 != thisElement })

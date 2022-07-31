@@ -65,5 +65,4 @@ private extension UIImageView {
         
         return image
     }
-    
 }

@@ -7,19 +7,6 @@ class ScoreView: UIView {
     var gameButtonTap: (() -> Void)?
     
     private var brain = ScoreBrain()
-
-    private lazy var teamsLabel: UILabel = { // верхний лейбл
-        let label = UILabel()
-        label.text = "Рейтинг команд"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
-        label.font = UIFont(name: "Phosphate-Solid", size: 24)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.textAlignment = .center
-        label.backgroundColor = .white
-        return label
-    }()
     
     lazy var scoreTableView: UITableView = { // табличка
         let tableView = UITableView(frame: self.bounds, style: .plain)
@@ -110,18 +97,14 @@ class ScoreView: UIView {
     
     private func setupUI() {
         
-        addSubview(self.teamsLabel)
+//        addSubview(self.teamsLabel)
         addSubview(self.scoreTableView)
         addSubview(viewForLbls)
         addSubview(self.goToGameButton)
 
         NSLayoutConstraint.activate([
             
-            self.teamsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.teamsLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 35),
-            self.teamsLabel.widthAnchor.constraint(equalToConstant: 150),
-            
-            self.scoreTableView.topAnchor.constraint(equalTo: self.teamsLabel.bottomAnchor, constant: 16),
+            self.scoreTableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             self.scoreTableView.bottomAnchor.constraint(equalTo: self.viewForLbls.topAnchor, constant: -16),
             self.scoreTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.scoreTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -149,7 +132,7 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         if let cell = cell {
            // TO DO обработать колличество ячеек
         let countOfSection = indexPath.section % brain.teamName.count
-        cell.myView.backgroundColor = brain.sectionColor(section: countOfSection)
+        cell.myView.backgroundColor = sectionColor(section: countOfSection)
         
         cell.teamLabel.text = brain.team()[indexPath.section]
         cell.scoreLabel.text = String(brain.score()[indexPath.section])
@@ -159,6 +142,18 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         return cell
         }
         return UITableViewCell()
+    }
+    
+    func sectionColor(section: Int)-> UIColor {
+        var color: UIColor = .gray
+        if section == 0 {
+            color = UIColor(named: "RoyalBlueColor") ?? .gray
+        } else if section == 1 {
+            color = UIColor(named: "DarkPurpleColor") ?? .gray
+        } else if section == 2 {
+            color =  UIColor(named: "OrangeColor") ?? .gray
+        }
+        return color
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

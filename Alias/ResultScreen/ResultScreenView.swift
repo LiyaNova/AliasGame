@@ -1,5 +1,6 @@
 
 import UIKit
+
 //Протокол для пуша алертов
 protocol PresentAlertDelegate: AnyObject {
     func presentAlert()

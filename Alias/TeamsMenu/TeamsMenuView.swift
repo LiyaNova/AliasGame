@@ -8,7 +8,12 @@ class TeamsMenuView: UIView {
     let minNumberOfTeams: Int
     let maxNumberOfTeams: Int
     
-    var teams = [Team]()
+    var teams: [Team] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     var addNewTeam :(() -> Void)?
     var deleteTeam :(() -> Void)?
     var nextVC :(() -> Void)?
@@ -63,9 +68,10 @@ class TeamsMenuView: UIView {
         return btn
     }()
     
-    init(minNumberOfTeams: Int, maxNumberOfTeams: Int, frame: CGRect) {
+    init(minNumberOfTeams: Int, maxNumberOfTeams: Int, teams: [Team], frame: CGRect = .zero) {
         self.minNumberOfTeams = minNumberOfTeams
         self.maxNumberOfTeams = maxNumberOfTeams
+        self.teams = teams
         super.init(frame: frame)
         
         self.setupUI()

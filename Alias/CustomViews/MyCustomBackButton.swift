@@ -39,5 +39,4 @@ class MyCustomBackButton: UIButton {
     func addPlainShadow() {
         self.addShadowWithColor(UIColor.lightGray, radius: 2.5, offset: CGSize(width: -1, height: 1), opacity: 0.8)
     }
-
 }

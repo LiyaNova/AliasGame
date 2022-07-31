@@ -49,6 +49,8 @@
 		77CF5EC12895A4F9001C9A2F /* SetWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 77CF5EC02895A4F9001C9A2F /* SetWords.json */; };
 		77CF5EC32895BEFC001C9A2F /* MyCustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC22895BEFC001C9A2F /* MyCustomBackButton.swift */; };
 		77CF5EC5289691F9001C9A2F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */; };
+		77CF5ECA2896C213001C9A2F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC92896C213001C9A2F /* GameEngine.swift */; };
+		77CF5ECC2896C39B001C9A2F /* GameRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5ECB2896C39B001C9A2F /* GameRound.swift */; };
 		9F13E32A28940E970067D43A /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13E32928940E970067D43A /* AlertManager.swift */; };
 		9F7F697F2896BFD7007AA3DA /* JokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */; };
 		9F7F69812896C002007AA3DA /* JokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F69802896C002007AA3DA /* JokeView.swift */; };
@@ -57,7 +59,7 @@
 		9FBD47AF28927B4700687891 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AE28927B4700687891 /* ScoreView.swift */; };
 		9FBD47B128927C0000687891 /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B028927C0000687891 /* ScoreCell.swift */; };
 		9FBD47B42892CDB400687891 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B32892CDB400687891 /* NetworkManager.swift */; };
-		9FBD47B62892CDD300687891 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B52892CDD300687891 /* API.swift */; };
+		9FBD47B62892CDD300687891 /* JokeApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B52892CDD300687891 /* JokeApiModel.swift */; };
 		9FBD47B92892CE0F00687891 /* JokeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B82892CE0F00687891 /* JokeModel.swift */; };
 		9FBD47BC2893DE3D00687891 /* ScoreBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47BB2893DE3D00687891 /* ScoreBrain.swift */; };
 /* End PBXBuildFile section */
@@ -107,6 +109,8 @@
 		77CF5EC02895A4F9001C9A2F /* SetWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SetWords.json; sourceTree = "<group>"; };
 		77CF5EC22895BEFC001C9A2F /* MyCustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomBackButton.swift; sourceTree = "<group>"; };
 		77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		77CF5EC92896C213001C9A2F /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		77CF5ECB2896C39B001C9A2F /* GameRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRound.swift; sourceTree = "<group>"; };
 		9F13E32928940E970067D43A /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewController.swift; sourceTree = "<group>"; };
 		9F7F69802896C002007AA3DA /* JokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeView.swift; sourceTree = "<group>"; };
@@ -115,7 +119,7 @@
 		9FBD47AE28927B4700687891 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9FBD47B028927C0000687891 /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
 		9FBD47B32892CDB400687891 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		9FBD47B52892CDD300687891 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		9FBD47B52892CDD300687891 /* JokeApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeApiModel.swift; sourceTree = "<group>"; };
 		9FBD47B82892CE0F00687891 /* JokeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeModel.swift; sourceTree = "<group>"; };
 		9FBD47BB2893DE3D00687891 /* ScoreBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,7 +177,7 @@
 				38C4461B2893F2F0009EED5E /* ResultScreen */,
 				9F7F697D2896BFA2007AA3DA /* JokeView */,
 				77448CBA28902A3A0040A442 /* CustomViews */,
-				77CF5EBB289557DB001C9A2F /* Resourses */,
+				77CF5EBB289557DB001C9A2F /* Resourсes */,
 				77448CB3289020C50040A442 /* Info.plist */,
 				9F13E32828940E640067D43A /* Utils */,
 				77448CA3289020C20040A442 /* Products */,
@@ -260,7 +264,6 @@
 				77448CF7289261750040A442 /* Start Timer.wav */,
 				77448CF5289261750040A442 /* Transition.wav */,
 				77448CF6289261750040A442 /* Wrong Answer.wav */,
-				2A8EB12B28957E8C00BB6D04 /* MusicModel.swift */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -268,6 +271,8 @@
 		77448D0228926E400040A442 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				77CF5EC82896A4DA001C9A2F /* GameModel */,
+				77CF5EC72896A2D9001C9A2F /* MusicModel */,
 				77CF5EBA28955734001C9A2F /* TeamModel */,
 				77448D072892C00A0040A442 /* WordSetsModel */,
 				77CF5EB928955719001C9A2F /* JokeModel */,
@@ -307,6 +312,7 @@
 			children = (
 				9FBD47B22892CCCA00687891 /* Networking */,
 				9FBD47B82892CE0F00687891 /* JokeModel.swift */,
+				9FBD47B52892CDD300687891 /* JokeApiModel.swift */,
 			);
 			path = JokeModel;
 			sourceTree = "<group>";
@@ -320,7 +326,7 @@
 			path = TeamModel;
 			sourceTree = "<group>";
 		};
-		77CF5EBB289557DB001C9A2F /* Resourses */ = {
+		77CF5EBB289557DB001C9A2F /* Resourсes */ = {
 			isa = PBXGroup;
 			children = (
 				77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */,
@@ -329,7 +335,24 @@
 				77448CEF28925E270040A442 /* Music */,
 				77448CC32891307C0040A442 /* Fonts */,
 			);
-			path = Resourses;
+			path = "Resourсes";
+			sourceTree = "<group>";
+		};
+		77CF5EC72896A2D9001C9A2F /* MusicModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A8EB12B28957E8C00BB6D04 /* MusicModel.swift */,
+			);
+			path = MusicModel;
+			sourceTree = "<group>";
+		};
+		77CF5EC82896A4DA001C9A2F /* GameModel */ = {
+			isa = PBXGroup;
+			children = (
+				77CF5EC92896C213001C9A2F /* GameEngine.swift */,
+				77CF5ECB2896C39B001C9A2F /* GameRound.swift */,
+			);
+			path = GameModel;
 			sourceTree = "<group>";
 		};
 		9F13E32828940E640067D43A /* Utils */ = {
@@ -359,15 +382,6 @@
 				9FBD47B028927C0000687891 /* ScoreCell.swift */,
 			);
 			path = Score;
-			sourceTree = "<group>";
-		};
-		9FBD47B22892CCCA00687891 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				9FBD47B32892CDB400687891 /* NetworkManager.swift */,
-				9FBD47B52892CDD300687891 /* API.swift */,
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,10 +468,12 @@
 			files = (
 				77CF5EB62895569D001C9A2F /* CustomNavigationBar.swift in Sources */,
 				9FBD47B42892CDB400687891 /* NetworkManager.swift in Sources */,
+				77CF5ECC2896C39B001C9A2F /* GameRound.swift in Sources */,
 				77448CEB289255770040A442 /* TeamsMenuViewController.swift in Sources */,
 				9F7F69812896C002007AA3DA /* JokeView.swift in Sources */,
 				77CF5EC5289691F9001C9A2F /* UIView+Constraints.swift in Sources */,
 				77448CD02891499E0040A442 /* RulesViewController.swift in Sources */,
+				77CF5ECA2896C213001C9A2F /* GameEngine.swift in Sources */,
 				9FBD47AD289270A200687891 /* ScoreViewController.swift in Sources */,
 				9FBD47BC2893DE3D00687891 /* ScoreBrain.swift in Sources */,
 				9FBD47AF28927B4700687891 /* ScoreView.swift in Sources */,
@@ -479,7 +495,7 @@
 				77448CDC289229DC0040A442 /* GameScreenViewController.swift in Sources */,
 				77448CCE289149770040A442 /* RulesView.swift in Sources */,
 				9FBD47B92892CE0F00687891 /* JokeModel.swift in Sources */,
-				9FBD47B62892CDD300687891 /* API.swift in Sources */,
+				9FBD47B62892CDD300687891 /* JokeApiModel.swift in Sources */,
 				77CF5EBF2895A493001C9A2F /* Teams.swift in Sources */,
 				77448D062892A3190040A442 /* WordSetsModel.swift in Sources */,
 				77448CE3289229F90040A442 /* DifficultyPageView.swift in Sources */,
