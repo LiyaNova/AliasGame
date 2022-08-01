@@ -13,7 +13,7 @@ class Teams {
     }
     
     func makeNewTeam() -> Team {
-        var team = Team(name: "")
+        let team = Team(name: "", scores: 0)
         team.name = randomTeamNames.randomElement() ?? "Команда мечты"
         
         return team

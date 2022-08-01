@@ -16,6 +16,8 @@ class ScoreView: UIView {
         }
     }
     
+    var playingTeamIndx: Int
+    
     private(set) lazy var readyToGameTeamLabel: UILabel = {
         let label = UILabel()
         label.text = "\(teams[playingTeamIndx].name)"
@@ -26,7 +28,7 @@ class ScoreView: UIView {
         return label
     }()
     
-    var playingTeamIndx: Int
+    
     
     private lazy var roundLabel: UILabel = {
         let label = UILabel()

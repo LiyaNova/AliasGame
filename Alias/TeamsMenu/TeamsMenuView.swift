@@ -13,6 +13,7 @@ class TeamsMenuView: UIView {
 
     var teams: [Team] {
         didSet {
+            print("Teams from TMV \(self.teams)")
             self.tableView.reloadData()
         }
     }
