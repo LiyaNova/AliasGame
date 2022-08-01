@@ -5,11 +5,9 @@ final class DifficultyPageViewController: CustomViewController {
 
     override var nameViewControler: String { "УРОВЕНЬ \nСЛОЖНОСТИ" }
     private lazy var difficultyPageViuw = DifficultyPageView()
-    private lazy var difficultyChoiceModel = DifficultyChoiceModel()
+    private var difficultyChoiceModel = DifficultyChoiceModel()
     private let musicManager = MusicModel()
-    lazy var teams = [Team]()
-    lazy var gameWords: [String] = self.difficultyChoiceModel.getWords()
-    
+
 //    override func loadView() {
 //        self.view = self.difficultyPageViuw
 //        difficultyPageViuw.delegate = self
@@ -27,19 +25,21 @@ final class DifficultyPageViewController: CustomViewController {
             self.difficultyPageViuw.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             self.difficultyPageViuw.topAnchor.constraint(equalTo: self.customNavigationBarView.bottomAnchor)
         ])
-        self.difficultyPageViuw.delegate = self
+        difficultyPageViuw.delegate = self
         self.updateUI()
     }
 
     private func updateUI() {
-        let update = difficultyChoiceModel.loadJson()
-        let image = update?.image
-        let color = update?.color
-        self.difficultyPageViuw.choiceImageView.image = UIImage(named: image!)
-        self.difficultyPageViuw.levelLabel.textColor = UIColor(named: color!)
-        self.difficultyPageViuw.levelLabel.text = update?.level
-        self.difficultyPageViuw.descriptionLabel.text = update?.description
-        self.difficultyPageViuw.exampleLabel.text = update?.example
+        DispatchQueue.main.async {
+            let update = self.difficultyChoiceModel.loadJson()
+            let image = update?.image
+            let color = update?.color
+            self.difficultyPageViuw.choiceImageView.image = UIImage(named: image!)
+            self.difficultyPageViuw.levelLabel.textColor = UIColor(named: color!)
+            self.difficultyPageViuw.levelLabel.text = update?.level
+            self.difficultyPageViuw.descriptionLabel.text = update?.description
+            self.difficultyPageViuw.exampleLabel.text = update?.example
+        }
     }
 }
 
@@ -48,25 +48,22 @@ final class DifficultyPageViewController: CustomViewController {
 extension DifficultyPageViewController: TapButtonDelegate {
     
     func didForwardChoice() {
-        self.difficultyChoiceModel.makeForwardChoice()
+        difficultyChoiceModel.makeForwardChoice()
         self.musicManager.playSound(soundName: "Transition")
-        self.gameWords = self.difficultyChoiceModel.getWords()
         self.updateUI()
     }
 
     func didBackChoice() {
-        self.difficultyChoiceModel.makeBackChoice()
+        difficultyChoiceModel.makeBackChoice()
         self.musicManager.playSound(soundName: "Transition")
-        self.gameWords = self.difficultyChoiceModel.getWords()
         self.updateUI()
     }
 
     func didMakeChoice() {
-        let vc = ScoreViewController(
-            teams: self.teams,
-            gameWords: self.gameWords
-        )
-        
+        // Пуш следующего экрана с передачей слов в соотвествии с уровнем через инициализатор
+//        let words = difficultyChoiceModel.getWords()
+        let vc = ScoreViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
+
 }

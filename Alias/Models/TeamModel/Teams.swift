@@ -23,5 +23,12 @@ class Teams {
         
         return team
     }
+    
+//Возвращение переименованной команды
+    func makeNewTeamName(name: String) -> Team {
+        let team = Team(name: name, scores: 0)
+        return team
+    }
+
 }
 

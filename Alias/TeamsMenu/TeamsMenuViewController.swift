@@ -5,7 +5,7 @@ import UIKit
 
 class TeamsMenuViewController: CustomViewController {
     
-    private let alertManager = AlertManager()
+    private let alertManager = AlertForChangeTeamName()
     override var nameViewControler: String { "КОМАНДЫ" }
     let minNumberOfTeams: Int
     let maxNumberOfTeams: Int
@@ -21,7 +21,7 @@ class TeamsMenuViewController: CustomViewController {
             self.teamsMenuView.teams = self.teams
         }
     }
-    
+
 //    override func loadView() {
 //        self.teamsMenuView.customNavBar = self.customNavigationBarView
 //        self.view = self.teamsMenuView
@@ -40,7 +40,9 @@ class TeamsMenuViewController: CustomViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        teamsMenuView.delegate = self //подписка на делегата
+        alertManager.delegate = self //подписка на делегата ренейма команды
+        teamsMenuView.delegate = self //подписка на делегата пуша алерта
+
         self.teamsMenuView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.teamsMenuView)
         
@@ -88,13 +90,17 @@ class TeamsMenuViewController: CustomViewController {
 //Пуш алерта
 extension TeamsMenuViewController: PresentAlertDelegate {
     func presentAlert() {
-        //let alert =
-        alertManager.showCustomAlert(with: "Привет", message: "Я алерт", on: self)
-        //showAlert(text: "Леша, привет! Ты большой молодец!)")
-           // present(alert, animated: true)
-    }
-
-    @objc func dismissAlert(){
-        alertManager.dismissAlert()
+        alertManager.showAlertChangeTeamName(title: "Как назовем команду?", target: self)
     }
 }
+
+//MARK: - NewNameDelegate
+//Замена ячейки по индексу - переименование команды
+extension TeamsMenuViewController: NewNameDelegate {
+    func renameTeam(name: String) {
+        guard let index = teamsMenuView.sectionToRename else {return}
+        teams.remove(at: index)
+        teams.insert(Teams().makeNewTeamName(name: name), at: index)
+    }
+}
+

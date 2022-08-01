@@ -4,14 +4,11 @@ import AVFoundation
 
 class GameScreenViewController: UIViewController {
     
-    private let round: GameRound
-    private lazy var gameScreenView = GameScreenView(round: self.round)
-
-    private lazy var alertManager = AlertManager()
-    private lazy var musicManager = MusicModel()
+    // Переменная и ее инициализатор для передачи данных о словах в соотвествии с выбранным уровнем
+    var words: [String] = ["авиация"]
     
-    init(round: GameRound) {
-        self.round = round
+    init(words: [String]) {
+        self.words = words
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -19,49 +16,52 @@ class GameScreenViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life cycle
+    private let gameScreenView = GameScreenView()
+    private let alertManager = AlertForExitApp()
+    private let musicManager = MusicModel()
+    
+    
+    // MARK: - Life cicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Для примера вывела на экран слово по выбранному уровню, у лейбла во GameScreenView текстполе закомментила
+        gameScreenView.gameWodrLabel.text = words[0]
         
         self.view = self.gameScreenView
-        self.setupButtonHandlers()
+        rightButtonTapped()
+        wrongButtonTapped()
         
-        self.round.nextWordHandler = {
-            [weak self] word in
+        
+        gameScreenView.openScore = {
+            [weak self] in
             guard let self = self else { return }
-            
-            self.gameScreenView.gameWordLabel.text = word
-        }
-
-        self.round.remainingRoundSecHandler = {
-            [weak self] remainingSec in
-            guard let self = self else { return }
-
-            self.gameScreenView.secondsLabel.text = "\(remainingSec)"
+            let vc = ScoreViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
         }
     }
     
-}
-
-private extension GameScreenViewController {
-    
-    func setupButtonHandlers() {
-        self.gameScreenView.rightButtonTap = {
+    func rightButtonTapped(){
+        gameScreenView.rightButtonTap = {
             [weak self] in
             guard let self = self else { return }
-            
             self.musicManager.playSound(soundName: "Right Answer")
-            self.round.wordGuessed()
-        }
-        
-        self.gameScreenView.wrongButtonTap = {
-            [weak self] in
-            guard let self = self else { return }
-            
-            self.musicManager.playSound(soundName: "Wrong Answer")
-            self.round.cancelCurrentWord()
         }
     }
     
+    func wrongButtonTapped(){
+        gameScreenView.wrongButtonTap = {
+            [weak self] in
+            guard let self = self else { return }
+            self.musicManager.playSound(soundName: "Wrong Answer")
+        }
+    }
 }
+
+
+//  self.alertManager.showCustomAlert(with: "ВЫЙТИ В ГЛАВНОЕ МЕНЮ?", message: "При выходе в главное меню текущая игра будет сброшена, а баллы не сохранятся.", on: self)
+//
+//    @objc func dismissAlert(){
+//        self.alertManager.dismissAlert()
+//    }
