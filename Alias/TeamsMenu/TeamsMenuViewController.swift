@@ -96,6 +96,6 @@ extension TeamsMenuViewController: PresentAlertDelegate {
     }
 
     @objc func dismissAlert(){
-        alertManager.dismissAlert()
+        alertManager.saveBtnPressed()
     }
 }

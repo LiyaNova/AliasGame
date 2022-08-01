@@ -10,7 +10,7 @@ import UIKit
 class AlertForChangeTeamName {
     
     private var myTargetView: UIView?
-    lazy var teamName = ""
+    lazy var teamName = teamNameTextField.text
     
     struct Constants {
         
@@ -102,7 +102,7 @@ class AlertForChangeTeamName {
     }
     
     // Таргет сохранения
-    @objc private func saveBtnPressed()->String{
+    @objc func saveBtnPressed()->String{
         
         UIView.animate(withDuration: 0.25, animations: { self.createView() }, completion: { done in
             if done {
@@ -112,16 +112,19 @@ class AlertForChangeTeamName {
                         self.deleteAlpha()
                         let enteredText = self.teamNameTextField.text ?? "___"
                         self.teamName = enteredText
-                        print(self.teamName.uppercased())
                     }
                 })
             }
         })
+        
+        guard let teamName = teamName else {
+            return "--"
+        }
         return teamName.uppercased()
     }
     
     // Закрыть алерт
-    @objc func dismissAlert(){
+    @objc private func dismissAlert(){
         
         UIView.animate(withDuration: 0.25,
                        animations: {
