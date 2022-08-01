@@ -30,14 +30,16 @@ final class DifficultyPageViewController: CustomViewController {
     }
 
     private func updateUI() {
-        let update = difficultyChoiceModel.loadJson()
-        let image = update?.image
-        let color = update?.color
-        difficultyPageViuw.choiceImageView.image = UIImage(named: image!)
-        difficultyPageViuw.levelLabel.textColor = UIColor(named: color!)
-        difficultyPageViuw.levelLabel.text = update?.level
-        difficultyPageViuw.descriptionLabel.text = update?.description
-        difficultyPageViuw.exampleLabel.text = update?.example
+        DispatchQueue.main.async {
+            let update = self.difficultyChoiceModel.loadJson()
+            let image = update?.image
+            let color = update?.color
+            self.difficultyPageViuw.choiceImageView.image = UIImage(named: image!)
+            self.difficultyPageViuw.levelLabel.textColor = UIColor(named: color!)
+            self.difficultyPageViuw.levelLabel.text = update?.level
+            self.difficultyPageViuw.descriptionLabel.text = update?.description
+            self.difficultyPageViuw.exampleLabel.text = update?.example
+        }
     }
 }
 
