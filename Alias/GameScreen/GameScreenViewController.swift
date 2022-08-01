@@ -17,7 +17,7 @@ class GameScreenViewController: UIViewController {
     }
     
     private let gameScreenView = GameScreenView()
-    private let alertManager = AlertManager()
+    private let alertManager = AlertForExitApp()
     private let musicManager = MusicModel()
     
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AlertManager {
+final class AlertForExitApp {
     
     private var myTargetView: UIView?
     
@@ -83,6 +83,7 @@ final class AlertManager {
     
     
     //MARK: - Methods
+    
     func showCustomAlert(with title: String,
                          message: String,
                          on viewController: UIViewController){
@@ -104,16 +105,7 @@ final class AlertManager {
         messageLabel.text = message
         setupUI()
         
-        UIView.animate(withDuration: 0.25,
-                       animations: {
-            self.backgroundView.alpha = Constants.backgroundAlphaTo
-        }, completion: { done in
-            if done {
-                UIView.animate(withDuration: 0.25) {
-                    self.alertView.center = targetView.center
-                }
-            }
-        })
+
         
     }
     
@@ -171,14 +163,6 @@ final class AlertManager {
                 })
             }
         })
-    }
-    
-    // Стандартный алерт
-    func showStandartAlert(text: String) -> UIAlertController {
-        let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default) { (action) in }
-        alert.addAction(action)
-        return alert
     }
     
     // MARK: - Setup constraints
