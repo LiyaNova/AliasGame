@@ -17,7 +17,6 @@ class Team: Comparable {
     static func == (lhs: Team, rhs: Team) -> Bool {
         lhs.name == rhs.name
     }
-
 }
 
 extension Team: CustomStringConvertible {

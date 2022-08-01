@@ -7,7 +7,7 @@ class GameScreenViewController: UIViewController {
     private let round: GameRound
     private lazy var gameScreenView = GameScreenView(round: self.round)
 
-    private lazy var alertManager = AlertManager()
+//    private lazy var alertManager = AlertManager()
     private lazy var musicManager = MusicModel()
     
     init(round: GameRound) {
@@ -19,9 +19,9 @@ class GameScreenViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let gameScreenView = GameScreenView()
+//    private let gameScreenView = GameScreenView()
     private let alertManager = AlertForExitApp()
-    private let musicManager = MusicModel()
+//    private let musicManager = MusicModel()
     
     
     // MARK: - Life cicle

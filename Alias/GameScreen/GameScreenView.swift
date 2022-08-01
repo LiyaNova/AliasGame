@@ -83,7 +83,9 @@ class GameScreenView: UIView {
     
     // Стэк общий
     private lazy var contentStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [self.secondsStack, self.gameImage, self.buttonsStack])
+        let stack = UIStackView(arrangedSubviews: [self.secondsStack,
+                                                   self.gameImage,
+                                                   self.buttonsStack])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.alignment = .center

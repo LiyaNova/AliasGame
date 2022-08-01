@@ -1,12 +1,4 @@
 
-//
-//  MusicModel.swift
-//  Alias
-//
-//  Created by Tatyana Sidoryuk on 30.07.2022.
-//
-
-
 import Foundation
 import AVFoundation
 
