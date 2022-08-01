@@ -6,8 +6,15 @@
 //
 
 import UIKit
+// Протокол, отвечающий за передачу, введенного в текстфилд имени
+protocol NewNameDelegate: AnyObject {
+    func renameTeam(name: String)
+}
 
 class AlertForChangeTeamName {
+
+    //Делегирующая переменная
+    weak var delegate: NewNameDelegate?
     
     private var myTargetView: UIView?
     lazy var teamName = teamNameTextField.text
@@ -102,7 +109,7 @@ class AlertForChangeTeamName {
     }
     
     // Таргет сохранения
-    @objc func saveBtnPressed()->String{
+    @objc func saveBtnPressed() {
         
         UIView.animate(withDuration: 0.25, animations: { self.createView() }, completion: { done in
             if done {
@@ -112,15 +119,13 @@ class AlertForChangeTeamName {
                         self.deleteAlpha()
                         let enteredText = self.teamNameTextField.text ?? "___"
                         self.teamName = enteredText
+                        guard let newName = self.teamName  else { return }
+                        self.delegate?.renameTeam(name: newName.uppercased())
                     }
                 })
             }
         })
-        
-        guard let teamName = teamName else {
-            return "--"
-        }
-        return teamName.uppercased()
+
     }
     
     // Закрыть алерт

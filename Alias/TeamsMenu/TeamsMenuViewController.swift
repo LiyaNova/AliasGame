@@ -9,11 +9,6 @@ class TeamsMenuViewController: CustomViewController {
     override var nameViewControler: String { "КОМАНДЫ" }
     let minNumberOfTeams: Int
     let maxNumberOfTeams: Int
-
-
-    lazy var newName = alertManager.saveBtnPressed()
-
-
     
     private lazy var teamsMenuView = TeamsMenuView(
         minNumberOfTeams: self.minNumberOfTeams,
@@ -45,7 +40,9 @@ class TeamsMenuViewController: CustomViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        teamsMenuView.delegate = self //подписка на делегата
+        alertManager.delegate = self //подписка на делегата ренейма команды
+        teamsMenuView.delegate = self //подписка на делегата пуша алерта
+
         self.teamsMenuView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.teamsMenuView)
         
@@ -92,15 +89,17 @@ class TeamsMenuViewController: CustomViewController {
 //Пуш алерта
 extension TeamsMenuViewController: PresentAlertDelegate {
     func presentAlert() {
-
         alertManager.showAlertChangeTeamName(title: "Как назовем команду?", target: self)
-
-        //let alert =
-        //showAlert(text: "Леша, привет! Ты большой молодец!)")
-        // present(alert, animated: true)
     }
-
-//    @objc func dismissAlert(){
-//        alertManager.saveBtnPressed()
-//    }
 }
+
+//MARK: - NewNameDelegate
+//Замена ячейки по индексу - переименование команды
+extension TeamsMenuViewController: NewNameDelegate {
+    func renameTeam(name: String) {
+        guard let index = teamsMenuView.sectionToRename else {return}
+        teams.remove(at: index)
+        teams.insert(Teams().makeNewTeamName(name: name), at: index)
+    }
+}
+
