@@ -18,7 +18,6 @@ class Team: Comparable {
         lhs.name == rhs.name
     }
 
-}
 
 extension Team: CustomStringConvertible {
 

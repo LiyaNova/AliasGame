@@ -1,6 +1,4 @@
 
-import Foundation
-
 import UIKit
 
 class TeamsMenuViewController: CustomViewController {
@@ -9,6 +7,22 @@ class TeamsMenuViewController: CustomViewController {
     override var nameViewControler: String { "КОМАНДЫ" }
     let minNumberOfTeams: Int
     let maxNumberOfTeams: Int
+    var setOfUsedNames: Set<String> = []
+    private let musicManager = MusicModel()
+    
+    func updateSetOfNames() {
+        setOfUsedNames = []
+        for i in 0..<self.teams.count {
+            setOfUsedNames.insert(self.teams[i].name)
+        }
+    }
+    
+    var teams: [Team] = [] {
+        didSet {
+            self.teamsMenuView.teams = self.teams
+            print("Teams from TMVC \(self.teams)")
+        }
+    }
     
     private lazy var teamsMenuView = TeamsMenuView(
         minNumberOfTeams: self.minNumberOfTeams,
@@ -16,11 +30,6 @@ class TeamsMenuViewController: CustomViewController {
         teams: self.teams
     )
     
-    var teams: [Team] = [] {
-        didSet {
-            self.teamsMenuView.teams = self.teams
-        }
-    }
 
 //    override func loadView() {
 //        self.teamsMenuView.customNavBar = self.customNavigationBarView
@@ -54,24 +63,42 @@ class TeamsMenuViewController: CustomViewController {
         ])
         
         let firstTwoTeams = Teams().makeTeams(count: minNumberOfTeams)
-        self.teamsMenuView.teams = firstTwoTeams
         self.teams = firstTwoTeams
+        self.updateSetOfNames()
+        
+        print("Our News Teams \(firstTwoTeams)")
         
         teamsMenuView.addNewTeam = {
             [weak self] in
             guard let self = self else { return }
             
-            if self.teamsMenuView.teams.count != self.maxNumberOfTeams {
-                self.teams.append(Teams().makeNewTeam())
+            var added = true
+            self.musicManager.playSound(soundName: "Transition")
+            
+                if self.teams.count != self.maxNumberOfTeams {
+                    while (added) {
+                        let newTeam = Teams().makeNewTeam()
+                        if !self.setOfUsedNames.contains(newTeam.name) {
+                            self.teams.append(newTeam)
+                            self.updateSetOfNames()
+                            added.toggle()
+                    print("Our Teams after add\(self.teams)")
+                        }
+                    }
             }
         }
+    
         teamsMenuView.deleteTeam = {
             [weak self] in
             guard let self = self else { return }
             
-            if self.teamsMenuView.teams.count != self.minNumberOfTeams {
+            if self.teams.count != self.minNumberOfTeams {
+
                 self.teams.removeLast()
+                self.updateSetOfNames()
+                print("Our Teams after minus\(self.teams)")
             }
+            self.musicManager.playSound(soundName: "Transition")
         }
         
         teamsMenuView.nextVC = {
@@ -80,8 +107,10 @@ class TeamsMenuViewController: CustomViewController {
             
             let vc = DifficultyPageViewController()
             vc.teams = self.teams
+            print("Our Teams \(self.teams)")
             self.navigationController?.pushViewController(vc, animated: true)
-            print(self.teams)
+
+            self.musicManager.playSound(soundName: "Transition")
         }
     }
 }

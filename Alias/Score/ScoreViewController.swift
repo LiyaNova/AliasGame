@@ -43,7 +43,7 @@ private extension ScoreViewController {
 
 class ScoreViewController: CustomViewController {
     
-    override var nameViewControler: String { "УРОВЕНЬ \nСЛОЖНОСТИ" }
+    override var nameViewControler: String { "УРОВЕНЬ \nКОМАНД" }
     
     private var teams: [Team]
     private var gameWords: [String]
