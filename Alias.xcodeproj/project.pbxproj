@@ -137,6 +137,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A6AEE12289674F60072412D /* MusicModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A8EB12B28957E8C00BB6D04 /* MusicModel.swift */,
+			);
+			path = MusicModel;
+			sourceTree = "<group>";
+		};
 		38C4461B2893F2F0009EED5E /* ResultScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,8 +281,10 @@
 		77448D0228926E400040A442 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+
 				77CF5EC82896A4DA001C9A2F /* GameModel */,
 				77CF5EC72896A2D9001C9A2F /* MusicModel */,
+
 				77CF5EBA28955734001C9A2F /* TeamModel */,
 				77448D072892C00A0040A442 /* WordSetsModel */,
 				77CF5EB928955719001C9A2F /* JokeModel */,
