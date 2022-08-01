@@ -7,7 +7,10 @@ class TeamsMenuView: UIView {
     
     let minNumberOfTeams: Int
     let maxNumberOfTeams: Int
-    
+
+    // Переменная куда приходит номер выбранной ячекий
+    var sectionToRename: Int?
+
     var teams: [Team] {
         didSet {
             self.tableView.reloadData()
@@ -177,5 +180,6 @@ extension TeamsMenuView: UITableViewDataSource, UITableViewDelegate {
 //Передает пуш делегату в TeamMenuViewController
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.presentAlert()
+        sectionToRename = indexPath.section
     }
 }
