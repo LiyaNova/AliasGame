@@ -12,7 +12,6 @@ class ScoreCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     public lazy var myView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +48,9 @@ class ScoreCell: UITableViewCell {
     } ()
     
     private lazy var contentStack: UIStackView = { // стэк с элементами ячейки
-        let stack = UIStackView(arrangedSubviews: [self.starImage, self.teamLabel, self.scoreLabel])
+        let stack = UIStackView(arrangedSubviews: [self.starImage,
+                                                   self.teamLabel,
+                                                   self.scoreLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.alignment = .center

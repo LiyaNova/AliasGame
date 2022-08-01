@@ -3,9 +3,20 @@ import UIKit
 
 class ResultScreenViewController: UIViewController {
     
+    private let finalists: [Team]
+    
 //    private let alertManager = AlertManager()
     let resultScreenView = ResultScreenView()
-
+    
+    init(finalists: [Team]) {
+        self.finalists = finalists
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         self.view = self.resultScreenView
  //       resultScreenView.delegate = self
@@ -21,7 +32,8 @@ class ResultScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        print("finalists: \(self.finalists)")
     }
        
 }

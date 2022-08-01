@@ -5,9 +5,11 @@ final class DifficultyPageViewController: CustomViewController {
 
     override var nameViewControler: String { "УРОВЕНЬ \nСЛОЖНОСТИ" }
     private lazy var difficultyPageViuw = DifficultyPageView()
-    private var difficultyChoiceModel = DifficultyChoiceModel()
+    private lazy var difficultyChoiceModel = DifficultyChoiceModel()
     private let musicManager = MusicModel()
-
+    lazy var teams = [Team]()
+    lazy var gameWords: [String] = self.difficultyChoiceModel.getWords()
+    
 //    override func loadView() {
 //        self.view = self.difficultyPageViuw
 //        difficultyPageViuw.delegate = self
@@ -25,7 +27,7 @@ final class DifficultyPageViewController: CustomViewController {
             self.difficultyPageViuw.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             self.difficultyPageViuw.topAnchor.constraint(equalTo: self.customNavigationBarView.bottomAnchor)
         ])
-        difficultyPageViuw.delegate = self
+        self.difficultyPageViuw.delegate = self
         self.updateUI()
     }
 
@@ -48,22 +50,25 @@ final class DifficultyPageViewController: CustomViewController {
 extension DifficultyPageViewController: TapButtonDelegate {
     
     func didForwardChoice() {
-        difficultyChoiceModel.makeForwardChoice()
+        self.difficultyChoiceModel.makeForwardChoice()
         self.musicManager.playSound(soundName: "Transition")
+        self.gameWords = self.difficultyChoiceModel.getWords()
         self.updateUI()
     }
 
     func didBackChoice() {
-        difficultyChoiceModel.makeBackChoice()
+        self.difficultyChoiceModel.makeBackChoice()
         self.musicManager.playSound(soundName: "Transition")
+        self.gameWords = self.difficultyChoiceModel.getWords()
         self.updateUI()
     }
 
     func didMakeChoice() {
-        // Пуш следующего экрана с передачей слов в соотвествии с уровнем через инициализатор
-//        let words = difficultyChoiceModel.getWords()
-        let vc = ScoreViewController()
+        let vc = ScoreViewController(
+            teams: self.teams,
+            gameWords: self.gameWords
+        )
+        
         navigationController?.pushViewController(vc, animated: true)
     }
-
 }
