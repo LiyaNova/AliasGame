@@ -9,6 +9,11 @@ class TeamsMenuViewController: CustomViewController {
     override var nameViewControler: String { "КОМАНДЫ" }
     let minNumberOfTeams: Int
     let maxNumberOfTeams: Int
+
+
+    lazy var newName = alertManager.saveBtnPressed()
+
+
     
     private lazy var teamsMenuView = TeamsMenuView(
         minNumberOfTeams: self.minNumberOfTeams,
@@ -21,7 +26,7 @@ class TeamsMenuViewController: CustomViewController {
             self.teamsMenuView.teams = self.teams
         }
     }
-    
+
 //    override func loadView() {
 //        self.teamsMenuView.customNavBar = self.customNavigationBarView
 //        self.view = self.teamsMenuView
@@ -89,13 +94,13 @@ extension TeamsMenuViewController: PresentAlertDelegate {
     func presentAlert() {
 
         alertManager.showAlertChangeTeamName(title: "Как назовем команду?", target: self)
-        
+
         //let alert =
         //showAlert(text: "Леша, привет! Ты большой молодец!)")
         // present(alert, animated: true)
     }
 
-    @objc func dismissAlert(){
-        alertManager.saveBtnPressed()
-    }
+//    @objc func dismissAlert(){
+//        alertManager.saveBtnPressed()
+//    }
 }
