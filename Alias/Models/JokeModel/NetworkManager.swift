@@ -26,7 +26,9 @@ final class NetworkManager {
             switch result {
             case .success(let joke):
                 DispatchQueue.main.async {
-                    self.delegate?.showData(results: joke!)
+                    if let joke = joke {
+                        self.delegate?.showData(results: joke)
+                    }
                 }
             case .failure(_):
                 print("Нет шутки")
