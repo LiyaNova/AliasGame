@@ -310,9 +310,9 @@
 		77CF5EB928955719001C9A2F /* JokeModel */ = {
 			isa = PBXGroup;
 			children = (
-				9FBD47B22892CCCA00687891 /* Networking */,
 				9FBD47B82892CE0F00687891 /* JokeModel.swift */,
 				9FBD47B52892CDD300687891 /* JokeApiModel.swift */,
+				9FBD47B32892CDB400687891 /* NetworkManager.swift */,
 			);
 			path = JokeModel;
 			sourceTree = "<group>";
