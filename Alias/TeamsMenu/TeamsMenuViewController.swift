@@ -5,7 +5,7 @@ import UIKit
 
 class TeamsMenuViewController: CustomViewController {
     
-    private let alertManager = AlertManager()
+    private let alertManager = AlertForChangeTeamName()
     override var nameViewControler: String { "КОМАНДЫ" }
     let minNumberOfTeams: Int
     let maxNumberOfTeams: Int
@@ -87,10 +87,12 @@ class TeamsMenuViewController: CustomViewController {
 //Пуш алерта
 extension TeamsMenuViewController: PresentAlertDelegate {
     func presentAlert() {
+
+        alertManager.showAlertChangeTeamName(title: "Как назовем команду?", target: self)
+        
         //let alert =
-        alertManager.showCustomAlert(with: "Привет", message: "Я алерт", on: self)
         //showAlert(text: "Леша, привет! Ты большой молодец!)")
-           // present(alert, animated: true)
+        // present(alert, animated: true)
     }
 
     @objc func dismissAlert(){

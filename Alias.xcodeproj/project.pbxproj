@@ -51,7 +51,8 @@
 		77CF5EC5289691F9001C9A2F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */; };
 		77CF5ECA2896C213001C9A2F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC92896C213001C9A2F /* GameEngine.swift */; };
 		77CF5ECC2896C39B001C9A2F /* GameRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5ECB2896C39B001C9A2F /* GameRound.swift */; };
-		9F13E32A28940E970067D43A /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13E32928940E970067D43A /* AlertManager.swift */; };
+		9F13E32A28940E970067D43A /* AlertForExitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13E32928940E970067D43A /* AlertForExitApp.swift */; };
+		9F2CB3FC2897C960001A38B4 /* AlertForChangeTeamName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2CB3FB2897C960001A38B4 /* AlertForChangeTeamName.swift */; };
 		9F7F697F2896BFD7007AA3DA /* JokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */; };
 		9F7F69812896C002007AA3DA /* JokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F69802896C002007AA3DA /* JokeView.swift */; };
 		9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */; };
@@ -111,7 +112,8 @@
 		77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		77CF5EC92896C213001C9A2F /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		77CF5ECB2896C39B001C9A2F /* GameRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRound.swift; sourceTree = "<group>"; };
-		9F13E32928940E970067D43A /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		9F13E32928940E970067D43A /* AlertForExitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForExitApp.swift; sourceTree = "<group>"; };
+		9F2CB3FB2897C960001A38B4 /* AlertForChangeTeamName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForChangeTeamName.swift; sourceTree = "<group>"; };
 		9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewController.swift; sourceTree = "<group>"; };
 		9F7F69802896C002007AA3DA /* JokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeView.swift; sourceTree = "<group>"; };
 		9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainResultScreen.swift; sourceTree = "<group>"; };
@@ -358,7 +360,8 @@
 		9F13E32828940E640067D43A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9F13E32928940E970067D43A /* AlertManager.swift */,
+				9F13E32928940E970067D43A /* AlertForExitApp.swift */,
+				9F2CB3FB2897C960001A38B4 /* AlertForChangeTeamName.swift */,
 			);
 			name = Utils;
 			path = CustomViews/Utils;
@@ -480,7 +483,7 @@
 				77448CEE289255770040A442 /* TeamCell.swift in Sources */,
 				77CF5EBE2895A493001C9A2F /* Team.swift in Sources */,
 				77448CEC289255770040A442 /* TeamsMenuView.swift in Sources */,
-				9F13E32A28940E970067D43A /* AlertManager.swift in Sources */,
+				9F13E32A28940E970067D43A /* AlertForExitApp.swift in Sources */,
 				77448D0E2892C7170040A442 /* AppNavigationController.swift in Sources */,
 				77448CC0289047CF0040A442 /* CustomButton.swift in Sources */,
 				9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */,
@@ -498,6 +501,7 @@
 				9FBD47B62892CDD300687891 /* JokeApiModel.swift in Sources */,
 				77CF5EBF2895A493001C9A2F /* Teams.swift in Sources */,
 				77448D062892A3190040A442 /* WordSetsModel.swift in Sources */,
+				9F2CB3FC2897C960001A38B4 /* AlertForChangeTeamName.swift in Sources */,
 				77448CE3289229F90040A442 /* DifficultyPageView.swift in Sources */,
 				77448CBE28902F0D0040A442 /* StartMenuView.swift in Sources */,
 				77448CAA289020C20040A442 /* StartMenuViewController.swift in Sources */,
