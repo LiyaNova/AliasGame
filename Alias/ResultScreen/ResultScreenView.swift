@@ -66,7 +66,7 @@ class ResultScreenView: UIView {
     @objc private func tapCupImage() {
         
         self.tapImageBtn?()
-        ResultScreenViewController().dismiss(animated: false)
+//        ResultScreenViewController().dismiss(animated: false)
        // delegate?.presentAlert()
     }
 

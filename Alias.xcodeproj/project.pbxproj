@@ -53,16 +53,15 @@
 		77CF5ECC2896C39B001C9A2F /* GameRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5ECB2896C39B001C9A2F /* GameRound.swift */; };
 		9F13E32A28940E970067D43A /* AlertForExitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13E32928940E970067D43A /* AlertForExitApp.swift */; };
 		9F2CB3FC2897C960001A38B4 /* AlertForChangeTeamName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2CB3FB2897C960001A38B4 /* AlertForChangeTeamName.swift */; };
+		77CF5ED52896FD0A001C9A2F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5ED42896FD0A001C9A2F /* NetworkManager.swift */; };
 		9F7F697F2896BFD7007AA3DA /* JokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */; };
 		9F7F69812896C002007AA3DA /* JokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F69802896C002007AA3DA /* JokeView.swift */; };
 		9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */; };
 		9FBD47AD289270A200687891 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AC289270A200687891 /* ScoreViewController.swift */; };
 		9FBD47AF28927B4700687891 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AE28927B4700687891 /* ScoreView.swift */; };
 		9FBD47B128927C0000687891 /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B028927C0000687891 /* ScoreCell.swift */; };
-		9FBD47B42892CDB400687891 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B32892CDB400687891 /* NetworkManager.swift */; };
 		9FBD47B62892CDD300687891 /* JokeApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B52892CDD300687891 /* JokeApiModel.swift */; };
 		9FBD47B92892CE0F00687891 /* JokeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B82892CE0F00687891 /* JokeModel.swift */; };
-		9FBD47BC2893DE3D00687891 /* ScoreBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47BB2893DE3D00687891 /* ScoreBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,16 +113,15 @@
 		77CF5ECB2896C39B001C9A2F /* GameRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRound.swift; sourceTree = "<group>"; };
 		9F13E32928940E970067D43A /* AlertForExitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForExitApp.swift; sourceTree = "<group>"; };
 		9F2CB3FB2897C960001A38B4 /* AlertForChangeTeamName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForChangeTeamName.swift; sourceTree = "<group>"; };
+		77CF5ED42896FD0A001C9A2F /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewController.swift; sourceTree = "<group>"; };
 		9F7F69802896C002007AA3DA /* JokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeView.swift; sourceTree = "<group>"; };
 		9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainResultScreen.swift; sourceTree = "<group>"; };
 		9FBD47AC289270A200687891 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		9FBD47AE28927B4700687891 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9FBD47B028927C0000687891 /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
-		9FBD47B32892CDB400687891 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9FBD47B52892CDD300687891 /* JokeApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeApiModel.swift; sourceTree = "<group>"; };
 		9FBD47B82892CE0F00687891 /* JokeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeModel.swift; sourceTree = "<group>"; };
-		9FBD47BB2893DE3D00687891 /* ScoreBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,9 +320,9 @@
 		77CF5EB928955719001C9A2F /* JokeModel */ = {
 			isa = PBXGroup;
 			children = (
+				77CF5ED42896FD0A001C9A2F /* NetworkManager.swift */,
 				9FBD47B82892CE0F00687891 /* JokeModel.swift */,
 				9FBD47B52892CDD300687891 /* JokeApiModel.swift */,
-				9FBD47B32892CDB400687891 /* NetworkManager.swift */,
 			);
 			path = JokeModel;
 			sourceTree = "<group>";
@@ -389,7 +387,6 @@
 		9FBD47AA2892708700687891 /* Score */ = {
 			isa = PBXGroup;
 			children = (
-				9FBD47BB2893DE3D00687891 /* ScoreBrain.swift */,
 				9FBD47AC289270A200687891 /* ScoreViewController.swift */,
 				9FBD47AE28927B4700687891 /* ScoreView.swift */,
 				9FBD47B028927C0000687891 /* ScoreCell.swift */,
@@ -480,7 +477,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				77CF5EB62895569D001C9A2F /* CustomNavigationBar.swift in Sources */,
-				9FBD47B42892CDB400687891 /* NetworkManager.swift in Sources */,
 				77CF5ECC2896C39B001C9A2F /* GameRound.swift in Sources */,
 				77448CEB289255770040A442 /* TeamsMenuViewController.swift in Sources */,
 				9F7F69812896C002007AA3DA /* JokeView.swift in Sources */,
@@ -488,10 +484,10 @@
 				77448CD02891499E0040A442 /* RulesViewController.swift in Sources */,
 				77CF5ECA2896C213001C9A2F /* GameEngine.swift in Sources */,
 				9FBD47AD289270A200687891 /* ScoreViewController.swift in Sources */,
-				9FBD47BC2893DE3D00687891 /* ScoreBrain.swift in Sources */,
 				9FBD47AF28927B4700687891 /* ScoreView.swift in Sources */,
 				77448CEE289255770040A442 /* TeamCell.swift in Sources */,
 				77CF5EBE2895A493001C9A2F /* Team.swift in Sources */,
+				77CF5ED52896FD0A001C9A2F /* NetworkManager.swift in Sources */,
 				77448CEC289255770040A442 /* TeamsMenuView.swift in Sources */,
 				9F13E32A28940E970067D43A /* AlertForExitApp.swift in Sources */,
 				77448D0E2892C7170040A442 /* AppNavigationController.swift in Sources */,
