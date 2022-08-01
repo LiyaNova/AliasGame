@@ -26,7 +26,6 @@ class StartMenuViewController: UIViewController {
             let vc = TeamsMenuViewController(minNumberOfTeams:2, maxNumberOfTeams: 10)
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
 }
 

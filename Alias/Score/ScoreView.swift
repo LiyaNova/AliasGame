@@ -2,27 +2,35 @@
 import UIKit
 
 class ScoreView: UIView {
-
-    private var numberOfRound = 2
     var gameButtonTap: (() -> Void)?
     
-    private var brain = ScoreBrain()
+    var teams: [Team] {
+        didSet {
+            self.scoreTableView.reloadData()
+        }
+    }
     
-    lazy var scoreTableView: UITableView = { // табличка
-        let tableView = UITableView(frame: self.bounds, style: .plain)
-        tableView.dataSource = self
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(ScoreCell.self, forCellReuseIdentifier: "ScoreCell")
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
-        tableView.delegate = self
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .white
-        return tableView
-    } ()
+    var numberOfRound: Int {
+        didSet {
+            self.roundLabel.text = "РАУНД \(self.numberOfRound + 1)"
+        }
+    }
     
-    private lazy var roundLabel: UILabel = { // лейбл с номером раунда
+    private(set) lazy var readyToGameTeamLabel: UILabel = {
         let label = UILabel()
-        label.text = "РАУНД \(numberOfRound)"
+        label.text = "\(teams[playingTeamIndx].name)"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.font = UIFont(name: "Phosphate-Solid", size: 40)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    var playingTeamIndx: Int
+    
+    private lazy var roundLabel: UILabel = {
+        let label = UILabel()
+        label.text = "РАУНД 1"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.font = UIFont(name: "Phosphate-Solid", size: 32)
@@ -30,7 +38,19 @@ class ScoreView: UIView {
         return label
     }()
     
-    private lazy var readyToGameLabel: UILabel = { // лейбл - готовятся к игре
+    lazy var scoreTableView: UITableView = {
+        let tableView = UITableView(frame: self.bounds, style: .plain)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(ScoreCell.self, forCellReuseIdentifier: "ScoreCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .white
+        return tableView
+    }()
+    
+    private lazy var readyToGameLabel: UILabel = {
         let label = UILabel()
         label.text = "готовятся к игре:"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -40,18 +60,13 @@ class ScoreView: UIView {
         return label
     }()
     
-    private lazy var readyToGameTeamLabel: UILabel = { // лейбл - название команды к игре
-        let label = UILabel()
-        label.text = "КОМАНДА 1"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
-        label.font = UIFont(name: "Phosphate-Solid", size: 40)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    private lazy var contentStack: UIStackView = { // стэк с элементами ячейки
-        let stack = UIStackView(arrangedSubviews: [self.roundLabel, self.readyToGameLabel, self.readyToGameTeamLabel])
+    private lazy var contentStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [
+            self.roundLabel,
+            self.readyToGameLabel,
+            self.readyToGameTeamLabel
+        ])
+        
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.alignment = .center
@@ -63,11 +78,11 @@ class ScoreView: UIView {
     public lazy var viewForLbls: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(contentStack)
+        view.addSubview(self.contentStack)
         return view
     } ()
     
-    private lazy var goToGameButton: UIButton = { // кнопка начала игры
+    private lazy var goToGameButton: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = .black
         btn.setTitle("ПОЕХАЛИ", for: .normal)
@@ -80,10 +95,13 @@ class ScoreView: UIView {
         return btn
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(teams: [Team], playingTeamIndx: Int, numberOfRound: Int) {
+        self.teams = teams
+        self.playingTeamIndx = playingTeamIndx
+        self.numberOfRound = numberOfRound
+        super.init(frame: .zero)
+        
         self.setupUI()
-        self.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -92,16 +110,18 @@ class ScoreView: UIView {
     
     @objc private func startGame(){
         self.gameButtonTap?()
-        ScoreViewController().dismiss(animated: false)
     }
     
-    private func setupUI() {
-        
-//        addSubview(self.teamsLabel)
-        addSubview(self.scoreTableView)
-        addSubview(viewForLbls)
-        addSubview(self.goToGameButton)
+}
 
+private extension ScoreView {
+    
+    func setupUI() {
+        self.backgroundColor = .white
+        self.addSubview(self.scoreTableView)
+        self.addSubview(self.viewForLbls)
+        self.addSubview(self.goToGameButton)
+        
         NSLayoutConstraint.activate([
             
             self.scoreTableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
@@ -111,7 +131,7 @@ class ScoreView: UIView {
             
             self.viewForLbls.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.viewForLbls.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.viewForLbls.bottomAnchor.constraint(equalTo: goToGameButton.topAnchor, constant: -36),
+            self.viewForLbls.bottomAnchor.constraint(equalTo: self.goToGameButton.topAnchor, constant: -36),
             self.viewForLbls.heightAnchor.constraint(equalToConstant: 110),
             
             self.contentStack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -122,29 +142,26 @@ class ScoreView: UIView {
             self.goToGameButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24)
         ])
     }
+    
 }
 
+// MARK: - UITableViewDataSource/Delegate
 extension ScoreView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as? ScoreCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as! ScoreCell
         
-        if let cell = cell {
-           // TO DO обработать колличество ячеек
-        let countOfSection = indexPath.section % brain.teamName.count
+        let countOfSection = indexPath.section % 3
         cell.myView.backgroundColor = sectionColor(section: countOfSection)
+        let team = self.teams[indexPath.section]
+        cell.teamLabel.text = team.name
+        cell.scoreLabel.text = String(team.scores)
+        cell.starImage.isHidden = showStar(labelScore: cell.scoreLabel.text ?? "")
         
-        cell.teamLabel.text = brain.team()[indexPath.section]
-        cell.scoreLabel.text = String(brain.score()[indexPath.section])
-        
-        cell.starImage.isHidden = brain.showStar(labelScore: cell.scoreLabel.text ?? "")
-
         return cell
-        }
-        return UITableViewCell()
     }
     
-    func sectionColor(section: Int)-> UIColor {
+    private func sectionColor(section: Int)-> UIColor {
         var color: UIColor = .gray
         if section == 0 {
             color = UIColor(named: "RoyalBlueColor") ?? .gray
@@ -156,6 +173,17 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         return color
     }
     
+    //Заменить количество 10 на данные макисмального колличества очков у команд
+    private func showStar(labelScore: String)-> Bool {
+        var parametr = true
+        if labelScore == String(0) {
+            return parametr
+        } else if String(10) == labelScore {
+            parametr = false
+        }
+        return parametr
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 66+16
     }
@@ -163,12 +191,12 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
     internal func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return brain.teamName.count
-    }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return teams.count
+    }
 }

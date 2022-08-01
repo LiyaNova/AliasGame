@@ -2,20 +2,17 @@
 import UIKit
 
 class GameScreenView: UIView {
-    
     var rightButtonTap: (() -> Void)?
     var wrongButtonTap: (() -> Void)?
-    var openScore: (() -> Void)?
-    private var timer = Timer()
+    
+    private let round: GameRound
     private let musicManager = MusicModel()
-    private var seconds = 15
     
     // MARK: - UI elements
     
-    // Лейбл с секундами
-    private lazy var secondsLabel: UILabel = {
+    private(set) lazy var secondsLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(seconds)"
+        label.text = "\(self.round.roundDuration)"
         label.textColor = .black
         label.font = UIFont(name: "Phosphate-Solid", size: 72)
         label.textAlignment = .center
@@ -23,7 +20,6 @@ class GameScreenView: UIView {
         return label
     }()
     
-    // Лейбл с текстом о секундах
     private lazy var secondsTextLabel: UILabel = {
         let label = UILabel()
         label.text = "секунд"
@@ -34,10 +30,9 @@ class GameScreenView: UIView {
         return label
     }()
     
-    // Лейбл с игровым словом
-     lazy var gameWodrLabel: UILabel = {
+    private(set) lazy var gameWordLabel: UILabel = {
         let label = UILabel()
-     //   label.text = "ОТРАЖЕНИЕ"
+        label.text = self.round.words.first
         label.textColor = .black
         label.font = UIFont(name: "Phosphate-Solid", size: 24)
         label.textAlignment = .center
@@ -48,7 +43,7 @@ class GameScreenView: UIView {
     // Картинка карточки (игровое поле)
     private lazy var gameImage: UIImageView = {
         let image = UIImageView(image: UIImage(named: "Carts"))
-        image.addSubview(gameWodrLabel)
+        image.addSubview(gameWordLabel)
         return image
     }()
     
@@ -97,11 +92,12 @@ class GameScreenView: UIView {
         return stack
     }()
     
-    override init(frame: CGRect) {
-        super .init(frame: frame)
+    init(round: GameRound) {
+        self.round = round
+        
+        super .init(frame: .zero)
+        
         self.setupUI()
-        self.backgroundColor = .white
-        self.gameTimer()
     }
     
     required init?(coder: NSCoder) {
@@ -116,37 +112,33 @@ class GameScreenView: UIView {
         self.wrongButtonTap?()
     }
     
-    private func gameTimer(){
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(startTimer), userInfo: nil, repeats: true)
-    }
-    
-    @objc func startTimer(){
-        
-        if seconds > 0 {
-            seconds -= 1
-            secondsLabel.text = String(seconds)
-        }
-        if seconds == 5 {
-            musicManager.playSound(soundName: "Last 5 sec")
-        }
-        if seconds == 0 {
-            self.openScore?()
-            musicManager.playSound(soundName: "Start Timer")
-            timer.invalidate()
-        }
-    }
+//    @objc func startTimer(){
+//        if seconds > 0 {
+//            seconds -= 1
+//            self.secondsLabel.text = String(seconds)
+//        }
+//        if seconds == 5 {
+//            self.musicManager.playSound(soundName: "Last 5 sec")
+//        }
+//        if seconds == 0 {
+//            self.openScore?()
+//            self.musicManager.playSound(soundName: "Start Timer")
+//            timer.invalidate()
+//        }
+//    }
     
     private func setupUI() {
         
+        self.backgroundColor = .white
         addSubview(self.contentStack)
         
         NSLayoutConstraint.activate([
             
-            self.contentStack.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            self.contentStack.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+            self.contentStack.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            self.contentStack.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor),
             
-            self.gameWodrLabel.centerXAnchor.constraint(equalTo: self.gameImage.centerXAnchor),
-            self.gameWodrLabel.centerYAnchor.constraint(equalTo: self.gameImage.centerYAnchor),
+            self.gameWordLabel.centerXAnchor.constraint(equalTo: self.gameImage.centerXAnchor),
+            self.gameWordLabel.centerYAnchor.constraint(equalTo: self.gameImage.centerYAnchor),
             
             self.wrongAnswerBtn.widthAnchor.constraint(equalToConstant: 112),
             self.wrongAnswerBtn.heightAnchor.constraint(equalToConstant: 108),

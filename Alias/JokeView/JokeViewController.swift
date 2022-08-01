@@ -1,14 +1,7 @@
-//
-//  JokeViewController.swift
-//  Alias
-//
-//  Created by Alex Ch. on 31.07.2022.
-//
 
 import UIKit
 
 class JokeViewController: UIViewController {
-    
     
     private let jokeView = JokeView()
     private let networkManager = NetworkManager()
@@ -17,7 +10,6 @@ class JokeViewController: UIViewController {
 
     override func loadView() {
         self.view = self.jokeView
-
     }
     
     override func viewDidLoad() {

@@ -49,5 +49,4 @@ struct DifficultyChoiceModel {
     func getWords() -> [String] {
         return difficultyArray[choice].words
     }
-
 }

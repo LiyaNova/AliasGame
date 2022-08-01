@@ -92,9 +92,6 @@ class JokeView: UIView {
             self.continueButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -11),
             self.continueButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             self.continueButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24)
-
         ])
-        
     }
-    
 }
