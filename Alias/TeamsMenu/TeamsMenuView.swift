@@ -2,11 +2,18 @@
 import UIKit
 
 class TeamsMenuView: UIView {
+
+    weak var delegate: PresentAlertDelegate? //Протокол для пуша алерта (ищи в файле ResultScreenView). Может вынесем протоколы в отдельный фаил?
     
     let minNumberOfTeams: Int
     let maxNumberOfTeams: Int
     
-    var teams = [Team]()
+    var teams: [Team] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     var addNewTeam :(() -> Void)?
     var deleteTeam :(() -> Void)?
     var nextVC :(() -> Void)?
@@ -61,9 +68,10 @@ class TeamsMenuView: UIView {
         return btn
     }()
     
-    init(minNumberOfTeams: Int, maxNumberOfTeams: Int, frame: CGRect) {
+    init(minNumberOfTeams: Int, maxNumberOfTeams: Int, teams: [Team], frame: CGRect = .zero) {
         self.minNumberOfTeams = minNumberOfTeams
         self.maxNumberOfTeams = maxNumberOfTeams
+        self.teams = teams
         super.init(frame: frame)
         
         self.setupUI()
@@ -165,5 +173,9 @@ extension TeamsMenuView: UITableViewDataSource, UITableViewDelegate {
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.teams.count
+    }
+//Передает пуш делегату в TeamMenuViewController
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.presentAlert()
     }
 }

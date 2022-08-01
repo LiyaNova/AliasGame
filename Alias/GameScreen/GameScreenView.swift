@@ -7,7 +7,8 @@ class GameScreenView: UIView {
     var wrongButtonTap: (() -> Void)?
     var openScore: (() -> Void)?
     private var timer = Timer()
-    private var seconds = 6
+    private let musicManager = MusicModel()
+    private var seconds = 15
     
     // MARK: - UI elements
     
@@ -125,11 +126,14 @@ class GameScreenView: UIView {
             seconds -= 1
             secondsLabel.text = String(seconds)
         }
+        if seconds == 5 {
+            musicManager.playSound(soundName: "Last 5 sec")
+        }
         if seconds == 0 {
             self.openScore?()
+            musicManager.playSound(soundName: "Start Timer")
             timer.invalidate()
         }
-        
     }
     
     private func setupUI() {

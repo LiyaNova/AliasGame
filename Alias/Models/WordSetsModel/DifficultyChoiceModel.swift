@@ -21,6 +21,7 @@ struct DifficultyChoiceModel {
                 let description = jsonData.level[choice].description
                 let example = jsonData.level[choice].example
                 let words = jsonData.level[choice].words
+                
                 let difficulty = DifficultyPage(image: image, level: level, color: color,
                                                 description: description, example: example, words: words)
                 return difficulty

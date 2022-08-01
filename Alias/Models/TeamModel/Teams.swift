@@ -1,9 +1,3 @@
-//
-//  GameModel.swift
-//  Alias
-//
-//  Created by Tatyana Sidoryuk on 29.07.2022.
-//
 
 import Foundation
 
@@ -15,7 +9,7 @@ class Teams {
         guard count < self.randomTeamNames.count else { return [] }
         let shuffledNames = self.randomTeamNames.shuffled()
         
-        return shuffledNames[..<count].map { Team(name: $0) }
+        return shuffledNames[..<count].map { Team(name: $0, scores: 0) }
     }
     
     func makeNewTeam() -> Team {

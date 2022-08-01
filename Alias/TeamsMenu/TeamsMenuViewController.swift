@@ -5,6 +5,7 @@ import UIKit
 
 class TeamsMenuViewController: CustomViewController {
     
+    private let alertManager = AlertManager()
     override var nameViewControler: String { "КОМАНДЫ" }
     let minNumberOfTeams: Int
     let maxNumberOfTeams: Int
@@ -18,7 +19,17 @@ class TeamsMenuViewController: CustomViewController {
         }
     }
     
-    private lazy var teamsMenuView = TeamsMenuView(minNumberOfTeams: self.minNumberOfTeams, maxNumberOfTeams: self.maxNumberOfTeams, frame: .zero)
+    private lazy var teamsMenuView = TeamsMenuView(
+        minNumberOfTeams: self.minNumberOfTeams,
+        maxNumberOfTeams: self.maxNumberOfTeams,
+        teams: self.teams
+    )
+    
+    var teams: [Team] = [] {
+        didSet {
+            self.teamsMenuView.teams = self.teams
+        }
+    }
     
 //    override func loadView() {
 //        self.teamsMenuView.customNavBar = self.customNavigationBarView
@@ -37,9 +48,9 @@ class TeamsMenuViewController: CustomViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        teamsMenuView.delegate = self //подписка на делегата
         self.teamsMenuView.translatesAutoresizingMaskIntoConstraints = false
-        
         self.view.addSubview(self.teamsMenuView)
         
         NSLayoutConstraint.activate([
@@ -71,6 +82,7 @@ class TeamsMenuViewController: CustomViewController {
                             added.toggle()
                         }
                     }
+
             }
         }
         teamsMenuView.deleteTeam = {
@@ -78,8 +90,10 @@ class TeamsMenuViewController: CustomViewController {
             guard let self = self else { return }
             
             if self.teamsMenuView.teams.count != self.minNumberOfTeams {
+
                 self.teamsMenuView.teams.removeLast()
                 self.updateSetOfNames()
+
             }
             self.musicManager.playSound(soundName: "Transition")
         }
@@ -90,8 +104,24 @@ class TeamsMenuViewController: CustomViewController {
             
             let vc = DifficultyPageViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+
             self.musicManager.playSound(soundName: "Transition")
             
         }
+    }
+}
+
+//MARK: - PresentAlertDelegate
+//Пуш алерта
+extension TeamsMenuViewController: PresentAlertDelegate {
+    func presentAlert() {
+        //let alert =
+        alertManager.showCustomAlert(with: "Привет", message: "Я алерт", on: self)
+        //showAlert(text: "Леша, привет! Ты большой молодец!)")
+           // present(alert, animated: true)
+    }
+
+    @objc func dismissAlert(){
+        alertManager.dismissAlert()
     }
 }

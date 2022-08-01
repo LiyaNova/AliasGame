@@ -61,13 +61,10 @@ class ScoreCell: UITableViewCell {
     private func setupView () {
         self.addSubview(contentView)
         self.contentView.addSubview(self.myView)
-        myView.addSubview(self.contentStack)
- 
+        self.myView.addSubview(self.contentStack)
         contentView.backgroundColor = .white
         
         NSLayoutConstraint.activate([
-            
-            
             self.contentView.topAnchor.constraint(equalTo: self.topAnchor),
             self.contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),

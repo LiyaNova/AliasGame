@@ -1,23 +1,28 @@
 
 import UIKit
 
-
 class ScoreViewController: CustomViewController {
     
+    override var nameViewControler: String { "УРОВЕНЬ \nСЛОЖНОСТИ" }
     private let scoreView = ScoreView()
-    private let networkManager = NetworkManager()
-    private let api = Api()
-    private var jokes: JokeModel?
     
-    override func loadView() {
-        self.view = self.scoreView
-    }
+    
+//    override func loadView() {
+//        self.view = self.scoreView
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        networkManager.delegate = self
-        networkManager.fetchData(url: api.baseURL)
+        self.scoreView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.scoreView)
+        
+        NSLayoutConstraint.activate([
+            self.scoreView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            self.scoreView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            self.scoreView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            self.scoreView.topAnchor.constraint(equalTo: self.customNavigationBarView.bottomAnchor)
+        ])
         
         scoreView.gameButtonTap = {
             [weak self] in
@@ -28,15 +33,9 @@ class ScoreViewController: CustomViewController {
             self.present(vc, animated: true)
         }
     }
-    
+}
+
+
 //    override func backButtonTap() {
 //        self.navigationController?.popToRootViewController(animated: true)
 //    }
-
-}
-
-extension ScoreViewController: NetworkManagerDelegate {
-    func showData(results: JokeModel) {
-        jokes = results
-    }
-}
