@@ -102,7 +102,7 @@ class AlertForChangeTeamName {
     }
     
     // Таргет сохранения
-    @objc func saveBtnPressed()->String{
+    @objc private func saveBtnPressed()->String{
         
         UIView.animate(withDuration: 0.25, animations: { self.createView() }, completion: { done in
             if done {
