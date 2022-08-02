@@ -42,7 +42,7 @@ class JokeView: UIView {
     private lazy var continueButton: UIButton = { // кнопка продолжить
         let btn = UIButton()
         btn.backgroundColor = .white
-        btn.setTitle("НОВАЯ ИГРА!", for: .normal)
+        btn.setTitle("НАЗАД", for: .normal)
         btn.titleLabel?.font = UIFont(name: "Phosphate-Solid", size: 24)
         btn.titleLabel?.textColor = .black
         btn.setTitleColor(UIColor.black, for: .normal)

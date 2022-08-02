@@ -18,9 +18,8 @@ class JokeViewController: UIViewController {
         jokeView.newGameButtonTap = {
             [weak self] in
             guard let self = self else { return }
-            let vc = StartMenuViewController()
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+            
+            self.dismiss(animated: true)
         }
         
         Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(makeBubble), userInfo: nil, repeats: true)

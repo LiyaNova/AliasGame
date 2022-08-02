@@ -1,9 +1,3 @@
-//
-//  NetworkManager.swift
-//  Alias
-//
-//  Created by Alex Ch. on 28.07.2022.
-//
 
 import Foundation
 
@@ -21,7 +15,7 @@ final class NetworkManager {
     // MARK: - Methods
     
     func fetchData(url: String) {
-        api.decodeData(url: url) { [weak self] (result) in
+        self.api.decodeData(url: url) { [weak self] (result) in
             guard let self = self else {return}
             switch result {
             case .success(let joke):

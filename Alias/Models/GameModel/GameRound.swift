@@ -5,23 +5,17 @@ class GameRound {
 
     var nextWordHandler: ((String) -> Void)?
     var remainingRoundSecHandler: ((TimeInterval) -> Void)?
-    
     /// Продолжительность раунда
     let roundDuration: TimeInterval
-    
     /// Номер раунда
     let number: Int
-    
     /// Команда, которая щас играет свой раунд
     let team: Team
-    
     let words: [String]
-
-    private var currentWordIndex = 0
     
+    private var currentWordIndex = 0
     private var timer: Timer? = nil
     private var elapsedSec: TimeInterval = 0
-    
     private var roundEndHandler: ((_ accuredScores: Int) -> (Void))?
     private var accuredScores = 0
 
@@ -42,12 +36,12 @@ class GameRound {
 
     func start(completion: @escaping (_ accuredScores: Int) -> (Void)) {
         self.roundEndHandler = completion
-
         self.startGameTimer()
         self.sendNextWord(needIncrementIndex: false)
     }
 
     func cancelCurrentWord() {
+        self.accuredScores -= 1
         self.sendNextWord()
     }
 
@@ -55,7 +49,6 @@ class GameRound {
         self.accuredScores += 1
         self.sendNextWord()
     }
-
 }
 
 // MARK: - Private impl
@@ -101,5 +94,4 @@ private extension GameRound {
         self.timer?.invalidate()
         self.timer = nil
     }
-
 }

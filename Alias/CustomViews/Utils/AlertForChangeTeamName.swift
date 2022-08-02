@@ -1,9 +1,3 @@
-//
-//  AlertForChangeTeamName.swift
-//  Alias
-//
-//  Created by Alex Ch. on 01.08.2022.
-//
 
 import UIKit
 // Протокол, отвечающий за передачу, введенного в текстфилд имени
@@ -148,8 +142,7 @@ class AlertForChangeTeamName {
     }
     
     // вызов алерта
-    func showAlertChangeTeamName(title: String, target controller: UIViewController){
-        
+    func showAlertChangeTeamName(title: String, target controller: UIViewController) {
         // Проверяем на nil
         guard let targetView = controller.view else {return}
         

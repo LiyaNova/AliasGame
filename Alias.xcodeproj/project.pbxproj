@@ -56,7 +56,6 @@
 		9F2CB3FC2897C960001A38B4 /* AlertForChangeTeamName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2CB3FB2897C960001A38B4 /* AlertForChangeTeamName.swift */; };
 		9F7F697F2896BFD7007AA3DA /* JokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */; };
 		9F7F69812896C002007AA3DA /* JokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F69802896C002007AA3DA /* JokeView.swift */; };
-		9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */; };
 		9FBD47AD289270A200687891 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AC289270A200687891 /* ScoreViewController.swift */; };
 		9FBD47AF28927B4700687891 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47AE28927B4700687891 /* ScoreView.swift */; };
 		9FBD47B128927C0000687891 /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBD47B028927C0000687891 /* ScoreCell.swift */; };
@@ -116,7 +115,6 @@
 		9F2CB3FB2897C960001A38B4 /* AlertForChangeTeamName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForChangeTeamName.swift; sourceTree = "<group>"; };
 		9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewController.swift; sourceTree = "<group>"; };
 		9F7F69802896C002007AA3DA /* JokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeView.swift; sourceTree = "<group>"; };
-		9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainResultScreen.swift; sourceTree = "<group>"; };
 		9FBD47AC289270A200687891 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		9FBD47AE28927B4700687891 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		9FBD47B028927C0000687891 /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 		38C4461B2893F2F0009EED5E /* ResultScreen */ = {
 			isa = PBXGroup;
 			children = (
-				9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */,
 				38C4461C2893F323009EED5E /* ResultScreenViewController.swift */,
 				38C4461E2893F346009EED5E /* ResultScreenView.swift */,
 			);
@@ -482,7 +479,6 @@
 				9F13E32A28940E970067D43A /* AlertForExitApp.swift in Sources */,
 				77448D0E2892C7170040A442 /* AppNavigationController.swift in Sources */,
 				77448CC0289047CF0040A442 /* CustomButton.swift in Sources */,
-				9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */,
 				2A8EB12C28957E8C00BB6D04 /* MusicModel.swift in Sources */,
 				77448CDD289229DC0040A442 /* GameScreenView.swift in Sources */,
 				9FBD47B128927C0000687891 /* ScoreCell.swift in Sources */,

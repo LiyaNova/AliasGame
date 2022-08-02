@@ -10,8 +10,9 @@ class ResultScreenView: UIView {
     
     weak var delegate: PresentAlertDelegate?
     var tapImageBtn: (()->())?
-    private var scoreDict = ["Команда 2": 8, "Команда 3": 7]
-    private var brain = BrainResultScreen()
+    var backStartVC: (() -> Void)?
+    var finalists: [Team]
+    private let winner: Team
 
     private let backgroundImage: UIImageView = {
         let backgroundImage = UIImageView()
@@ -20,17 +21,18 @@ class ResultScreenView: UIView {
         return backgroundImage
     }()
 
-    var teamLabel: UILabel = {
+    private lazy var teamLabel: UILabel = {
         let teamLabel = UILabel()
         teamLabel.translatesAutoresizingMaskIntoConstraints = false
-        teamLabel.text = "КОМАНДА 1"
+        
+        teamLabel.text = ""
         teamLabel.textAlignment = .center
         teamLabel.textColor = .white
         teamLabel.font = UIFont(name: "Phosphate-Solid", size: 40)
         return teamLabel
     }()
 
-    private var winLabel: UILabel = {
+    private lazy var winLabel: UILabel = {
         let winLabel = UILabel()
         winLabel.translatesAutoresizingMaskIntoConstraints = false
         winLabel.text = "WIN!"
@@ -40,7 +42,7 @@ class ResultScreenView: UIView {
         return winLabel
     }()
 
-    var circleLabel: UILabel = {
+    private lazy var circleLabel: UILabel = {
         let circleLabel = UILabel()
         circleLabel.translatesAutoresizingMaskIntoConstraints = false
         circleLabel.text = "10"
@@ -53,7 +55,7 @@ class ResultScreenView: UIView {
         return circleLabel
     }()
 
-    lazy private var cupImage: UIImageView = {
+    private lazy var cupImage: UIImageView = {
         let cupImage = UIImageView()
         cupImage.translatesAutoresizingMaskIntoConstraints = false
         cupImage.image = UIImage(named: "Goodies Appreciation")
@@ -122,12 +124,14 @@ class ResultScreenView: UIView {
     }()
 
     @objc private func didTapBottomButton() {
-        print("А потом новая игра")
+        self.backStartVC?()
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = .white
+    init(finalists: [Team]) {
+        self.winner = finalists.first!
+        self.finalists = Array(finalists.dropFirst())
+        super.init(frame: .zero)
+        
         self.setViews()
     }
 
@@ -136,6 +140,11 @@ class ResultScreenView: UIView {
     }
 
     private func setViews() {
+        self.teamLabel.text = self.winner.name
+        self.circleLabel.text = String(self.winner.scores)
+        
+        self.backgroundColor = .white
+        
         [self.backgroundImage,
          self.winStackView,
          self.cupStackView,
@@ -150,8 +159,8 @@ class ResultScreenView: UIView {
             self.backgroundImage.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.6),
 
             self.winStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.winStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor,
-                                                                                  constant: 30),
+            self.winStackView.bottomAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor, constant: -5),
+            self.winStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30),
 
             self.circleLabel.heightAnchor.constraint(equalToConstant: 120),
             self.circleLabel.widthAnchor.constraint(equalToConstant: 120),
@@ -162,16 +171,14 @@ class ResultScreenView: UIView {
 
             self.resultTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.resultTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.resultTableView.topAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor,
-                                                                                    constant: 2),
-            self.resultTableView.bottomAnchor.constraint(equalTo: self.bottomButton.topAnchor,
-                                                                                    constant: -10),
+            self.resultTableView.topAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor, constant: 2),
+            self.resultTableView.bottomAnchor.constraint(equalTo: self.bottomButton.topAnchor, constant: -10),
 
             self.bottomButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             self.bottomButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
             self.bottomButton.heightAnchor.constraint(equalToConstant: 66),
-            self.bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
-                                                                                       constant: -11)
+
+            self.bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -11)
         ])
     }
 
@@ -184,21 +191,33 @@ extension ResultScreenView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as? ScoreCell
         if let cell = cell {
-            // TO DO обработать колличество ячеек
-            let countOfSection = indexPath.section % brain.teamName.count
-            cell.myView.backgroundColor = brain.sectionColor(section: countOfSection)
             
-            cell.teamLabel.text = brain.team()[indexPath.section]
-            cell.scoreLabel.text = String(brain.score()[indexPath.section])
+               // TO DO обработать колличество ячеек
+            let countOfSection = indexPath.section % 3
+            cell.myView.backgroundColor = sectionColor(section: countOfSection)
             
-            cell.starImage.isHidden = brain.showStar(labelScore: cell.scoreLabel.text ?? "")
+            let finalists = finalists[indexPath.section]
+            cell.teamLabel.text = finalists.name
+            cell.scoreLabel.text = String(finalists.scores)
 
             return cell
-
         }
         return UITableViewCell()
     }
 
+    private func sectionColor(section: Int)-> UIColor {
+        var color: UIColor = .gray
+        if section == 0 {
+            color = UIColor(named: "RoyalBlueColor") ?? .gray
+        } else if section == 1 {
+            color = UIColor(named: "DarkPurpleColor") ?? .gray
+        } else if section == 2 {
+            color =  UIColor(named: "OrangeColor") ?? .gray
+        }
+        return color
+    }
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 66+16
     }
@@ -210,7 +229,7 @@ extension ResultScreenView: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return scoreDict.count
+        return finalists.count
     }
 
 }

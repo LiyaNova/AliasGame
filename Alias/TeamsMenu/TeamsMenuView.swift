@@ -13,7 +13,6 @@ class TeamsMenuView: UIView {
 
     var teams: [Team] {
         didSet {
-            print("Teams from TMV \(self.teams)")
             self.tableView.reloadData()
         }
     }
@@ -132,13 +131,13 @@ class TeamsMenuView: UIView {
     }
 
     private func changePlusMinusButtonColor() {
-        if teams.count == minNumberOfTeams {
-            minusButton.tintColor = .gray
-        } else if teams.count == maxNumberOfTeams {
-            plusButton.tintColor = .gray
+        if teams.count == self.minNumberOfTeams {
+            self.minusButton.tintColor = .gray
+        } else if teams.count == self.maxNumberOfTeams {
+            self.plusButton.tintColor = .gray
         } else {
-            plusButton.tintColor = .black
-            minusButton.tintColor = .black
+            self.plusButton.tintColor = .black
+            self.minusButton.tintColor = .black
         }
     }
 }
@@ -180,7 +179,7 @@ extension TeamsMenuView: UITableViewDataSource, UITableViewDelegate {
     }
 //Передает пуш делегату в TeamMenuViewController
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.presentAlert()
-        sectionToRename = indexPath.section
+        self.delegate?.presentAlert()
+        self.sectionToRename = indexPath.section
     }
 }

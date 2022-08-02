@@ -12,7 +12,6 @@ class CustomViewController: UIViewController {
         return view
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
