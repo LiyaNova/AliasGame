@@ -11,7 +11,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
 
-        window?.rootViewController = AppNavigationController(rootViewController: ResultScreenViewController(finalists: [Team(name: "dsfsd", scores: 0)]))
+        window?.rootViewController = ResultScreenViewController(finalists: [Team(name: "dsfsd", scores: 0)])
+        
+        //AppNavigationController(rootViewController: ResultScreenViewController(finalists: [Team(name: "dsfsd", scores: 0)]))
         
         window?.makeKeyAndVisible()
         

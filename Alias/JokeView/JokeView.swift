@@ -85,7 +85,7 @@ class JokeView: UIView {
             
             self.jokeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.jokeLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.jokeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.jokeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.jokeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
             self.continueButton.heightAnchor.constraint(equalToConstant: 66),
@@ -93,5 +93,4 @@ class JokeView: UIView {
             self.continueButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             self.continueButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24)
         ])
-    }
 }
