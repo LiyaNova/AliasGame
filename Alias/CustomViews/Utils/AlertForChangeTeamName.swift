@@ -61,11 +61,10 @@ class AlertForChangeTeamName {
         tf.addShadowToTextField(color: .gray, cornerRadius: 10)
         tf.placeholder = "Введите название команды"
         tf.clearButtonMode = UITextField.ViewMode.whileEditing
+        tf.indent(size: 10)
         tf.clearsOnBeginEditing = true
         return tf
     }()
-    
-    
     
     // Кнопка - сохранить
     private  lazy var saveButton: UIButton = {
@@ -95,22 +94,8 @@ class AlertForChangeTeamName {
         return button
     }()
     
-    private func deleteAlpha(){
-        self.alertView.removeFromSuperview()
-        self.backgroundView.removeFromSuperview()
-    }
-    
-    private func createView(){
-        
-        guard let targetView = myTargetView else {return}
-        self.alertView.frame = CGRect(x: 40,
-                                      y: targetView.frame.size.height,
-                                      width: targetView.frame.size.width - 80,
-                                      height: 250)
-    }
-    
-    // Таргет сохранения
-    @objc func saveBtnPressed() {
+    // Кнопка сохранения
+    @objc private func saveBtnPressed() {
         
         UIView.animate(withDuration: 0.25, animations: { self.createView() }, completion: { done in
             if done {
@@ -123,6 +108,7 @@ class AlertForChangeTeamName {
                         guard let newName = self.teamName  else { return }
                         let cutName = self.textFieldLeingth(text: newName, countCharacters: Constants.countOfSymbols)
                         self.delegate?.renameTeam(name: cutName.uppercased())
+                        self.teamNameTextField.text = ""
                     }
                 })
             }
@@ -130,7 +116,7 @@ class AlertForChangeTeamName {
 
     }
     
-    // Закрыть алерт
+    // Кнопка закрытия
     @objc private func dismissAlert(){
         
         UIView.animate(withDuration: 0.25,
@@ -150,7 +136,18 @@ class AlertForChangeTeamName {
         })
     }
     
-
+    private func createView(){
+        
+        guard let targetView = myTargetView else {return}
+        self.alertView.frame = CGRect(x: 40, y: targetView.frame.size.height, width: targetView.frame.size.width - 80, height: 250)
+    }
+    
+    private func deleteAlpha(){
+        self.alertView.removeFromSuperview()
+        self.backgroundView.removeFromSuperview()
+    }
+    
+    // вызов алерта
     func showAlertChangeTeamName(title: String, target controller: UIViewController){
         
         // Проверяем на nil
@@ -178,6 +175,7 @@ class AlertForChangeTeamName {
         })
     }
     
+    // Считаем длину названия команды и режем если больше уст. значения
     private func textFieldLeingth(text: String?, countCharacters: Int) -> String {
         var newString: [Character] = []
         var counter = 0
@@ -236,5 +234,9 @@ extension UITextField {
         self.layer.shadowOpacity = 1.0
         self.layer.cornerRadius = cornerRadius
     }
-
+    
+    func indent(size: CGFloat){
+        self.leftView = UIView(frame: CGRect(x: self.frame.minX, y: self.frame.minY, width: size, height: self.frame.height))
+        self.leftViewMode = .always
+    }
 }

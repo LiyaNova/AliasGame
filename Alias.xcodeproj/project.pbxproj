@@ -51,9 +51,9 @@
 		77CF5EC5289691F9001C9A2F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */; };
 		77CF5ECA2896C213001C9A2F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC92896C213001C9A2F /* GameEngine.swift */; };
 		77CF5ECC2896C39B001C9A2F /* GameRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5ECB2896C39B001C9A2F /* GameRound.swift */; };
+		77CF5ED52896FD0A001C9A2F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5ED42896FD0A001C9A2F /* NetworkManager.swift */; };
 		9F13E32A28940E970067D43A /* AlertForExitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13E32928940E970067D43A /* AlertForExitApp.swift */; };
 		9F2CB3FC2897C960001A38B4 /* AlertForChangeTeamName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2CB3FB2897C960001A38B4 /* AlertForChangeTeamName.swift */; };
-		77CF5ED52896FD0A001C9A2F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5ED42896FD0A001C9A2F /* NetworkManager.swift */; };
 		9F7F697F2896BFD7007AA3DA /* JokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */; };
 		9F7F69812896C002007AA3DA /* JokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F69802896C002007AA3DA /* JokeView.swift */; };
 		9F8121CE28944CE60012BCEF /* BrainResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */; };
@@ -111,9 +111,9 @@
 		77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		77CF5EC92896C213001C9A2F /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		77CF5ECB2896C39B001C9A2F /* GameRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRound.swift; sourceTree = "<group>"; };
+		77CF5ED42896FD0A001C9A2F /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9F13E32928940E970067D43A /* AlertForExitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForExitApp.swift; sourceTree = "<group>"; };
 		9F2CB3FB2897C960001A38B4 /* AlertForChangeTeamName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForChangeTeamName.swift; sourceTree = "<group>"; };
-		77CF5ED42896FD0A001C9A2F /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewController.swift; sourceTree = "<group>"; };
 		9F7F69802896C002007AA3DA /* JokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeView.swift; sourceTree = "<group>"; };
 		9F8121CD28944CE60012BCEF /* BrainResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainResultScreen.swift; sourceTree = "<group>"; };
@@ -135,14 +135,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A6AEE12289674F60072412D /* MusicModel */ = {
-			isa = PBXGroup;
-			children = (
-				2A8EB12B28957E8C00BB6D04 /* MusicModel.swift */,
-			);
-			path = MusicModel;
-			sourceTree = "<group>";
-		};
 		38C4461B2893F2F0009EED5E /* ResultScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,10 +271,8 @@
 		77448D0228926E400040A442 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-
 				77CF5EC82896A4DA001C9A2F /* GameModel */,
 				77CF5EC72896A2D9001C9A2F /* MusicModel */,
-
 				77CF5EBA28955734001C9A2F /* TeamModel */,
 				77448D072892C00A0040A442 /* WordSetsModel */,
 				77CF5EB928955719001C9A2F /* JokeModel */,

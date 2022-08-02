@@ -7,7 +7,7 @@ protocol PresentAlertDelegate: AnyObject {
 }
 
 class ResultScreenView: UIView {
-
+    
     weak var delegate: PresentAlertDelegate?
     var tapImageBtn: (()->())?
     private var scoreDict = ["Команда 2": 8, "Команда 3": 7]

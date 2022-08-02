@@ -34,7 +34,7 @@ class JokeView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = UIFont(name: "Piazzolla", size: 24)
+        label.font = UIFont(name: "Piazzolla", size: 30)
         label.textAlignment = .center
         return label
     }()
@@ -55,7 +55,12 @@ class JokeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
+        let color = #colorLiteral(red: 0.9877986312, green: 0.7217630744, blue: 1, alpha: 1)
+        //UIColor(named: "RoyalBlueColor")
         setupUI()
+
+
+
     }
     
     required init?(coder: NSCoder) {
@@ -73,6 +78,7 @@ class JokeView: UIView {
     }
     
     private func setupUI(){
+ 
         addSubview(self.mainView)
         mainView.addSubview(continueButton)
         mainView.addSubview(jokeLabel)
@@ -86,7 +92,6 @@ class JokeView: UIView {
             self.jokeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.jokeLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             self.jokeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.jokeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
             self.continueButton.heightAnchor.constraint(equalToConstant: 66),
             self.continueButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -11),
