@@ -66,8 +66,6 @@ class AlertForChangeTeamName {
         return tf
     }()
     
-    
-    
     // Кнопка - сохранить
     private  lazy var saveButton: UIButton = {
         let button = UIButton()
@@ -96,21 +94,7 @@ class AlertForChangeTeamName {
         return button
     }()
     
-    private func deleteAlpha(){
-        self.alertView.removeFromSuperview()
-        self.backgroundView.removeFromSuperview()
-    }
-    
-    private func createView(){
-        
-        guard let targetView = myTargetView else {return}
-        self.alertView.frame = CGRect(x: 40,
-                                      y: targetView.frame.size.height,
-                                      width: targetView.frame.size.width - 80,
-                                      height: 250)
-    }
-    
-    // Таргет сохранения
+    // Кнопка сохранения
     @objc private func saveBtnPressed() {
         
         UIView.animate(withDuration: 0.25, animations: { self.createView() }, completion: { done in
@@ -132,7 +116,7 @@ class AlertForChangeTeamName {
 
     }
     
-    // Закрыть алерт
+    // Кнопка закрытия
     @objc private func dismissAlert(){
         
         UIView.animate(withDuration: 0.25,
@@ -152,7 +136,18 @@ class AlertForChangeTeamName {
         })
     }
     
-
+    private func createView(){
+        
+        guard let targetView = myTargetView else {return}
+        self.alertView.frame = CGRect(x: 40, y: targetView.frame.size.height, width: targetView.frame.size.width - 80, height: 250)
+    }
+    
+    private func deleteAlpha(){
+        self.alertView.removeFromSuperview()
+        self.backgroundView.removeFromSuperview()
+    }
+    
+    // вызов алерта
     func showAlertChangeTeamName(title: String, target controller: UIViewController){
         
         // Проверяем на nil
@@ -180,6 +175,7 @@ class AlertForChangeTeamName {
         })
     }
     
+    // Считаем длину названия команды и режем если больше уст. значения
     private func textFieldLeingth(text: String?, countCharacters: Int) -> String {
         var newString: [Character] = []
         var counter = 0
