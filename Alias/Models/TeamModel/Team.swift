@@ -5,7 +5,7 @@ class Team: Comparable {
     var name: String
     var scores: Int = 0
     
-    init(name: String, scores: Int) {
+    init(name: String, scores: Int = 0) {
         self.name = name
         self.scores = scores
     }

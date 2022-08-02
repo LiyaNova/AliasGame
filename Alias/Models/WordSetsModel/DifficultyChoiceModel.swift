@@ -13,17 +13,23 @@ struct DifficultyChoiceModel {
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(WordSetsModels.self, from: data)
 
-                difficultyArray = jsonData.level
+                self.difficultyArray = jsonData.level
 
-                let level = jsonData.level[choice].title
-                let image = jsonData.level[choice].image
-                let color = jsonData.level[choice].color
-                let description = jsonData.level[choice].description
-                let example = jsonData.level[choice].example
-                let words = jsonData.level[choice].words
+                let level = jsonData.level[self.choice].title
+                let image = jsonData.level[self.choice].image
+                let color = jsonData.level[self.choice].color
+                let description = jsonData.level[self.choice].description
+                let example = jsonData.level[self.choice].example
+                let words = jsonData.level[self.choice].words
                 
-                let difficulty = DifficultyPage(image: image, level: level, color: color,
-                                                description: description, example: example, words: words)
+                let difficulty = DifficultyPage(
+                    image: image,
+                    level: level,
+                    color: color,
+                    description: description,
+                    example: example,
+                    words: words
+                )
                 return difficulty
             } catch {
                 print("error:\(error)")
@@ -33,20 +39,20 @@ struct DifficultyChoiceModel {
     }
 
     mutating func makeForwardChoice() {
-        if choice < difficultyArray.count - 1 {
-            choice += 1
+        if self.choice < self.difficultyArray.count - 1 {
+            self.choice += 1
         }
     }
 
     mutating func makeBackChoice() {
-        if choice == difficultyArray.count - 1 && choice >= 0 {
-            choice -= 1
+        if self.choice == self.difficultyArray.count - 1 && self.choice >= 0 {
+            self.choice -= 1
         } else  {
-            choice = 0
+            self.choice = 0
         }
     }
 
     func getWords() -> [String] {
-        return difficultyArray[choice].words
+        return self.difficultyArray[self.choice].words
     }
 }

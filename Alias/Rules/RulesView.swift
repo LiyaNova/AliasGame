@@ -107,10 +107,6 @@ class RulesView: UIView {
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.alignment = .fill
         
-//        let bgView = UIView()
-//        bgView.backgroundColor = .white
-//        sv.pinBackground(bgView)
-        
         return sv
     }()
     
@@ -152,7 +148,7 @@ class RulesView: UIView {
     override init(frame: CGRect) {
         super .init(frame: frame)
         
-        setupUI()
+        self.setupUI()
     }
     
     required init?(coder: NSCoder) {

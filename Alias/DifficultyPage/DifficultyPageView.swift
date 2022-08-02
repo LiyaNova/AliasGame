@@ -127,7 +127,7 @@ final class DifficultyPageView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
-        setViews()
+        self.setViews()
     }
 
     required init?(coder: NSCoder) {
@@ -135,17 +135,12 @@ final class DifficultyPageView: UIView {
     }
 
     private func setViews() {[
-//        self.titleLabel,
         self.imageStackView,
         self.labelStackView,
         self.bottomButton
     ].forEach { self.addSubview($0) }
 
         NSLayoutConstraint.activate([
-//            self.titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-//            self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-//            self.titleLabel.widthAnchor.constraint(equalToConstant: 150),
-
             imageStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 40),
             imageStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
@@ -153,9 +148,7 @@ final class DifficultyPageView: UIView {
             labelStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             labelStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
 
-
-            self.bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
-                                                 constant: -11),
+            self.bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -11),
             self.bottomButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             self.bottomButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
             self.bottomButton.heightAnchor.constraint(equalToConstant: 66)

@@ -3,10 +3,9 @@ import UIKit
 
 class ResultScreenViewController: UIViewController {
     
-    private let finalists: [Team]
+    var finalists: [Team]
     
-//    private let alertManager = AlertManager()
-    let resultScreenView = ResultScreenView()
+    private lazy var resultScreenView = ResultScreenView(finalists: self.finalists)
     
     init(finalists: [Team]) {
         self.finalists = finalists
@@ -19,7 +18,6 @@ class ResultScreenViewController: UIViewController {
     
     override func loadView() {
         self.view = self.resultScreenView
- //       resultScreenView.delegate = self
         
         resultScreenView.tapImageBtn = {
             [weak self] in
@@ -33,22 +31,11 @@ class ResultScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("finalists: \(self.finalists)")
+        self.resultScreenView.backStartVC = {
+            [weak self] in
+            guard let self = self else { return }
+            
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
-       
 }
-
-//MARK: - PresentAlertDelegate
-////Пуш алерта при нажатии на кубок
-//extension ResultScreenViewController: PresentAlertDelegate {
-//    func presentAlert() {
-//        //let alert =
-//        alertManager.showCustomAlert(with: "Привет", message: "Я алерт", on: self)
-//        //showAlert(text: "Леша, привет! Ты большой молодец!)")
-//           // present(alert, animated: true)
-//    }
-//
-//    @objc func dismissAlert(){
-//        alertManager.dismissAlert()
-//    }
-//}

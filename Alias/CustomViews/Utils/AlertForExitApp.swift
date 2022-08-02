@@ -10,15 +10,15 @@ import UIKit
 final class AlertForExitApp {
     
     private var myTargetView: UIView?
+    var buttonHandler: (() -> Void)?
     
     struct Constants {
-        
         static let backgroundAlphaTo: CGFloat = 0.6
     }
     
     // MARK: - UI elements
     
-    private let backgroundView: UIView = {
+    private lazy var backgroundView: UIView = {
         let backgroundView = UIView()
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.backgroundColor = .black
@@ -26,7 +26,7 @@ final class AlertForExitApp {
         return backgroundView
     }()
     
-    private let alertView: UIView = {
+    private lazy var alertView: UIView = {
         let alert = UIView()
         alert.backgroundColor = .white
         alert.layer.masksToBounds = true
@@ -64,7 +64,7 @@ final class AlertForExitApp {
         return button
     }()
     
-    private let titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -72,7 +72,7 @@ final class AlertForExitApp {
         return label
     }()
     
-    private let messageLabel: UILabel = {
+    private lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -86,27 +86,34 @@ final class AlertForExitApp {
     
     func showCustomAlert(with title: String,
                          message: String,
-                         on viewController: UIViewController){
+                         on viewController: UIViewController) {
         
         guard let targetView = viewController.view else { return }
         
-        myTargetView = targetView
+        self.myTargetView = targetView
         
-        backgroundView.frame = targetView.bounds
-        targetView.addSubview(backgroundView)
-        targetView.addSubview(alertView)
+        self.backgroundView.frame = targetView.bounds
+        targetView.addSubview(self.backgroundView)
+        targetView.addSubview(self.alertView)
         
         self.alertView.frame = CGRect(x: 40,
                                       y: -300,
                                       width: targetView.frame.size.width - 80,
                                       height: 300)
         
-        titleLabel.text = title
-        messageLabel.text = message
-        setupUI()
+        self.titleLabel.text = title
+        self.messageLabel.text = message
+        self.setupUI()
         
-
-        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.backgroundView.alpha = Constants.backgroundAlphaTo
+        }, completion: { done in
+            if done {
+                UIView.animate(withDuration: 0.25) {
+                    self.alertView.center = targetView.center
+                }
+            }
+        })
     }
     
     private func deleteAlpha(){
@@ -116,7 +123,7 @@ final class AlertForExitApp {
     
     private func createView(){
         
-        guard let targetView = myTargetView else {return}
+        guard let targetView = self.myTargetView else {return}
         self.alertView.frame = CGRect(x: 40,
                                       y: targetView.frame.size.height,
                                       width: targetView.frame.size.width - 80,
@@ -143,7 +150,6 @@ final class AlertForExitApp {
         })
     }
     
-    
     //Закрыть алерт и закрыть приложение
     @objc private func dismissAlertAndCloseApp(){
         
@@ -158,7 +164,7 @@ final class AlertForExitApp {
                     done in
                     if done {
                         self.deleteAlpha()
-                        exit(0)
+                        self.buttonHandler?()
                     }
                 })
             }
@@ -174,7 +180,6 @@ final class AlertForExitApp {
         alertView.addSubview(self.messageLabel)
         
         NSLayoutConstraint.activate([
-            
             self.titleLabel.topAnchor.constraint(equalTo: self.alertView.topAnchor, constant: 16),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.alertView.leadingAnchor, constant: 24),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.alertView.trailingAnchor, constant: -24),
@@ -195,5 +200,4 @@ final class AlertForExitApp {
             self.exitButton.heightAnchor.constraint(equalToConstant: 55)
         ])
     }
-    
 }

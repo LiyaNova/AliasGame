@@ -9,11 +9,6 @@ final class DifficultyPageViewController: CustomViewController {
     private let musicManager = MusicModel()
     lazy var teams = [Team]()
     lazy var gameWords: [String] = self.difficultyChoiceModel.getWords()
-    
-//    override func loadView() {
-//        self.view = self.difficultyPageViuw
-//        difficultyPageViuw.delegate = self
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

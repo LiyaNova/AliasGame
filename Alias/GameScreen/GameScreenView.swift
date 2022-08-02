@@ -43,29 +43,35 @@ class GameScreenView: UIView {
     // Картинка карточки (игровое поле)
     private lazy var gameImage: UIImageView = {
         let image = UIImageView(image: UIImage(named: "Carts"))
-        image.addSubview(gameWordLabel)
+        image.addSubview(self.gameWordLabel)
         return image
     }()
     
     // Кнопка правильного ответа
     private var rightButton = UIButton()
+    
     private lazy var rightAnswerBtn: UIButton = {
-        rightButton = makeButton(color: "TrefoilCrayolaColor", image: "checkmark")
-        rightButton.addTarget(self, action: #selector(rightAnswer), for: .touchUpInside)
+        self.rightButton = makeButton(color: "TrefoilCrayolaColor", image: "checkmark")
+        self.rightButton.addTarget(self, action: #selector(rightAnswer), for: .touchUpInside)
         return rightButton
     }()
     
     // Кнопка неправильного ответа
     private var wrongButton = UIButton()
+    
     private lazy var wrongAnswerBtn: UIButton = {
-        wrongButton = makeButton(color: "SignalOrangeColor", image: "multiply")
-        wrongButton.addTarget(self, action: #selector(wrongAnswer), for: .touchUpInside)
+        self.wrongButton = makeButton(color: "SignalOrangeColor", image: "multiply")
+        self.wrongButton.addTarget(self, action: #selector(wrongAnswer), for: .touchUpInside)
         return wrongButton
     }()
     
     // Стэк для секунд
     private lazy var secondsStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [self.secondsLabel, self.secondsTextLabel])
+        let stack = UIStackView(arrangedSubviews:
+                                    [
+                                        self.secondsLabel,
+                                        self.secondsTextLabel
+                                    ])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         return stack
@@ -73,7 +79,11 @@ class GameScreenView: UIView {
     
     // Стэк для кнопок
     private lazy var buttonsStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [self.wrongAnswerBtn, self.rightAnswerBtn])
+        let stack = UIStackView(arrangedSubviews:
+                                    [
+                                        self.wrongAnswerBtn,
+                                        self.rightAnswerBtn
+                                    ])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.distribution = .fillEqually
@@ -83,9 +93,12 @@ class GameScreenView: UIView {
     
     // Стэк общий
     private lazy var contentStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [self.secondsStack,
-                                                   self.gameImage,
-                                                   self.buttonsStack])
+        let stack = UIStackView(arrangedSubviews:
+                                    [
+                                        self.secondsStack,
+                                        self.gameImage,
+                                        self.buttonsStack
+                                    ])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.alignment = .center

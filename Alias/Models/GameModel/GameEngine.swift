@@ -4,14 +4,12 @@ import Foundation
 protocol IGameEngineDelegate: AnyObject {
     func gameTeamRoundEnd(game: GameEngine, round: Int, teams: [Team], nextPlayingTeam: Team)
     func gameRoundEnd(game: GameEngine, round: Int, teams: [Team], nextPlayingTeam: Team)
-    
     func gameEnded(game: GameEngine, round: Int, teams: [Team], teamWin: Team)
     
 }
 
 class GameEngine {
     var delegate: IGameEngineDelegate?
-
     /// Число очков, которые нужно набрать команде, чтобы выиграть игру
     let scoresToWin: Int
     /// Продолжительность одного раунда (сек)
@@ -53,7 +51,7 @@ extension GameEngine {
             roundDuration: self.roundDuration,
             number: self.currentRoundIndex,
             team: playingTeam,
-            words: gameWords
+            words: self.gameWords
         )
 
         round.start() {
@@ -65,12 +63,10 @@ extension GameEngine {
                 with: accuredScores
             )
         }
-        
         self.currentRound = round
         
         return round
     }
-
 }
 
 private extension GameEngine {

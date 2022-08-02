@@ -21,14 +21,13 @@ extension ScoreViewController: IGameEngineDelegate {
     }
     
     func gameEnded(game: GameEngine, round: Int, teams: [Team], teamWin: Team) {
+        let myFinalists = Array(teams.sorted().prefix(3))
         self.gameScreenVC?.dismiss(animated: false)
-        
         let resultVC = ResultScreenViewController(
-            finalists: teams.sorted()
+            finalists: myFinalists
         )
         self.navigationController?.pushViewController(resultVC, animated: true)
     }
-
 }
 
 // MARK: - Game flow
@@ -38,13 +37,14 @@ private extension ScoreViewController {
         self.gameScreenVC?.dismiss(animated: true)
         self.scoreView.teams = teams.sorted()
     }
-    
 }
 
 class ScoreViewController: CustomViewController {
     
-    override var nameViewControler: String { "УРОВЕНЬ \nКОМАНД" }
+    override var nameViewControler: String { "РЕЙТИНГ \nКОМАНД" }
     
+    private let alertManager = AlertForExitApp()
+    private var startNewRount: Bool = false
     private var teams: [Team]
     private var gameWords: [String]
     
@@ -95,8 +95,22 @@ class ScoreViewController: CustomViewController {
             
             let round = self.game.startNewRound()
             self.showGameScreen(round)
+            self.startNewRount = true
         }
+    }
+    
+    override func popViewControler() {
         
+        if self.startNewRount {
+            self.alertManager.showCustomAlert(with: "ВЫЙТИ В ГЛАВНОЕ МЕНЮ?", message: "При выходе в главное меню текущая игра будет сброшена, а баллы не сохранятся", on: self)
+            self.alertManager.buttonHandler = {
+                [weak self] in
+                guard let self = self else { return }
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
@@ -111,12 +125,6 @@ extension ScoreViewController {
     }
     
 }
-
-
-//    override func backButtonTap() {
-//        self.navigationController?.popToRootViewController(animated: true)
-//    }
-
 //  self.alertManager.showCustomAlert(with: "ВЫЙТИ В ГЛАВНОЕ МЕНЮ?", message: "При выходе в главное меню текущая игра будет сброшена, а баллы не сохранятся.", on: self)
 //
 //    @objc func dismissAlert(){

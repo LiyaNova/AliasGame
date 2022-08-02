@@ -2,7 +2,9 @@
 import UIKit
 
 class ScoreView: UIView {
+    
     var gameButtonTap: (() -> Void)?
+    var playingTeamIndx: Int
     
     var teams: [Team] {
         didSet {
@@ -16,11 +18,9 @@ class ScoreView: UIView {
         }
     }
     
-    var playingTeamIndx: Int
-    
     private(set) lazy var readyToGameTeamLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(teams[playingTeamIndx].name)"
+        label.text = "\(self.teams[self.playingTeamIndx].name)"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.font = UIFont(name: "Phosphate-Solid", size: 40)
@@ -111,7 +111,6 @@ class ScoreView: UIView {
     @objc private func startGame(){
         self.gameButtonTap?()
     }
-    
 }
 
 private extension ScoreView {
@@ -173,12 +172,11 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
         return color
     }
     
-    //Заменить количество 10 на данные макисмального колличества очков у команд
     private func showStar(labelScore: String)-> Bool {
         var parametr = true
         if labelScore == String(0) {
             return parametr
-        } else if String(10) == labelScore {
+        } else if String(teams[0].scores) == labelScore {
             parametr = false
         }
         return parametr
@@ -197,6 +195,6 @@ extension ScoreView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return teams.count
+        return self.teams.count
     }
 }
