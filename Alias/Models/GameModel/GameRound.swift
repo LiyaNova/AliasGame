@@ -20,6 +20,7 @@ class GameRound {
     private var elapsedSec: TimeInterval = 0
     private var roundEndHandler: ((_ accuredScores: Int) -> (Void))?
     private var accuredScores = 0
+    private var musicManager = MusicModel()
 
     // MARK: Init
     public init(
@@ -81,8 +82,13 @@ private extension GameRound {
 
         let remainingSec = self.roundDuration - self.elapsedSec
         self.remainingRoundSecHandler?(remainingSec)
+        
+        if remainingSec == 5{
+        self.musicManager.playSound(soundName: "Last 5 sec")
+        }
 
         if remainingSec <= 0 {
+            self.musicManager.playSound(soundName: "Start Timer")
             self.invalidateTimer()
             self.roundEndHandler?(self.accuredScores)
         }
