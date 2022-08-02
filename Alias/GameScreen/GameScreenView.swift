@@ -6,14 +6,33 @@ class GameScreenView: UIView {
     var wrongButtonTap: (() -> Void)?
     var backButtonTap: (() -> Void)?
     
+    var remainingSeconds: TimeInterval = 0 {
+        didSet {
+            self.secondsLabel.text = self.formatter.string(from: .init(value: self.remainingSeconds))
+            secondsTextLabel.text = String.fitPluralForm(
+                from: ["секунда", "секунды", "секунд"],
+                with: Int(self.remainingSeconds)
+            )
+        }
+    }
+    
+    private var formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale.current
+//        formatter.maximumFractionDigits = 2
+        
+        return formatter
+    }()
+    
     private let round: GameRound
     private let musicManager = MusicModel()
     
     // MARK: - UI elements
     
-    private(set) lazy var secondsLabel: UILabel = {
+    private lazy var secondsLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(self.round.roundDuration)"
+        label.text = "\(Int(self.round.roundDuration))"
         label.textColor = .black
         label.font = UIFont(name: "Phosphate-Solid", size: 72)
         label.textAlignment = .center

@@ -52,6 +52,7 @@
 		77CF5ECA2896C213001C9A2F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5EC92896C213001C9A2F /* GameEngine.swift */; };
 		77CF5ECC2896C39B001C9A2F /* GameRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5ECB2896C39B001C9A2F /* GameRound.swift */; };
 		77CF5ED52896FD0A001C9A2F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5ED42896FD0A001C9A2F /* NetworkManager.swift */; };
+		77CF5ED728997B84001C9A2F /* String+FitPluralForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CF5ED628997B83001C9A2F /* String+FitPluralForm.swift */; };
 		9F13E32A28940E970067D43A /* AlertForExitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F13E32928940E970067D43A /* AlertForExitApp.swift */; };
 		9F2CB3FC2897C960001A38B4 /* AlertForChangeTeamName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2CB3FB2897C960001A38B4 /* AlertForChangeTeamName.swift */; };
 		9F7F697F2896BFD7007AA3DA /* JokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */; };
@@ -111,6 +112,7 @@
 		77CF5EC92896C213001C9A2F /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		77CF5ECB2896C39B001C9A2F /* GameRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRound.swift; sourceTree = "<group>"; };
 		77CF5ED42896FD0A001C9A2F /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		77CF5ED628997B83001C9A2F /* String+FitPluralForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FitPluralForm.swift"; sourceTree = "<group>"; };
 		9F13E32928940E970067D43A /* AlertForExitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForExitApp.swift; sourceTree = "<group>"; };
 		9F2CB3FB2897C960001A38B4 /* AlertForChangeTeamName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForChangeTeamName.swift; sourceTree = "<group>"; };
 		9F7F697E2896BFD7007AA3DA /* JokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewController.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 		77CF5EBB289557DB001C9A2F /* Resourсes */ = {
 			isa = PBXGroup;
 			children = (
+				77CF5ED628997B83001C9A2F /* String+FitPluralForm.swift */,
 				77CF5EC4289691F9001C9A2F /* UIView+Constraints.swift */,
 				77CF5EB128953944001C9A2F /* Launch Screen.storyboard */,
 				77448CAE289020C50040A442 /* Assets.xcassets */,
@@ -493,6 +496,7 @@
 				9FBD47B62892CDD300687891 /* JokeApiModel.swift in Sources */,
 				77CF5EBF2895A493001C9A2F /* Teams.swift in Sources */,
 				77448D062892A3190040A442 /* WordSetsModel.swift in Sources */,
+				77CF5ED728997B84001C9A2F /* String+FitPluralForm.swift in Sources */,
 				9F2CB3FC2897C960001A38B4 /* AlertForChangeTeamName.swift in Sources */,
 				77448CE3289229F90040A442 /* DifficultyPageView.swift in Sources */,
 				77448CBE28902F0D0040A442 /* StartMenuView.swift in Sources */,

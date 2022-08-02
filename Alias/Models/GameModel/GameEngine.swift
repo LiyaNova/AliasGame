@@ -112,8 +112,27 @@ private extension GameEngine {
         self.playingTeamIndx = 0
         self.currentRoundIndex += 1
         
-        // По результатам раунда есть победившая команда
-        if let winTeam = self.teams.first(where: { $0.scores >= self.scoresToWin }) {
+        let teamsWithScoresEnougthToWin = self.teams.filter { $0.scores >= self.scoresToWin }.sorted()
+        
+        let isExistTeamsWithEqualsScores: Bool = {
+            let teamsScores = teamsWithScoresEnougthToWin.map { $0.scores }
+            let teamScoresSet: Set<Int> = Set(teamsScores)
+            
+            return teamScoresSet.count < teamsScores.count
+        }()
+        
+        // Еще никто не набрал нужного числа очков чтобы победить - завершаем текущий раунд
+        if teamsWithScoresEnougthToWin.isEmpty {
+            self.endCurrentRound()
+        }
+        // или есть команды с одинаковым числом очков - завершаем текущий раунд
+        else if isExistTeamsWithEqualsScores {
+            self.endCurrentRound()
+        }
+        // Иначе - у нас таки есть победитель
+        else {
+            let winTeam = teamsWithScoresEnougthToWin.first!
+            
             self.delegate?.gameEnded(
                 game: self,
                 round: self.currentRoundIndex,
@@ -121,15 +140,16 @@ private extension GameEngine {
                 teamWin: winTeam
             )
         }
-        // Еще никто не выиграл - завершаем текущий раунд
-        else {
-            self.delegate?.gameRoundEnd(
-                game: self,
-                round: self.currentRoundIndex,
-                teams: self.teams,
-                nextPlayingTeam: self.nextPlayingTeam
-            )
-        }
+        
+    }
+    
+    func endCurrentRound() {
+        self.delegate?.gameRoundEnd(
+            game: self,
+            round: self.currentRoundIndex,
+            teams: self.teams,
+            nextPlayingTeam: self.nextPlayingTeam
+        )
     }
 
 }

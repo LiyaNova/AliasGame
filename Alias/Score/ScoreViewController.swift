@@ -103,7 +103,7 @@ class ScoreViewController: CustomViewController {
         
         if self.startNewRount {
             self.alertManager.showCustomAlert(with: "ВЫЙТИ В ГЛАВНОЕ МЕНЮ?", message: "При выходе в главное меню текущая игра будет сброшена, а баллы не сохранятся", on: self)
-            self.alertManager.buttonHandler = {
+            self.alertManager.exitGameButtonHandler = {
                 [weak self] in
                 guard let self = self else { return }
                 

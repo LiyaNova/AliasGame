@@ -44,7 +44,7 @@ class GameScreenViewController: UIViewController {
             [weak self] remainingSec in
             guard let self = self else { return }
 
-            self.gameScreenView.secondsLabel.text = "\(remainingSec)"
+            self.gameScreenView.remainingSeconds = remainingSec
         }
     }
 }
@@ -72,13 +72,26 @@ private extension GameScreenViewController {
             [weak self] in
             guard let self = self else { return }
             
-            self.alertManager.showCustomAlert(with: "ВЫЙТИ В ГЛАВНОЕ МЕНЮ?", message: "При выходе в главное меню текущая игра будет сброшена, а баллы не сохранятся", on: self)
-            self.alertManager.buttonHandler = {
+            self.round.pauseRound()
+            
+            self.alertManager.showCustomAlert(
+                with: "ВЫЙТИ В ГЛАВНОЕ МЕНЮ?",
+                message: "При выходе в главное меню текущая игра будет сброшена, а баллы не сохранятся",
+                on: self)
+            
+            self.alertManager.exitGameButtonHandler = {
                 [weak self] in
                 guard let self = self else { return }
                 
                 self.dismiss(animated: false)
                 self.delegate?.didCancelGame()
+            }
+            
+            self.alertManager.cancelButtonHandler = {
+                [weak self] in
+                guard let self = self else { return }
+                
+                self.round.continueRound()
             }
         }
     }
