@@ -31,6 +31,7 @@ final class DifficultyPageViewController: CustomViewController {
             let update = self.difficultyChoiceModel.loadJson()
             let image = update?.image
             let color = update?.color
+            
             self.difficultyPageViuw.choiceImageView.image = UIImage(named: image!)
             self.difficultyPageViuw.levelLabel.textColor = UIColor(named: color!)
             self.difficultyPageViuw.levelLabel.text = update?.level

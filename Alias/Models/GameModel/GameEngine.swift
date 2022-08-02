@@ -1,6 +1,12 @@
 
 import Foundation
 
+public enum GameDifficulty {
+    case easy
+    case normal
+    case hard
+}
+
 protocol IGameEngineDelegate: AnyObject {
     func gameTeamRoundEnd(game: GameEngine, round: Int, teams: [Team], nextPlayingTeam: Team)
     func gameRoundEnd(game: GameEngine, round: Int, teams: [Team], nextPlayingTeam: Team)
@@ -15,7 +21,7 @@ class GameEngine {
     /// Продолжительность одного раунда (сек)
     let roundDuration: TimeInterval
     let teams: [Team]
-    let gameWords: [String]
+    var gameWords: [String]
     var playingTeamIndx: Int = 0
     var currentRoundIndex: Int
     private(set) var currentRound: GameRound?
@@ -37,7 +43,7 @@ class GameEngine {
         self.roundDuration = roundDuration
         self.teams = teams
         self.currentRoundIndex = currentRoundIndex
-        self.gameWords = gameWords
+        self.gameWords = gameWords.shuffled()
     }
 }
 
@@ -48,10 +54,10 @@ extension GameEngine {
         let playingTeam = self.nextPlayingTeam
 
         let round = GameRound(
+            gameEngine: self,
             roundDuration: self.roundDuration,
             number: self.currentRoundIndex,
-            team: playingTeam,
-            words: self.gameWords
+            team: playingTeam
         )
 
         round.start() {
@@ -67,6 +73,18 @@ extension GameEngine {
         
         return round
     }
+    
+    func getNewWordToGuess() -> String {
+        guard !self.gameWords.isEmpty else { return "[Слова для игры закончились]" }
+        
+        let wordIndex = Int.random(in: 0..<self.gameWords.count)
+        
+        let word = self.gameWords[wordIndex]
+        self.gameWords.remove(at: wordIndex)
+        
+        return word
+    }
+
 }
 
 private extension GameEngine {
