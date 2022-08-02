@@ -82,6 +82,7 @@ class ResultScreenView: UIView {
         winStackView.spacing = 5.0
         winStackView.alignment = .center
         winStackView.translatesAutoresizingMaskIntoConstraints = false
+        winStackView.backgroundColor = .red
         return winStackView
     }()
 
@@ -184,7 +185,7 @@ class ResultScreenView: UIView {
 
 }
 
-//MARK: -
+//MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension ResultScreenView: UITableViewDataSource, UITableViewDelegate {
 
