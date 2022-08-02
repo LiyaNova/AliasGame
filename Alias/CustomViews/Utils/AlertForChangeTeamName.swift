@@ -6,7 +6,7 @@ protocol NewNameDelegate: AnyObject {
 }
 
 class AlertForChangeTeamName {
-
+    
     //Делегирующая переменная
     weak var delegate: NewNameDelegate?
     
@@ -70,6 +70,7 @@ class AlertForChangeTeamName {
         button.titleLabel?.textColor = .white
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(saveBtnPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(holdDown), for: .touchDown)
         
         return button
     }()
@@ -84,13 +85,19 @@ class AlertForChangeTeamName {
         button.titleLabel?.textColor = .white
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
+        button.addTarget(self, action: #selector(holdDown), for: .touchDown)
         return button
     }()
     
     // Кнопка сохранения
-    @objc private func saveBtnPressed() {
+    @objc private func saveBtnPressed(_ sender: UIButton) {
         
-        UIView.animate(withDuration: 0.25, animations: { self.createView() }, completion: { done in
+        reverseBackground(sender)
+        
+        UIView.animate(withDuration: 0.5,
+                       animations: {
+            self.createView()
+        }, completion: { done in
             if done {
                 UIView.animate(withDuration: 0.25, animations: { self.backgroundView.alpha = 0 }, completion: {
                     done in
@@ -106,27 +113,40 @@ class AlertForChangeTeamName {
                 })
             }
         })
-
+        
     }
     
+    
     // Кнопка закрытия
-    @objc private func dismissAlert(){
+    @objc private func dismissAlert(_ sender: UIButton){
         
-        UIView.animate(withDuration: 0.25,
+        reverseBackground(sender)
+        
+        UIView.animate(withDuration: 0.5,
                        animations: {
             self.createView()
         }, completion: { done in
             if done {
-                UIView.animate(withDuration: 0.25, animations: {
-                    self.backgroundView.alpha = 0
-                }, completion: {
+                UIView.animate(withDuration: 0.25, animations: { [self] in
+                    backgroundView.alpha = 0
+                }, completion: { [self]
                     done in
                     if done {
-                        self.deleteAlpha()
+                        deleteAlpha()
                     }
                 })
             }
         })
+    }
+    
+    private func reverseBackground(_ sender: UIButton){
+        sender.backgroundColor = .black
+        sender.setTitleColor(.white, for: .normal)
+    }
+    
+    @objc  func holdDown(_ sender: UIButton){
+        sender.backgroundColor = .white
+        sender.setTitleColor(.black, for: .normal)
     }
     
     private func createView(){
@@ -174,7 +194,7 @@ class AlertForChangeTeamName {
         guard let text = text else {return ""}
         for value in text.map({$0}){
             if counter < countCharacters {
-            newString.append(value)
+                newString.append(value)
                 counter += 1
             } else {break}
         }
