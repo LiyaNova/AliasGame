@@ -45,6 +45,7 @@ final class AlertForExitApp {
         button.titleLabel?.textColor = .white
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
+        button.addTarget(self, action: #selector(holdDown), for: .touchDown)
         
         return button
     }()
@@ -58,9 +59,10 @@ final class AlertForExitApp {
         button.titleLabel?.font = UIFont(name: "Phosphate-Solid", size: 24)
         button.backgroundColor = .black
         button.titleLabel?.textColor = .white
-        button.alpha = 0.5
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(dismissAlertAndCloseApp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(holdDown), for: .touchDown)
+        
         return button
     }()
     
@@ -131,9 +133,11 @@ final class AlertForExitApp {
     }
     
     // Закрыть алерт без выхода из приложения
-    @objc func dismissAlert(){
+    @objc func dismissAlert(_ sender: UIButton){
         
-        UIView.animate(withDuration: 0.25,
+        reverseBackground(sender)
+        
+        UIView.animate(withDuration: 0.5,
                        animations: {
             self.createView()
         }, completion: { done in
@@ -151,9 +155,11 @@ final class AlertForExitApp {
     }
     
     //Закрыть алерт и закрыть приложение
-    @objc private func dismissAlertAndCloseApp(){
+    @objc private func dismissAlertAndCloseApp(_ sender: UIButton){
         
-        UIView.animate(withDuration: 0.25,
+        reverseBackground(sender)
+        
+        UIView.animate(withDuration: 0.5,
                        animations: {
             self.createView()
         }, completion: { done in
@@ -169,6 +175,16 @@ final class AlertForExitApp {
                 })
             }
         })
+    }
+    
+    private func reverseBackground(_ sender: UIButton){
+        sender.backgroundColor = .black
+        sender.setTitleColor(.white, for: .normal)
+    }
+    
+    @objc  func holdDown(_ sender: UIButton){
+        sender.backgroundColor = .white
+        sender.setTitleColor(.black, for: .normal)
     }
     
     // MARK: - Setup constraints
