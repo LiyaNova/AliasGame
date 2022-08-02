@@ -11,7 +11,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
 
-        window?.rootViewController = AppNavigationController(rootViewController: TeamsMenuViewController(minNumberOfTeams: 3, maxNumberOfTeams: 10))
+        window?.rootViewController = ResultScreenViewController(finalists: [Team(name: "dsfsd", scores: 0)])
+        
+        //AppNavigationController(rootViewController: TeamsMenuViewController(minNumberOfTeams: 3, maxNumberOfTeams: 10))
         
         window?.makeKeyAndVisible()
         
