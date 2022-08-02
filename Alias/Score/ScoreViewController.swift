@@ -5,18 +5,13 @@ import UIKit
 extension ScoreViewController: IGameEngineDelegate {
 
     func gameTeamRoundEnd(game: GameEngine, round: Int, teams: [Team], nextPlayingTeam: Team) {
-        print("gameTeamRoundEnd teams: \(teams)")
-        
         self.closeGameScreenAndUpdateShowTeamsScores(teams)
         self.scoreView.readyToGameTeamLabel.text = nextPlayingTeam.name
     }
 
     func gameRoundEnd(game: GameEngine, round: Int, teams: [Team], nextPlayingTeam: Team) {
-        print("gameRoundEnd teams: \(teams), round: \(round)")
-        
         self.closeGameScreenAndUpdateShowTeamsScores(teams)
         self.scoreView.numberOfRound = round
-        
         self.scoreView.readyToGameTeamLabel.text = nextPlayingTeam.name
     }
     
