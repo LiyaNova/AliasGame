@@ -82,7 +82,6 @@ class AlertForChangeTeamName {
         button.titleLabel?.font = UIFont(name: "Phosphate-Solid", size: 24)
         button.backgroundColor = .black
         button.titleLabel?.textColor = .white
-        button.alpha = 0.25
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
         return button
