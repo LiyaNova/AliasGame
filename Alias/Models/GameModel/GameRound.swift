@@ -52,6 +52,14 @@ class GameRound {
         self.accuredScores += 1
         self.sendNextWord()
     }
+    
+    func pauseRound() {
+        self.invalidateTimer()
+    }
+    
+    func continueRound() {
+        self.startGameTimer()
+    }
 }
 
 // MARK: - Private impl

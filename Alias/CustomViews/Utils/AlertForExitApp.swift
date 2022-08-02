@@ -10,7 +10,8 @@ import UIKit
 final class AlertForExitApp {
     
     private var myTargetView: UIView?
-    var buttonHandler: (() -> Void)?
+    var exitGameButtonHandler: (() -> Void)?
+    var cancelButtonHandler: (() -> Void)?
     
     struct Constants {
         static let backgroundAlphaTo: CGFloat = 0.6
@@ -148,6 +149,7 @@ final class AlertForExitApp {
                     done in
                     if done {
                         self.deleteAlpha()
+                        self.cancelButtonHandler?()
                     }
                 })
             }
@@ -170,7 +172,7 @@ final class AlertForExitApp {
                     done in
                     if done {
                         self.deleteAlpha()
-                        self.buttonHandler?()
+                        self.exitGameButtonHandler?()
                     }
                 })
             }
