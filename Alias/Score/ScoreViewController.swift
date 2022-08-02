@@ -50,7 +50,7 @@ class ScoreViewController: CustomViewController {
     
     private lazy var game = GameEngine(
         scoresToWin: 5,
-        roundDuration: 3,
+        roundDuration: 10,
         teams: self.teams,
         currentRoundIndex: 0,
         gameWords: self.gameWords
@@ -106,18 +106,21 @@ class ScoreViewController: CustomViewController {
             self.alertManager.buttonHandler = {
                 [weak self] in
                 guard let self = self else { return }
+                
                 self.navigationController?.popToRootViewController(animated: true)
             }
         } else {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
 }
 
 extension ScoreViewController {
     
     func showGameScreen(_ round: GameRound) {
         let vc =  GameScreenViewController(round: round)
+        vc.delegate = self
         self.gameScreenVC = vc
         
         vc.modalPresentationStyle = .fullScreen
@@ -125,8 +128,11 @@ extension ScoreViewController {
     }
     
 }
-//  self.alertManager.showCustomAlert(with: "ВЫЙТИ В ГЛАВНОЕ МЕНЮ?", message: "При выходе в главное меню текущая игра будет сброшена, а баллы не сохранятся.", on: self)
-//
-//    @objc func dismissAlert(){
-//        self.alertManager.dismissAlert()
-//    }
+
+extension ScoreViewController: IGameScreenDelegate {
+    
+    func didCancelGame() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+}

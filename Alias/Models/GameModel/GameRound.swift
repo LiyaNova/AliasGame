@@ -2,6 +2,10 @@
 import Foundation
 
 class GameRound {
+    
+    unowned var gameEngine: GameEngine
+    
+    private(set) var currentWord = ""
 
     var nextWordHandler: ((String) -> Void)?
     var remainingRoundSecHandler: ((TimeInterval) -> Void)?
@@ -11,9 +15,7 @@ class GameRound {
     let number: Int
     /// Команда, которая щас играет свой раунд
     let team: Team
-    let words: [String]
-    
-    private var currentWordIndex = 0
+
     private var timer: Timer? = nil
     private var elapsedSec: TimeInterval = 0
     private var roundEndHandler: ((_ accuredScores: Int) -> (Void))?
@@ -21,15 +23,15 @@ class GameRound {
 
     // MARK: Init
     public init(
+        gameEngine: GameEngine,
         roundDuration: TimeInterval,
         number: Int,
-        team: Team,
-        words: [String]
+        team: Team
     ) {
+        self.gameEngine = gameEngine
         self.roundDuration = roundDuration
         self.number = number
         self.team = team
-        self.words = words
     }
 
     // MARK: API
@@ -37,7 +39,7 @@ class GameRound {
     func start(completion: @escaping (_ accuredScores: Int) -> (Void)) {
         self.roundEndHandler = completion
         self.startGameTimer()
-        self.sendNextWord(needIncrementIndex: false)
+        self.sendNextWord()
     }
 
     func cancelCurrentWord() {
@@ -54,13 +56,9 @@ class GameRound {
 // MARK: - Private impl
 private extension GameRound {
 
-    func sendNextWord(needIncrementIndex: Bool = true) {
-        if needIncrementIndex {
-            self.currentWordIndex += 1
-        }
-
-        let currWord = self.words[self.currentWordIndex]
-        self.nextWordHandler?(currWord)
+    func sendNextWord() {
+        self.currentWord = self.gameEngine.getNewWordToGuess()
+        self.nextWordHandler?(self.currentWord)
     }
 
 }

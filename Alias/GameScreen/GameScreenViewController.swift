@@ -2,12 +2,17 @@
 import UIKit
 import AVFoundation
 
+protocol IGameScreenDelegate: AnyObject {
+    func didCancelGame()
+}
+
 class GameScreenViewController: UIViewController {
     
+    weak var delegate: IGameScreenDelegate?
+    
+    private let alertManager = AlertForExitApp()
     private let round: GameRound
     private lazy var gameScreenView = GameScreenView(round: self.round)
-
-//    private lazy var alertManager = AlertManager()
     private lazy var musicManager = MusicModel()
     
     init(round: GameRound) {
@@ -18,11 +23,7 @@ class GameScreenViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    private let gameScreenView = GameScreenView()
-    private let alertManager = AlertForExitApp()
-//    private let musicManager = MusicModel()
-    
+
     
     // MARK: - Life cicle
     
@@ -46,7 +47,6 @@ class GameScreenViewController: UIViewController {
             self.gameScreenView.secondsLabel.text = "\(remainingSec)"
         }
     }
-    
 }
 
 private extension GameScreenViewController {
@@ -66,6 +66,20 @@ private extension GameScreenViewController {
             
             self.musicManager.playSound(soundName: "Wrong Answer")
             self.round.cancelCurrentWord()
+        }
+        
+        self.gameScreenView.backButtonTap = {
+            [weak self] in
+            guard let self = self else { return }
+            
+            self.alertManager.showCustomAlert(with: "ВЫЙТИ В ГЛАВНОЕ МЕНЮ?", message: "При выходе в главное меню текущая игра будет сброшена, а баллы не сохранятся", on: self)
+            self.alertManager.buttonHandler = {
+                [weak self] in
+                guard let self = self else { return }
+                
+                self.dismiss(animated: false)
+                self.delegate?.didCancelGame()
+            }
         }
     }
     

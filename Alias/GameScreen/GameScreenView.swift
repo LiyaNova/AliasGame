@@ -4,6 +4,7 @@ import UIKit
 class GameScreenView: UIView {
     var rightButtonTap: (() -> Void)?
     var wrongButtonTap: (() -> Void)?
+    var backButtonTap: (() -> Void)?
     
     private let round: GameRound
     private let musicManager = MusicModel()
@@ -20,6 +21,14 @@ class GameScreenView: UIView {
         return label
     }()
     
+    private lazy var backButton: MyCustomBackButton = {
+        let btn = MyCustomBackButton()
+        btn.addTarget(self, action: #selector(backButtonFunc), for: .touchUpInside)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        return btn
+    }()
+    
     private lazy var secondsTextLabel: UILabel = {
         let label = UILabel()
         label.text = "секунд"
@@ -30,9 +39,21 @@ class GameScreenView: UIView {
         return label
     }()
     
+    // Стэк для секунд
+    private lazy var secondsStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews:
+                                    [
+                                        self.secondsLabel,
+                                        self.secondsTextLabel
+                                    ])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        return stack
+    }()
+    
     private(set) lazy var gameWordLabel: UILabel = {
         let label = UILabel()
-        label.text = self.round.words.first
+        label.text = self.round.currentWord
         label.textColor = .black
         label.font = UIFont(name: "Phosphate-Solid", size: 24)
         label.textAlignment = .center
@@ -63,18 +84,6 @@ class GameScreenView: UIView {
         self.wrongButton = makeButton(color: "SignalOrangeColor", image: "multiply")
         self.wrongButton.addTarget(self, action: #selector(wrongAnswer), for: .touchUpInside)
         return wrongButton
-    }()
-    
-    // Стэк для секунд
-    private lazy var secondsStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews:
-                                    [
-                                        self.secondsLabel,
-                                        self.secondsTextLabel
-                                    ])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        return stack
     }()
     
     // Стэк для кнопок
@@ -127,6 +136,10 @@ class GameScreenView: UIView {
         self.wrongButtonTap?()
     }
     
+    @objc private func backButtonFunc() {
+        self.backButtonTap?()
+    }
+    
 //    @objc func startTimer(){
 //        if seconds > 0 {
 //            seconds -= 1
@@ -147,7 +160,12 @@ class GameScreenView: UIView {
         self.backgroundColor = .white
         addSubview(self.contentStack)
         
+        self.addSubview(self.backButton)
+        
         NSLayoutConstraint.activate([
+            
+            self.backButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            self.backButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 24),
             
             self.contentStack.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             self.contentStack.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor),
@@ -159,7 +177,6 @@ class GameScreenView: UIView {
             self.wrongAnswerBtn.heightAnchor.constraint(equalToConstant: 108),
             self.rightAnswerBtn.widthAnchor.constraint(equalToConstant: 112),
             self.rightAnswerBtn.heightAnchor.constraint(equalToConstant: 108)
-            
         ])
     }
 }
