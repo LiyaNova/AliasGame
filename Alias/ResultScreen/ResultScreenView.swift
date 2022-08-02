@@ -24,7 +24,6 @@ class ResultScreenView: UIView {
     private lazy var teamLabel: UILabel = {
         let teamLabel = UILabel()
         teamLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         teamLabel.text = ""
         teamLabel.textAlignment = .center
         teamLabel.textColor = .white
@@ -82,7 +81,6 @@ class ResultScreenView: UIView {
         winStackView.spacing = 5.0
         winStackView.alignment = .center
         winStackView.translatesAutoresizingMaskIntoConstraints = false
-        winStackView.backgroundColor = .red
         return winStackView
     }()
 
@@ -132,26 +130,27 @@ class ResultScreenView: UIView {
         self.winner = finalists.first!
         self.finalists = Array(finalists.dropFirst())
         super.init(frame: .zero)
-        
+
         self.setViews()
     }
+
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     private func setViews() {
-        self.teamLabel.text = self.winner.name
-        self.circleLabel.text = String(self.winner.scores)
-        
-        self.backgroundColor = .white
         
         [self.backgroundImage,
          self.winStackView,
          self.cupStackView,
          self.resultTableView,
          self.bottomButton].forEach { self.addSubview($0)}
-
+         self.teamLabel.text = self.winner.name
+         self.circleLabel.text = String(self.winner.scores)
+        
+        self.backgroundColor = .white
+        
         NSLayoutConstraint.activate([
 
             self.backgroundImage.topAnchor.constraint(equalTo: self.topAnchor),
@@ -160,7 +159,6 @@ class ResultScreenView: UIView {
             self.backgroundImage.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.6),
 
             self.winStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.winStackView.bottomAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor, constant: -5),
             self.winStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30),
 
             self.circleLabel.heightAnchor.constraint(equalToConstant: 120),
@@ -178,7 +176,6 @@ class ResultScreenView: UIView {
             self.bottomButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             self.bottomButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
             self.bottomButton.heightAnchor.constraint(equalToConstant: 66),
-
             self.bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -11)
         ])
     }
