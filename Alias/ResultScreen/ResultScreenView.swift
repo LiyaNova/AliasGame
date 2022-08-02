@@ -20,7 +20,7 @@ class ResultScreenView: UIView {
         return backgroundImage
     }()
 
-     var teamLabel: UILabel = {
+    var teamLabel: UILabel = {
         let teamLabel = UILabel()
         teamLabel.translatesAutoresizingMaskIntoConstraints = false
         teamLabel.text = "КОМАНДА 1"
@@ -40,7 +40,7 @@ class ResultScreenView: UIView {
         return winLabel
     }()
 
-     var circleLabel: UILabel = {
+    var circleLabel: UILabel = {
         let circleLabel = UILabel()
         circleLabel.translatesAutoresizingMaskIntoConstraints = false
         circleLabel.text = "10"
@@ -48,7 +48,7 @@ class ResultScreenView: UIView {
         circleLabel.textAlignment = .center
         circleLabel.textColor = .black
         circleLabel.layer.masksToBounds = true
-        circleLabel.layer.cornerRadius = 40
+        circleLabel.layer.cornerRadius = 60
         circleLabel.font = UIFont(name: "Phosphate-Solid", size: 40)
         return circleLabel
     }()
@@ -66,24 +66,36 @@ class ResultScreenView: UIView {
     @objc private func tapCupImage() {
         
         self.tapImageBtn?()
-//        ResultScreenViewController().dismiss(animated: false)
-       // delegate?.presentAlert()
+        //        ResultScreenViewController().dismiss(animated: false)
+        // delegate?.presentAlert()
     }
 
     private lazy var winStackView: UIStackView = {
         let winStackView = UIStackView(arrangedSubviews:
-                                [
-                                    self.teamLabel,
-                                    self.winLabel,
-                                    self.circleLabel,
-                                    self.cupImage
-                                ])
+                                        [
+                                            self.teamLabel,
+                                            self.winLabel,
+                                        ])
         winStackView.axis = .vertical
         winStackView.spacing = 5.0
         winStackView.alignment = .center
         winStackView.translatesAutoresizingMaskIntoConstraints = false
         return winStackView
     }()
+
+    private lazy var cupStackView: UIStackView = {
+        let winStackView = UIStackView(arrangedSubviews:
+                                        [
+                                            self.circleLabel,
+                                            self.cupImage
+                                        ])
+        winStackView.axis = .horizontal
+        winStackView.spacing = 20.0
+        winStackView.alignment = .center
+        winStackView.translatesAutoresizingMaskIntoConstraints = false
+        return winStackView
+    }()
+
 
     private lazy var resultTableView: UITableView = {
         let resultTableView = UITableView(frame: self.bounds, style: .plain)
@@ -98,19 +110,19 @@ class ResultScreenView: UIView {
     } ()
 
     private lazy var bottomButton: UIButton = {
-       let bottomButton = UIButton()
-       bottomButton.translatesAutoresizingMaskIntoConstraints = false
-       bottomButton.backgroundColor = .black
-       bottomButton.setTitle("Новая игра", for: .normal)
-       bottomButton.titleLabel?.font = UIFont(name: "Phosphate-Solid", size: 24)
-       bottomButton.titleLabel?.textColor = .white
-       bottomButton.layer.cornerRadius = 16
-       bottomButton.addTarget(self, action: #selector(didTapBottomButton), for: .touchUpInside)
-       return bottomButton
-   }()
+        let bottomButton = UIButton()
+        bottomButton.translatesAutoresizingMaskIntoConstraints = false
+        bottomButton.backgroundColor = .black
+        bottomButton.setTitle("Новая игра", for: .normal)
+        bottomButton.titleLabel?.font = UIFont(name: "Phosphate-Solid", size: 24)
+        bottomButton.titleLabel?.textColor = .white
+        bottomButton.layer.cornerRadius = 16
+        bottomButton.addTarget(self, action: #selector(didTapBottomButton), for: .touchUpInside)
+        return bottomButton
+    }()
 
     @objc private func didTapBottomButton() {
-        print("Делегат для контроллера?А потом новая игра)")
+        print("А потом новая игра")
     }
 
     override init(frame: CGRect) {
@@ -126,6 +138,7 @@ class ResultScreenView: UIView {
     private func setViews() {
         [self.backgroundImage,
          self.winStackView,
+         self.cupStackView,
          self.resultTableView,
          self.bottomButton].forEach { self.addSubview($0)}
 
@@ -134,20 +147,23 @@ class ResultScreenView: UIView {
             self.backgroundImage.topAnchor.constraint(equalTo: self.topAnchor),
             self.backgroundImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.backgroundImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.backgroundImage.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.6),
 
             self.winStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.winStackView.bottomAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor,
-                                                                                     constant: -5),
             self.winStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor,
-                                                                                     constant: 30),
+                                                                                  constant: 30),
 
-            self.circleLabel.heightAnchor.constraint(equalToConstant: 80),
-            self.circleLabel.widthAnchor.constraint(equalToConstant: 80),
+            self.circleLabel.heightAnchor.constraint(equalToConstant: 120),
+            self.circleLabel.widthAnchor.constraint(equalToConstant: 120),
+
+            self.cupStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.cupStackView.topAnchor.constraint(equalTo: self.winStackView.bottomAnchor, constant: 10),
+            self.cupStackView.bottomAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor,constant: -10),
 
             self.resultTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.resultTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.resultTableView.topAnchor.constraint(equalTo: self.backgroundImage.bottomAnchor,
-                                                                                     constant: 2),
+                                                                                    constant: 2),
             self.resultTableView.bottomAnchor.constraint(equalTo: self.bottomButton.topAnchor,
                                                                                     constant: -10),
 
@@ -155,7 +171,7 @@ class ResultScreenView: UIView {
             self.bottomButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
             self.bottomButton.heightAnchor.constraint(equalToConstant: 66),
             self.bottomButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
-                                                                                         constant: -11)
+                                                                                       constant: -11)
         ])
     }
 
@@ -168,7 +184,7 @@ extension ResultScreenView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as? ScoreCell
         if let cell = cell {
-               // TO DO обработать колличество ячеек
+            // TO DO обработать колличество ячеек
             let countOfSection = indexPath.section % brain.teamName.count
             cell.myView.backgroundColor = brain.sectionColor(section: countOfSection)
             
