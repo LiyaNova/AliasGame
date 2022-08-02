@@ -1,10 +1,3 @@
-//
-//  String+FitPluralForm.swift
-//  MIL
-//
-//  Created by Кирилл Лежнин on 24.04.2020.
-//  Copyright © 2020 Sitesoft. All rights reserved.
-//
 
 import Foundation
 
