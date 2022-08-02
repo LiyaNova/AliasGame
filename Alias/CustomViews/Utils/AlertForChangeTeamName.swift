@@ -22,6 +22,7 @@ class AlertForChangeTeamName {
     struct Constants {
         
         static let backgroundAlphaTo: CGFloat = 0.6
+        static let countOfSymbols = 22
     }
     
     // Бэкграунд
@@ -120,7 +121,8 @@ class AlertForChangeTeamName {
                         let enteredText = self.teamNameTextField.text ?? "___"
                         self.teamName = enteredText
                         guard let newName = self.teamName  else { return }
-                        self.delegate?.renameTeam(name: newName.uppercased())
+                        let cutName = self.textFieldLeingth(text: newName, countCharacters: Constants.countOfSymbols)
+                        self.delegate?.renameTeam(name: cutName.uppercased())
                     }
                 })
             }
@@ -174,6 +176,19 @@ class AlertForChangeTeamName {
                 }
             }
         })
+    }
+    
+    private func textFieldLeingth(text: String?, countCharacters: Int) -> String {
+        var newString: [Character] = []
+        var counter = 0
+        guard let text = text else {return ""}
+        for value in text.map({$0}){
+            if counter < countCharacters {
+            newString.append(value)
+                counter += 1
+            } else {break}
+        }
+        return String(newString)
     }
     
     // MARK: - Setup constraints
