@@ -4,7 +4,7 @@
 Игра ведётся на время: чем больше слов сможет отгадать команда, тем больше очков она получит.  
 Во время объяснения слова можно использовать синонимы и антонимы, главное не использовать однокоренные слова.
 
-**Используемые технологии**: Swift, верстка UI-кодом, UIKit, UIKit animation, MVC, Delegate, JSON, URL, IOS Human Guidelines.  
+**Стэк**: Swift, верстка UI-кодом, UIKit, UIKit animation, MVC, Delegate, JSON, URL, IOS Human Guidelines.  
 
 **Результ**:
 - Реализована настройка количества играющих команд
@@ -26,7 +26,7 @@
 ALIAS is a word game that you play in teams. In ALIAS you have to say things in “other words”.  
 The idea is to explain words using synonyms, opposites or clues so that your team mates guess as many words from the card as possible before the timer runs out. 
 
-**Technologies**: Swift, UI code, UIKit, UIKit animation, MVC, Delegate, JSON, URL, IOS Human Guidelines.
+**Stack**: Swift, UI code, UIKit, UIKit animation, MVC, Delegate, JSON, URL, IOS Human Guidelines.
 
 **Result**:
 - Setting the number of teams
